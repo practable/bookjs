@@ -1,22 +1,31 @@
 <template>
   <input :value="token" @input="updateToken" />
-  <button @click="login">login</button>
+  <button @click="bookingLogin">login</button>
   <button @click="deleteToken">clear</button>
-  <button @click="getSomething">getSomething</button>
-  <div>What we got: {{ stuff }}</div>
+  <div v-if="valid">Our login token is valid until {{ when }}</div>
+  <div v-if="!valid">Token invalid because {{ result }}</div>
+  <div	v-if="valid">Token: {{ loginToken }}</div>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
 import axios from "axios";
+import moment from 'moment';
 
 export default {
   data() {
     return {
-      stuff: null,
+		stuff: null,
+		expiresAt: null,
+		loginToken: null,
+		result: "empty",
+		valid: false
     };
   },
-  computed: {
+	computed: {
+		when: function() {
+			return moment(this.expiresAt * 1000).format("MM/DD/YYYY hh:mm:ss")
+		},
     ...mapState({
       token: (state) => state.token,
     }),
@@ -25,7 +34,7 @@ export default {
     updateToken(e) {
       this.$store.commit("setToken", e.target.value);
     },
-    getSomething() {
+    bookingLogin() {
       console.log("getSomething() called");
 
       /*axios
@@ -38,11 +47,31 @@ export default {
           {},
           {
             headers: {
-              Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZ3JvdXAxIiwiZ3JvdXAyIiwiZ3JvdXAzIl0sInNjb3BlcyI6WyJsb2dpbjphZG1pbiJdLCJwb29scyI6W10sImF1ZCI6Imh0dHA6Ly9bOjpdOjQwMDAiLCJleHAiOjE2MTExOTI3NzcsImlhdCI6MTYxMDgzMjc3NywibmJmIjoxNjEwODMyNzc3fQ.bXTzjpf9tdxassgJYXEvCmz1i01_1owkio1VjXoLyKQ",
+				//Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZ3JvdXAxIiwiZ3JvdXAyIiwiZ3JvdXAzIl0sInNjb3BlcyI6WyJsb2dpbjphZG1pbiJdLCJwb29scyI6W10sImF1ZCI6Imh0dHA6Ly9bOjpdOjQwMDAiLCJleHAiOjE2MTExOTI3NzcsImlhdCI6MTYxMDgzMjc3NywibmJmIjoxNjEwODMyNzc3fQ.bXTzjpf9tdxassgJYXEvCmz1i01_1owkio1VjXoLyKQ",
+				Authorization: this.token,
             },
           }
         )
-        .then((response) => (this.stuff = response));
+        //.then((response) => (this.stuff = response.data));
+			.then((response) => {
+
+				this.stuff = response.data
+				this.expiresAt = response.data.exp
+				this.loginToken = response.data.token
+				this.result = response.statusText
+				this.valid = true
+
+
+			}, (error) => {
+
+	  if (error.response) {
+		  this.result = error.response.statusText
+	  } else {
+		  this.result = "error"
+		  this.valid = false
+	  }
+
+  });
     },
     ...mapActions(["login", "deleteToken"]),
   },
