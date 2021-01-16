@@ -31,3 +31,11 @@ export const clearBookingToken = (state, reason) => {
   state.bookingTokenStatus = "empty";
   state.loginResult = reason;
 };
+
+export const setStoreDetails = (state, details) => {
+  state.storeStatusDetails = details;
+};
+
+export const setStoreStatus = (state, status) => {
+  state.storeStatus = status;
+};

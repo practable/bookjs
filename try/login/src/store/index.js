@@ -11,6 +11,8 @@ const state = {
   loginResult: "login not attempted",
   bookingTokenStatus: "empty",
   bookingTokenExpiresAt: 0,
+  storeStatus: "unknown",
+  storeStatusDetails: null,
 };
 
 const store = createStore({
