@@ -1,12 +1,12 @@
 <template>
   <div>Value: {{ bearer }}</div>
-  <button @click="clear">clear</button>
+  <button @click="deleteBearer">clear</button>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
   computed: mapGetters(["bearer"]),
-  methods: mapActions(["clear"]),
+  methods: mapActions(["deleteBearer"]),
 };
 </script>

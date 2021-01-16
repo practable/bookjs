@@ -1,7 +1,7 @@
-export const clear = (state) => {
+export const deleteBearer = (state) => {
   state.bearer = "";
 };
-export const clearToken = (state) => {
+export const deleteToken = (state) => {
   state.token = "";
 };
 
@@ -10,6 +10,6 @@ export const login = (state) => {
     "eykljdflkajsdfjlas.lkasjdfklasjdlkfjalskdf.ksdflkjaskldjflkasdjf";
 };
 
-export const updateToken = (state, token) => {
+export const setToken = (state, token) => {
   state.token = token;
 };

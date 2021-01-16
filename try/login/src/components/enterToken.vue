@@ -1,7 +1,7 @@
 <template>
   <input :value="token" @input="updateToken" />
   <button @click="login">login</button>
-  <button @click="clearToken">clear</button>
+  <button @click="deleteToken">clear</button>
 </template>
 
 <script>
@@ -14,12 +14,9 @@ export default {
   },
   methods: {
     updateToken(e) {
-      this.$store.commit("updateToken", e.target.value);
+      this.$store.commit("setToken", e.target.value);
     },
-    clearToken() {
-      this.$store.commit("clearToken");
-    },
-    ...mapActions(["login"]),
+    ...mapActions(["login", "deleteToken"]),
   },
 };
 </script>
