@@ -13,3 +13,12 @@ export const login = (state) => {
 export const setToken = (state, token) => {
   state.token = token;
 };
+
+export const setBookingToken = (state, token) => {
+  state.bookingToken = token;
+  state.bookingTokenValid = true;
+};
+export const clearBookingToken = (state) => {
+  state.bookingToken = "";
+  state.bookingTokenValid = false;
+};

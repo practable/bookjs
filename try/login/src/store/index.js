@@ -6,6 +6,8 @@ import * as mutations from "./mutations";
 const state = {
   bearer: "",
   token: "",
+  bookingToken: "",
+  bookingTokenValid: false,
 };
 
 const store = createStore({
