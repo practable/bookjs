@@ -1,0 +1,12 @@
+<template>
+  <div>Value: {{ bearer }}</div>
+  <button @click="clear">clear</button>
+</template>
+
+<script>
+import { mapGetters, mapActions } from "vuex";
+export default {
+  computed: mapGetters(["bearer"]),
+  methods: mapActions(["clear"]),
+};
+</script>
