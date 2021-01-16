@@ -8,6 +8,9 @@ const state = {
   token: "",
   bookingToken: "",
   bookingTokenValid: false,
+  loginResult: "login not attempted",
+  bookingTokenStatus: "empty",
+  bookingTokenExpiresAt: 0,
 };
 
 const store = createStore({

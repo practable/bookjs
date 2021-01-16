@@ -1,6 +1,5 @@
 import { mapActions, mapState } from "vuex";
 import axios from "axios";
-import moment from "moment";
 
 export default {
   data() {
@@ -12,9 +11,6 @@ export default {
     };
   },
   computed: {
-    when: function () {
-      return moment(this.expiresAt * 1000).format("MM/DD/YYYY hh:mm:ss");
-    },
     ...mapState({
       token: (state) => state.token,
       bearer: (state) => state.bookingToken,
@@ -49,6 +45,7 @@ export default {
             this.loginToken = response.data.token;
             this.result = response.statusText;
             this.$store.commit("setBookingToken", response.data.token);
+            this.$store.commit("setBookingTokenExpiresAt", response.data.exp);
           },
           (error) => {
             if (error.response) {
@@ -57,7 +54,7 @@ export default {
             } else {
               this.result = "error";
             }
-            this.$store.commit("clearBookingToken");
+            this.$store.commit("clearBookingToken", "login failed");
           }
         );
     },

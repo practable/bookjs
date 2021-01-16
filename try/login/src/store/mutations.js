@@ -17,8 +17,17 @@ export const setToken = (state, token) => {
 export const setBookingToken = (state, token) => {
   state.bookingToken = token;
   state.bookingTokenValid = true;
+  state.bookingTokenStatus = "valid";
+  state.bookingTokenExpiresAt = 0;
 };
-export const clearBookingToken = (state) => {
+
+export const setBookingTokenExpiresAt = (state, exp) => {
+  state.bookingTokenExpiresAt = exp;
+};
+
+export const clearBookingToken = (state, reason) => {
   state.bookingToken = "";
   state.bookingTokenValid = false;
+  state.bookingTokenStatus = "empty";
+  state.loginResult = reason;
 };
