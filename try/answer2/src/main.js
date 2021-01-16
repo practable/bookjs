@@ -1,4 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import store from "./store";
+import CounterControls from "./counterControls.vue";
 
-createApp(App).mount('#app')
+const app = createApp(CounterControls);
+
+app.use(store);
+
+app.mount("#app");
