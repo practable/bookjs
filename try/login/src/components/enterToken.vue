@@ -28,19 +28,21 @@ export default {
     getSomething() {
       console.log("getSomething() called");
 
-      axios
+      /*axios
         .get("https://api.npms.io/v2/search?q=vue")
         .then((response) => (this.stuff = response.data.total));
-
-      /*
-		const { response, error, loading, uploadProgress, exec } = useAxios()
-
-	  await exec({
-        url: 'https://rickandmortyapi.com/api/character',
-        method: 'get'
-      })
-	console.log(	await !error.value ? await response.value : null)
-*/
+	  */
+      axios
+        .post(
+          "http://[::]:4000/api/v1/login",
+          {},
+          {
+            headers: {
+              Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZ3JvdXAxIiwiZ3JvdXAyIiwiZ3JvdXAzIl0sInNjb3BlcyI6WyJsb2dpbjphZG1pbiJdLCJwb29scyI6W10sImF1ZCI6Imh0dHA6Ly9bOjpdOjQwMDAiLCJleHAiOjE2MTExOTI3NzcsImlhdCI6MTYxMDgzMjc3NywibmJmIjoxNjEwODMyNzc3fQ.bXTzjpf9tdxassgJYXEvCmz1i01_1owkio1VjXoLyKQ",
+            },
+          }
+        )
+        .then((response) => (this.stuff = response));
     },
     ...mapActions(["login", "deleteToken"]),
   },
