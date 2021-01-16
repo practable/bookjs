@@ -1,5 +1,6 @@
 <template>
-  <input :value="token" @input="updateToken" />
+<button @click="quickToken">get token</button>
+<input :value="token" @input="updateToken" >
   <button @click="bookingLogin">login</button>
   <button @click="deleteToken">clear</button>
   <div v-if="valid">Our login token is valid until {{ when }}</div>
@@ -14,13 +15,15 @@ import moment from 'moment';
 
 export default {
   data() {
-    return {
+      return {
 		stuff: null,
 		expiresAt: null,
 		loginToken: null,
 		result: "empty",
 		valid: false
     };
+
+  
   },
 	computed: {
 		when: function() {
@@ -30,29 +33,26 @@ export default {
       token: (state) => state.token,
     }),
   },
-  methods: {
+	methods: {
+		quickToken(){
+			this.$store.commit("setToken","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZ3JvdXAxIiwiZ3JvdXAyIiwiZ3JvdXAzIl0sInNjb3BlcyI6WyJsb2dpbjphZG1pbiJdLCJwb29scyI6W10sImF1ZCI6Imh0dHA6Ly9bOjpdOjQwMDAiLCJleHAiOjE2MTExOTI3NzcsImlhdCI6MTYxMDgzMjc3NywibmJmIjoxNjEwODMyNzc3fQ.bXTzjpf9tdxassgJYXEvCmz1i01_1owkio1VjXoLyKQ")
+		},
     updateToken(e) {
       this.$store.commit("setToken", e.target.value);
     },
     bookingLogin() {
-      console.log("getSomething() called");
-
-      /*axios
-        .get("https://api.npms.io/v2/search?q=vue")
-        .then((response) => (this.stuff = response.data.total));
-	  */
+ 
       axios
         .post(
           "http://[::]:4000/api/v1/login",
-          {},
+			{},
+			
           {
             headers: {
-				//Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZ3JvdXAxIiwiZ3JvdXAyIiwiZ3JvdXAzIl0sInNjb3BlcyI6WyJsb2dpbjphZG1pbiJdLCJwb29scyI6W10sImF1ZCI6Imh0dHA6Ly9bOjpdOjQwMDAiLCJleHAiOjE2MTExOTI3NzcsImlhdCI6MTYxMDgzMjc3NywibmJmIjoxNjEwODMyNzc3fQ.bXTzjpf9tdxassgJYXEvCmz1i01_1owkio1VjXoLyKQ",
 				Authorization: this.token,
             },
           }
         )
-        //.then((response) => (this.stuff = response.data));
 			.then((response) => {
 
 				this.stuff = response.data
@@ -64,7 +64,9 @@ export default {
 
 			}, (error) => {
 
-	  if (error.response) {
+				if (error.response) {
+					this.valid = false
+					this.loginToken = ""
 		  this.result = error.response.statusText
 	  } else {
 		  this.result = "error"
