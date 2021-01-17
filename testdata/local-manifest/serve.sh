@@ -57,7 +57,7 @@ export BOOKTOKEN_GROUPS="everyone controls3"
 # generate admin token
 export BOOKTOKEN_ADMIN=true
 export BOOKJS_ADMINTOKEN=$(book token)
-export BOOKUPLOAD_TOKEN=$BOOKUPLOAD_TOKEN
+export BOOKUPLOAD_TOKEN=$BOOKJS_ADMINTOKEN
 echo "Admin token:"
 echo ${BOOKJS_ADMINTOKEN}
 
