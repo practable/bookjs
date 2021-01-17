@@ -1,7 +1,13 @@
 import axios from "axios";
 import moment from "moment";
+import poolDescription from "./poolDescription.vue";
+
 import { mapState } from "vuex";
 export default {
+  components: {
+    "pool-description": poolDescription,
+  },
+
   methods: {
     getStatus() {
       this.$store.commit("clearPoolDescriptions");

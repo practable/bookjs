@@ -11,9 +11,8 @@ pools:
     description:
       name: Penduino (Everyone)
       type: penduino-pool-v1.0
-      short: Electromagnetic Pendulums
-      long: Explore the operation of simple pendulums using an electromagnetic drive
-        system.
+      short: Electromagnetic Pendulum
+      long: A pendulum driven by an electromagnet, producing simple harmonic motion.
       further: https://static.practable.io/info/penduino-v1.0
       thumb: http://localhost:8008/images/penduino-v1.0/thumb.png
       image: http://localhost:8008/images/penduino-v1.0/image.png
@@ -27,9 +26,8 @@ pools:
     description:
       name: Spinner (Controls 3)
       type: spinner-pool-v1.0
-      short: Electromagnetic Pendulums
-      long: Explore the operation of simple pendulums using an electromagnetic drive
-        system.
+      short: DC-motor spinning disk
+      long: A DC-motor driving a weighted spinning disk, which takes time to spin up to speed.
       further: https://static.practable.io/info/spinner-v1.0
       thumb: http://localhost:8008/images/spinner-v1.0/thumb.png
       image: http://localhost:8008/images/spinner-v1.0/image.png
@@ -43,8 +41,7 @@ pools:
       name: Spinner (Everyone)
       type: spinner-pool-v1.0
       short: Electromagnetic Pendulums
-      long: Explore the operation of simple pendulums using an electromagnetic drive
-        system.
+      long: A DC-motor driving a weighted spinning disk, which takes time to spin up to speed.
       further: https://static.practable.io/info/spinner-v1.0
       thumb: http://localhost:8008/images/spinner-v1.0/thumb.png
       image: http://localhost:8008/images/spinner-v1.0/image.png

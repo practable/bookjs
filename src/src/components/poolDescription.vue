@@ -1,5 +1,4 @@
 <template>
-
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -8,7 +7,8 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title"> {{ title }}</h5>
-        <p class="card-text"> {{ about }}</p>
+		 <!--h6 class="card-subtitle text-black"> {{ what }}</h6--->
+        <p class="card-text text-secondary"> {{ about }}</p>
 		<div class="container">
           <div class="row">
             <div class="col">

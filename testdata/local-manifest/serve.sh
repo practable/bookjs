@@ -92,6 +92,10 @@ echo $p | base64 -d | jq
 export BOOKUPLOAD_SCHEME=http
 export BOOKUPLOAD_HOST=[::]:4000
 
+#poolstore reset settings
+export BOOKRESET_HOST=$BOOKUPLOAD_HOST
+export BOOKRESET_SCHEME=$BOOKUPLOAD_SCHEME
+
 set | grep BOOK
 
 # start book server
@@ -117,12 +121,14 @@ echo "commands:"
 echo "  a: tail of the assert server log"
 echo "  b: tail of book server log [default]"
 echo "  g: start insecure chrome"
+echo "  r: reset the poolstore (careful!)"
+echo "  u: re-upload manifest"
 echo "  done: stop servers"
 
 
 for (( ; ; ))
 do
-	read -p 'What next? [a/b/g/done]:' command
+	read -p 'What next? [a/b/g/u/r/done]:' command
 
 	echo $command
 
@@ -140,6 +146,16 @@ elif [ "$command" = "g" ];
 then
 	mkdir -p ../tmp/chrome-user
 	google-chrome --disable-web-security --user-data-dir="../tmp/chrome-user" > chrome.log 2>&1 &
+elif [ "$command" = "r" ];
+then
+	export BOOKTOKEN_ADMIN=true
+    export BOOKRESET_TOKEN=$(book token)
+    book reset
+elif [ "$command" = "u" ];
+then
+	export BOOKTOKEN_ADMIN=true
+    export BOOKUPLOAD_TOKEN=$(book token)
+    book upload manifest.yaml	
 else	
      echo -e "\nUnknown command ${command}."
 fi
