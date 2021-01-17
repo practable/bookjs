@@ -1,6 +1,6 @@
 <template>
-  <enterToken />
-  <displayBearer />
+<enterToken />
+<displayBearer />
   <displayPools />
 </template>
 

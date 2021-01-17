@@ -18,12 +18,6 @@ export default {
     }),
   },
   methods: {
-    quickToken() {
-      this.$store.commit(
-        "setToken",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZXZlcnlvbmUiLCJjb250cm9sczMiXSwic2NvcGVzIjpbImxvZ2luOnVzZXIiXSwicG9vbHMiOltdLCJhdWQiOiJodHRwOi8vWzo6XTo0MDAwIiwiZXhwIjoxNjExMjAyMTg0LCJpYXQiOjE2MTA4NDIxODQsIm5iZiI6MTYxMDg0MjE4NH0.1ZJRaiD_-2vOtVd0geegPp4e-28CC4KqhOE4IHUPH7g"
-      );
-    },
     updateToken(e) {
       this.$store.commit("setToken", e.target.value);
     },

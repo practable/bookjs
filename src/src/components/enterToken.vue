@@ -1,5 +1,5 @@
 <template>
-  <button @click="quickToken">get token</button>
+  Login token:
   <input :value="token" @input="updateToken" >
   <button @click="bookingLogin">login</button>
   <button @click="deleteToken">clear</button>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import moment from "moment";
+import dayjs from "dayjs";
 import poolDescription from "./poolDescription.vue";
 
 import { mapState } from "vuex";
@@ -23,14 +23,14 @@ export default {
             (response) => {
               this.$store.commit(
                 "setPoolIDsStatus",
-                "checked " + moment().fromNow()
+                "checked at " + dayjs().format("HH:mm:ss")
               );
               this.$store.commit("addPoolDescription", response.data);
             },
             (error) => {
               this.$store.commit(
                 "setPoolIDsStatus",
-                "last check failed " + moment().fromNow()
+                "last check failed at " + dayjs().format("HH:mm:ss")
               );
             }
           );
@@ -39,10 +39,18 @@ export default {
   },
   computed: {
     ...mapState({
+      bookingTokenValid: (state) => state.bookingTokenValid,
       bookingToken: (state) => state.bookingToken,
       status: (state) => state.poolIDsStatus,
       details: (state) => state.poolDescriptions,
       ids: (state) => state.poolIDs,
     }),
+  },
+  watch: {
+    bookingToken(is, was) {
+      if (this.bookingTokenValid) {
+        this.getStatus();
+      }
+    },
   },
 };
