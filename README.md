@@ -1,40 +1,8 @@
 # bookjs
 
-Empty project.
+Webclient for booking experiments hosted using [timdrysdale/relay](https://github.com/timdrysdale/relay)
 
-## Building and running on localhost
-
-First install dependencies:
-
-```sh
-npm install
-```
-
-To run in hot module reloading mode:
-
-```sh
-npm start
-```
-
-To create a production build:
-
-```sh
-npm run build-prod
-```
-
-## Running
-
-```sh
-node dist/bundle.js
-```
-
-## Testing
-
-To run unit tests:
-
-```sh
-npm test
-```
+In early stages of development ... 
 
 ## Dev notes
 
@@ -166,6 +134,3 @@ export default {
 
 Makes it write only so you can assign somethign else to the property and break thigns
 
-## Credits
-
-Made with [createapp.dev](https://createapp.dev/)
