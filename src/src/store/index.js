@@ -13,6 +13,9 @@ const state = {
   bookingTokenExpiresAt: 0,
   storeStatus: "unknown",
   storeStatusDetails: null,
+  poolIDsStatus: "unknown",
+  poolIDs: [],
+  poolDescriptions: [],
 };
 
 const store = createStore({

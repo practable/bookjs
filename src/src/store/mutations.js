@@ -39,3 +39,18 @@ export const setStoreDetails = (state, details) => {
 export const setStoreStatus = (state, status) => {
   state.storeStatus = status;
 };
+
+export const setPoolIDs = (state, ids) => {
+  state.poolIDs = ids;
+};
+
+export const setPoolIDsStatus = (state, status) => {
+  state.poolIDsStatus = status;
+};
+
+export const addPoolDescription = (state, description) => {
+  state.poolDescriptions.push(description);
+};
+export const clearPoolDescriptions = (state) => {
+  state.poolDescriptions = [];
+};

@@ -1,6 +1,6 @@
 import { mapActions, mapState } from "vuex";
 import axios from "axios";
-
+import moment from "moment";
 export default {
   data() {
     return {
@@ -21,7 +21,7 @@ export default {
     quickToken() {
       this.$store.commit(
         "setToken",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZ3JvdXAxIiwiZ3JvdXAyIiwiZ3JvdXAzIl0sInNjb3BlcyI6WyJsb2dpbjphZG1pbiJdLCJwb29scyI6W10sImF1ZCI6Imh0dHA6Ly9bOjpdOjQwMDAiLCJleHAiOjE2MTExOTI3NzcsImlhdCI6MTYxMDgzMjc3NywibmJmIjoxNjEwODMyNzc3fQ.bXTzjpf9tdxassgJYXEvCmz1i01_1owkio1VjXoLyKQ"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cHMiOlsiZXZlcnlvbmUiLCJjb250cm9sczMiXSwic2NvcGVzIjpbImxvZ2luOnVzZXIiXSwicG9vbHMiOltdLCJhdWQiOiJodHRwOi8vWzo6XTo0MDAwIiwiZXhwIjoxNjExMjAyMTg0LCJpYXQiOjE2MTA4NDIxODQsIm5iZiI6MTYxMDg0MjE4NH0.1ZJRaiD_-2vOtVd0geegPp4e-28CC4KqhOE4IHUPH7g"
       );
     },
     updateToken(e) {
@@ -46,6 +46,12 @@ export default {
             this.result = response.statusText;
             this.$store.commit("setBookingToken", response.data.token);
             this.$store.commit("setBookingTokenExpiresAt", response.data.exp);
+            this.$store.commit("setPoolIDs", response.data.pools);
+            console.log(response.data.pools);
+            this.$store.commit(
+              "setPoolIDsStatus",
+              "checked " + moment().fromNow()
+            );
           },
           (error) => {
             if (error.response) {
