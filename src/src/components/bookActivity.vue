@@ -1,10 +1,9 @@
 <template>
 <div>
-    <Multiselect
-      v-model="value"
-      :options="options"
-	  v-bind:key="item.id"
-      />
+  <li v-for="item in options">
+ {{ item}}
+  </li>
+	
 </div>
 <div>
    <button @click="book">request</button>
@@ -12,5 +11,3 @@
 </template>
 
 <script src="./bookActivity.js"></script>
-
-<style src="@vueform/multiselect/themes/default.css"></style>

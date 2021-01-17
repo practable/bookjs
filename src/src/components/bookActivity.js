@@ -1,10 +1,7 @@
-import Multiselect from "@vueform/multiselect";
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    Multiselect,
-  },
+  components: {},
   data() {
     return {
       value: null,
