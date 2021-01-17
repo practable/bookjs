@@ -24,18 +24,32 @@
 #   ending the two server processses
 #
 
+# pad base64URL encoded to base64
+# from https://gist.github.com/angelo-v/e0208a18d455e2e6ea3c40ad637aac53
+paddit() {
+  input=$1
+  l=`echo -n $input | wc -c`
+  while [ `expr $l % 4` -ne 0 ]
+  do
+    input="${input}="
+    l=`echo -n $input | wc -c`
+  done
+  echo $input
+}
+
 
 # booking server settings
 export BOOK_DEVELOPMENT=true
 export BOOK_PORT=4000
 export BOOK_FQDN=http://[::]:4000
 export BOOK_SECRET=somesecret
+export BOOK_LOGINTIME=3600
 
 # asset server settings
 export ASSET_PORT=6000
 
 # token common settings
-export BOOKTOKEN_SECRET=$BOOK_SECRET
+export BOOKTOKEN_SECRET=somesecret
 export BOOKTOKEN_AUDIENCE=$BOOK_FQDN
 export BOOKTOKEN_LIFETIME=86400
 export BOOKTOKEN_GROUPS="everyone controls3"
@@ -43,55 +57,82 @@ export BOOKTOKEN_GROUPS="everyone controls3"
 # generate admin token
 export BOOKTOKEN_ADMIN=true
 export BOOKJS_ADMINTOKEN=$(book token)
-export BOOKUPLOAD_TOKEN=$(book token)
-echo "Admin token: ${BOOKJS_ADMINTOKEN}\n"
+export BOOKUPLOAD_TOKEN=$BOOKUPLOAD_TOKEN
+echo "Admin token:"
+echo ${BOOKJS_ADMINTOKEN}
+
+
+
+# read and split the token and do some base64URL translation
+read h p s <<< $(echo $BOOKJS_ADMINTOKEN | tr [-_] [+/] | sed 's/\./ /g')
+
+h=`paddit $h`
+p=`paddit $p`
+# assuming we have jq installed
+echo $h | base64 -d | jq
+echo $p | base64 -d | jq
 
 # generate user token
 export BOOKTOKEN_ADMIN=false
 export USERTOKEN=$(book token)
 export BOOKJS_USERTOKEN=$(book token)
-echo "Usern token: ${BOOKJS_USERTOKEN}\n"
+echo "User token:"
+echo ${BOOKJS_USERTOKEN}
+
+# read and split the token and do some base64URL translation
+read h p s <<< $(echo $BOOKJS_ADMINTOKEN | tr [-_] [+/] | sed 's/\./ /g')
+
+h=`paddit $h`
+p=`paddit $p`
+# assuming we have jq installed
+echo $h | base64 -d | jq
+echo $p | base64 -d | jq
 
 # manifest upload settings
 export BOOKUPLOAD_SCHEME=http
-export BOOKUPLOAD_TOKEN=$(book token)
+export BOOKUPLOAD_HOST=[::]:4000
+
+set | grep BOOK
 
 # start book server
 book serve > book.log 2>&1 &
 export BOOK_PID=$!
 
 #wait five seconds for server to start
-sleep 5
+sleep 1
 
 #upload manifest
 book upload manifest.yaml
 
 
 # start asset server
-http serve ./assets > asset.log 2>&1 &
+http-server -p $ASSET_PORT ./assets > asset.log 2>&1 &
+
 export ASSET_PID=$!
 
-echo "book server on port ${BOOK_PORT} logs to ./book.log\n\n"
-echo "asset server on port ${ASSET_PORT} logs to ./asset.log\n\n"
+echo "book server on port ${BOOK_PORT} logs to ./book.log"
+echo "asset server on port ${ASSET_PORT} logs to ./asset.log"
 
-echo "commands:\n"
-echo "  a: tail of the assert server log\n"
-echo "  b: tail of book server log [default]\n"
-echo "  done: stop servers\n"
+echo "commands:"
+echo "  a: tail of the assert server log"
+echo "  b: tail of book server log [default]"
+echo "  done: stop servers"
 
 
 for (( ; ; ))
 do
-read -p 'What next? [a/b/done]:' command
+	read -p 'What next? [a/b/done]:' command
 
-if ($command == "done")
+	echo $command
+
+if [ "$command" = "done" ];
 then
      echo -e "\nShutting down"
 	 break
-elif (($command == "b") || ($command == ""))
+elif ([ "$command" = "b" ] || [ "$command" = "" ]);
 then
 	tail book.log
-elif ($command == "a")
+elif [ "$command" = "a" ];
 then
 	tail asset.log	
 else
@@ -99,5 +140,5 @@ else
 fi
 done
 
-kill -15 $BOOK_PID
-kill -15 $ASSET_PID
+kill -n 15 $BOOK_PID
+kill -n 15 $ASSET_PID
