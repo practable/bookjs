@@ -46,7 +46,7 @@ export BOOK_SECRET=somesecret
 export BOOK_LOGINTIME=3600
 
 # asset server settings
-export ASSET_PORT=6000
+export ASSET_PORT=8008
 
 # token common settings
 export BOOKTOKEN_SECRET=somesecret
