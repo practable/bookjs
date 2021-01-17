@@ -116,12 +116,13 @@ echo "asset server on port ${ASSET_PORT} logs to ./asset.log"
 echo "commands:"
 echo "  a: tail of the assert server log"
 echo "  b: tail of book server log [default]"
+echo "  g: start insecure chrome"
 echo "  done: stop servers"
 
 
 for (( ; ; ))
 do
-	read -p 'What next? [a/b/done]:' command
+	read -p 'What next? [a/b/g/done]:' command
 
 	echo $command
 
@@ -135,7 +136,11 @@ then
 elif [ "$command" = "a" ];
 then
 	tail asset.log	
-else
+elif [ "$command" = "g" ];
+then
+	mkdir -p ../tmp/chrome-user
+	google-chrome --disable-web-security --user-data-dir="../tmp/chrome-user" > chrome.log 2>&1 &
+else	
      echo -e "\nUnknown command ${command}."
 fi
 done

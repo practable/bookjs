@@ -12,6 +12,9 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 #secret
 secret
 
+#debug stuff
+testdata/tmp
+
 # Runtime data
 pids
 *.pid
