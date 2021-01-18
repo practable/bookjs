@@ -41,6 +41,7 @@ export const setStoreStatus = (state, status) => {
 };
 
 export const setPoolIDs = (state, ids) => {
+  console.log("store:setPoolIDs:len", ids.length);
   state.poolIDs = ids;
 };
 
@@ -52,6 +53,7 @@ export const addPoolDescription = (state, description) => {
   state.poolDescriptions.push(description);
 };
 export const clearPoolDescriptions = (state) => {
+  console.log("clearing poolDescriptions");
   state.poolDescriptions = [];
 };
 export const setPoolStatus = (state, status) => {

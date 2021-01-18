@@ -46,7 +46,8 @@ export default {
             this.loginToken = response.data.token;
 
             this.$localStorage.set("token", this.loginToken);
-
+            console.log("enterToken:token:", this.loginToken);
+            console.log("enterToken:poolsInToken:", response.data.pools);
             this.result = response.statusText;
             this.$store.commit("setBookingToken", response.data.token);
             this.$store.commit("setBookingTokenExpiresAt", response.data.exp);
