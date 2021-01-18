@@ -1,4 +1,15 @@
 <template>
+  <div id="nav">
+	<router-link to="/">Home</router-link> |
+	<router-link to="/about">About</router-link>
+  </div>
+  <router-view />
+
+  </template>
+
+
+
+<!---template>
   <div class="container">
 
   <img width="300" src="http://localhost:8008/images/booking/practable-logo-1980x660.png">
@@ -10,7 +21,7 @@
   <displayPools />
 
   </div>
-</template>
+</template--->
 
 <script>
 import displayBearer from "./components/displayBearer.vue";
