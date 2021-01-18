@@ -23,7 +23,17 @@ export default {
               "setBookingsStatus",
               "Checked at " + dayjs().format("h:mm A")
             );
-            this.$store.commit("addBooking", response.data);
+
+            console.log("getbookings getstatus", response.data.activities);
+            var i;
+            for (i = 0; i < response.data.activities.length; i++) {
+              this.$store.commit("addActivityBooking", {
+                id: response.data.activities[i].description.id,
+                status: response.data.activities[i],
+                ok: true,
+              });
+              console.log("activity from login:", response.data.activities[i]);
+            }
           },
           (error) => {
             this.$store.commit(
@@ -40,7 +50,7 @@ export default {
       var i;
       descriptions = [];
       for (i = 0; i < this.fulldetails.length; i++) {
-        //console.log("activity", this.fulldetails[i]);
+        console.log("activity", this.fulldetails[i]);
         var d;
         d = this.fulldetails[i].status.description;
         d["exp"] = this.fulldetails[i].status.exp;

@@ -22,21 +22,31 @@ export default {
       this.$store.commit("setToken", e.target.value);
     },
     bookingLogin() {
+      //get expired token from webstorage
+
+      var oldToken;
+      var body;
+
+      oldToken = this.$localStorage.get("token", false);
+
+      if (oldToken) {
+        body = { token: oldToken };
+      } else {
+        body = {};
+      }
+
       axios
-        .post(
-          "http://[::]:4000/api/v1/login",
-          {},
-          {
-            headers: {
-              Authorization: this.token,
-            },
-          }
-        )
+        .post("http://[::]:4000/api/v1/login", body, {
+          headers: { Authorization: this.token },
+        })
         .then(
           (response) => {
             this.stuff = response.data;
             this.expiresAt = response.data.exp;
             this.loginToken = response.data.token;
+
+            this.$localStorage.set("token", this.loginToken);
+
             this.result = response.statusText;
             this.$store.commit("setBookingToken", response.data.token);
             this.$store.commit("setBookingTokenExpiresAt", response.data.exp);
