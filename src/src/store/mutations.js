@@ -61,3 +61,10 @@ export const setPoolStatus = (state, status) => {
 export const addActivityBooking = (state, booking) => {
   state.activityBookings.push(booking);
 };
+export const clearBookings = (state, booking) => {
+  state.activityBookings = [];
+};
+
+export const setBookingsStatus = (state, status) => {
+  state.bookingsStatus = status;
+};
