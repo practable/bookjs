@@ -16,6 +16,7 @@ const state = {
   poolIDsStatus: "unknown",
   poolIDs: [],
   poolDescriptions: [],
+  poolStatus: {},
 };
 
 const store = createStore({

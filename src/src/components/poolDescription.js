@@ -1,3 +1,7 @@
+import { mapState } from "vuex";
+import axios from "axios";
+import dayjs from "dayjs";
+import $ from "jquery";
 export default {
   props: ["description", "key", "index"],
   components: {},
@@ -15,25 +19,60 @@ export default {
       return this.description.long;
     },
     status: function () {
-      return "no status available";
+      var s = this.poolStatus[this.description.id];
+      if ($.isEmptyObject(s)) {
+        return "Status unavailable";
+      }
+      if (s.status.available == 0) {
+        if (s.status.later) {
+          return "Available again soon";
+        } else {
+          return "Unavailable";
+        }
+      } else {
+        return "Available now: " + s.status.available;
+      }
     },
+    ...mapState({
+      bookingTokenValid: (state) => state.bookingTokenValid,
+      bookingToken: (state) => state.bookingToken,
+      poolStatus: (state) => state.poolStatus,
+      details: (state) => state.poolDescriptions,
+      ids: (state) => state.poolIDs,
+    }),
   },
   methods: {
     request() {
       console.log("requested booking");
     },
   },
-};
+  created() {
+    var id = this.description.id;
 
-/*
-  description: {
-        name: "Electromagnetic Pendulum",
-        short: `A single pendulum with electromagnetic drive system producing simple harmonic motion`,
-        long: `A simple pendulum with electromagnetic drive system producing simple harmonic
-      motion. The drive and braking effect are variable. They are determined by how
-      much of the pendulum's travel the coil remains energised for. The pendulum can
-      also be slowed down by short-circuiting the coil, without applying any power,
-      or left to swing freely with no drive or braking.`,
-        status: "Only a few available now",
-        image: "http://localhost:8008/images/penduino-v1.0/image.png",
-*/
+    axios
+      .get("http://[::]:4000/api/v1/pools/" + id + "/status", {
+        headers: {
+          Authorization: this.bookingToken,
+        },
+      })
+      .then(
+        (response) => {
+          console.log(response.data);
+          this.$store.commit("setPoolStatus", {
+            id: id,
+            status: response.data,
+            ok: true,
+          });
+        },
+        (error) => {
+          console.log(error);
+
+          this.$store.commit("setPoolStatus", {
+            id: id,
+            status: error.response.data,
+            ok: false,
+          });
+        }
+      );
+  },
+};

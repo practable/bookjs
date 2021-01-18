@@ -54,3 +54,6 @@ export const addPoolDescription = (state, description) => {
 export const clearPoolDescriptions = (state) => {
   state.poolDescriptions = [];
 };
+export const setPoolStatus = (state, status) => {
+  state.poolStatus[status.id] = status;
+};
