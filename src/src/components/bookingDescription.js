@@ -19,7 +19,7 @@ export default {
       return this.description.long;
     },
     status: function () {
-      return "Until " + dayjs.unix(this.description.exp).format("h:mm A");
+      return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
     },
     ...mapState({
       bookingTokenValid: (state) => state.bookingTokenValid,
