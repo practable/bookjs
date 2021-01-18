@@ -17,6 +17,7 @@ const state = {
   poolIDs: [],
   poolDescriptions: [],
   poolStatus: {},
+  activityBookings: [],
 };
 
 const store = createStore({

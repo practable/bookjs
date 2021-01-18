@@ -57,3 +57,7 @@ export const clearPoolDescriptions = (state) => {
 export const setPoolStatus = (state, status) => {
   state.poolStatus[status.id] = status;
 };
+
+export const addActivityBooking = (state, booking) => {
+  state.activityBookings.push(booking);
+};
