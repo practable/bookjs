@@ -16,8 +16,8 @@ pools:
       further: https://static.practable.io/info/penduino-v1.0
       thumb: http://localhost:8008/images/penduino-v1.0/thumb.png
       image: http://localhost:8008/images/penduino-v1.0/image.png
-    minsession: 600
-    maxsession: 3600
+    minsession: 2
+    maxsession: 5400
     activities:
     - penduino-activity-00
     - penduino-activity-01
@@ -31,8 +31,8 @@ pools:
       further: https://static.practable.io/info/spinner-v1.0
       thumb: http://localhost:8008/images/spinner-v1.0/thumb.png
       image: http://localhost:8008/images/spinner-v1.0/image.png
-    minsession: 600
-    maxsession: 3600
+    minsession: 2
+    maxsession: 5400
     activities:
     - spinner-activity-01
     - spinner-activity-02
@@ -45,8 +45,8 @@ pools:
       further: https://static.practable.io/info/spinner-v1.0
       thumb: http://localhost:8008/images/spinner-v1.0/thumb.png
       image: http://localhost:8008/images/spinner-v1.0/image.png
-    minsession: 600
-    maxsession: 3600
+    minsession: 2
+    maxsession: 5400
     activities:
     - spinner-activity-00
 activities:
