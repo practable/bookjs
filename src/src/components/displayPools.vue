@@ -1,7 +1,8 @@
 <template>
-  <h3>Available Pools</h3>
-   <button @click="getStatus">get</button> 
-   <div>{{ status }}</div>
+  <div class="bg-primary" style="max-width: 540px;">
+<h3 class="text-white">Available Pools</h3>
+<h6 class="text-white">{{ status }}</h6>
+</div>
 <pool-description
   v-for="(item, index) in details"
   :description="item"
