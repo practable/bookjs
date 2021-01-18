@@ -1,6 +1,6 @@
 <template>
   <div class="bg-primary" style="max-width: 540px;">
-<h3 class="text-white">Available Pools</h3>
+<h3 class="text-white">Your Experiments</h3>
 <h6 class="text-white">{{ status }}</h6>
 </div>
 <pool-description

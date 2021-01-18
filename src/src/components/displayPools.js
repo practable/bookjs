@@ -23,14 +23,14 @@ export default {
             (response) => {
               this.$store.commit(
                 "setPoolIDsStatus",
-                "checked at " + dayjs().format("HH:mm:ss")
+                "Checked at " + dayjs().format("h:mm A")
               );
               this.$store.commit("addPoolDescription", response.data);
             },
             (error) => {
               this.$store.commit(
                 "setPoolIDsStatus",
-                "last check failed at " + dayjs().format("HH:mm:ss")
+                "Last check failed at " + dayjs().format("h:mm A")
               );
             }
           );
