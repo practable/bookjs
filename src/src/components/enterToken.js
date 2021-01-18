@@ -41,7 +41,6 @@ export default {
             this.$store.commit("setBookingToken", response.data.token);
             this.$store.commit("setBookingTokenExpiresAt", response.data.exp);
             this.$store.commit("setPoolIDs", response.data.pools);
-            console.log(response.data.pools);
             this.$store.commit(
               "setPoolIDsStatus",
               "checked " + moment().fromNow()

@@ -23,6 +23,9 @@ export default {
       if ($.isEmptyObject(s)) {
         return "Status unavailable";
       }
+      if (!s.ok) {
+        return "Status unavailable";
+      }
       if (s.status.available == 0) {
         if (s.status.later) {
           return "Available again soon";
@@ -57,7 +60,6 @@ export default {
       })
       .then(
         (response) => {
-          console.log(response.data);
           this.$store.commit("setPoolStatus", {
             id: id,
             status: response.data,
@@ -65,11 +67,9 @@ export default {
           });
         },
         (error) => {
-          console.log(error);
-
           this.$store.commit("setPoolStatus", {
             id: id,
-            status: error.response.data,
+            status: {},
             ok: false,
           });
         }
