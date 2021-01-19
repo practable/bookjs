@@ -1,7 +1,8 @@
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import axios from "axios";
 import dayjs from "dayjs";
 import $ from "jquery";
+
 export default {
   props: ["description", "key", "index"],
   components: {},
@@ -19,6 +20,11 @@ export default {
       return this.description.long;
     },
     status: function () {
+      var delay = 1000 * (this.description.exp - dayjs().unix());
+      var remove = this.remove;
+      setTimeout(function () {
+        remove();
+      }, 1000 * (this.description.exp - dayjs().unix()));
       return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
     },
     ...mapState({
@@ -32,6 +38,9 @@ export default {
   methods: {
     open() {
       console.log("opening ui page for  ", this.description.id);
+    },
+    remove() {
+      this.$store.commit("deleteBooking", this.description);
     },
   },
 };

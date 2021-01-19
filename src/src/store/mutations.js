@@ -70,3 +70,12 @@ export const clearBookings = (state, booking) => {
 export const setBookingsStatus = (state, status) => {
   state.bookingsStatus = status;
 };
+
+export const deleteBooking = (state, booking) => {
+  var removeIndex = state.activityBookings
+    .map(function (item) {
+      return item.id;
+    })
+    .indexOf(booking.id);
+  state.activityBookings.splice(removeIndex, 1);
+};
