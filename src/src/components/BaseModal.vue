@@ -3,11 +3,11 @@
         <slot>
             Are you sure that you want to do something potentially dangerous?
         </slot>
-        <slot #actions>
+<slot name="actions">
+
             <button
                 @click.prevent="$emit('confirmation', true)"
-            >Proceed</button>
-        </slot>
+            >Proceed</button></slot>
     </div>
 </template>
 

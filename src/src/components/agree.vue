@@ -11,14 +11,6 @@
 </template>
 
 
-<!---script>
-export default {
-  name: "Test",
- };
- 
-</script---->
-
-
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { usePromisedModal } from "../composables/usePromisedModal";
@@ -29,7 +21,8 @@ export default defineComponent({
         const { visible, ask, tell } = usePromisedModal<string>();
         let result = ref("");
 
-        const show = async () => {
+    const show = async () => {
+	console.log("awaiting user")
             result.value = await ask();
             // do something else… this code runs after the user's has made their choice.
         };

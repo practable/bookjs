@@ -6,6 +6,11 @@ In early stages of development ...
 
 ## Dev notes
 
+### modal promise pattern
+
+description [here](https://dev.to/danitrap/vue-3-expressive-api-for-confirmation-modals-3757)
+Needs type script installing
+
 ### CORS localhost
 [use cmd line opts to disable CORS](https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome)
 `google-chrome --disable-web-security --user-data-dir="[some directory here]"`
