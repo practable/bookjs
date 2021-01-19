@@ -21,7 +21,7 @@ export default {
           (response) => {
             this.$store.commit(
               "setBookingsStatus",
-              "Checked at " + dayjs().format("h:mm A")
+              "You can have up to " + response.data.max + " bookings at a time"
             );
 
             console.log("getbookings getstatus", response.data.activities);
@@ -62,7 +62,7 @@ export default {
     ...mapState({
       bookingTokenValid: (state) => state.bookingTokenValid,
       bookingToken: (state) => state.bookingToken,
-      status: (state) => state.poolIDsStatus,
+      status: (state) => state.bookingsStatus,
       fulldetails: (state) => state.activityBookings,
       ids: (state) => state.poolIDs,
     }),
