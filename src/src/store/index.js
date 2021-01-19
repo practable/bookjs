@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createStore, createLogger } from "vuex";
 import * as getters from "./getters";
 import * as actions from "./actions";
 import * as mutations from "./mutations";
@@ -25,6 +25,7 @@ const store = createStore({
   getters,
   actions,
   mutations,
+  plugins: [createLogger()],
 });
 
 export default store;
