@@ -4,6 +4,8 @@ import About from "../views/About.vue";
 import NotFound from "../views/NotFound.vue";
 import Login from "../views/Login.vue";
 import Modal from "../views/Modal.vue";
+import Activity from "../views/Activity.vue";
+
 const routes = [
   {
     path: "/",
@@ -24,6 +26,11 @@ const routes = [
     path: "/modal",
     name: "Modal",
     component: Modal,
+  },
+  {
+    path: "/activity/:id",
+    name: "Activity",
+    component: Activity,
   },
   {
     path: "/:catchAll(.*)",

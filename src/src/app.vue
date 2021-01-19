@@ -1,16 +1,22 @@
 <template>
 
   <img width="300" src="http://localhost:8008/images/booking/practable-logo-1980x660.png">
-  
+
   <div id="nav">
+	
 	<router-link to="/">Home</router-link> |
 	<router-link to="/login">Login</router-link> |
+	<router-link to="/activity/0">Activity0</router-link> |
 	<router-link to="/modal">Modal</router-link> |	
 	<router-link to="/about">About</router-link>
 	
   </div>
+
+  <p style="margin-bottom:0.7cm;"></p>
+	
   <router-view />
 
+	
   </template>
 <script>
 
