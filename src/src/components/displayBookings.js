@@ -38,7 +38,7 @@ export default {
           (error) => {
             this.$store.commit(
               "setBookingsStatus",
-              "Last check failed at " + dayjs().format("h:mm A")
+              "No bookings found when checked at " + dayjs().format("h:mm A")
             );
           }
         );
