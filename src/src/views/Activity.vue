@@ -1,7 +1,6 @@
 <template>
    <div class="container-fluid">
 	 <div class="row">
-	   {{ description }}
 <launch-activity :id="id"
   ></launch-activity>
   </div>
