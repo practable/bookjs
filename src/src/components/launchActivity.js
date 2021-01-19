@@ -11,25 +11,14 @@ export default {
     "describe-ui": describeUI,
   },
   computed: {
-    title: function () {
-      return this.description.name;
-    },
-    image: function () {
-      return this.description.image;
-    },
-    what: function () {
-      return this.description.short;
-    },
-    about: function () {
-      return this.description.long;
-    },
-    status: function () {
-      return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
+    userinterfaces: function () {
+      console.log(this.booking.uis);
+      return this.booking.uis;
     },
     dataloaded: function () {
-      return this.description != {};
+      return this.booking != {};
     },
-    description: function () {
+    booking: function () {
       var id = this.id;
       return this.getBookingByID(id);
     },

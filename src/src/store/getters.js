@@ -14,7 +14,7 @@ export const getBookingByID = (state, id) => {
     if (results.length < 1) {
       return {};
     } else {
-      return results[0].status.description;
+      return results[0].status;
     }
   };
 };

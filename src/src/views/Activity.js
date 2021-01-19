@@ -10,14 +10,6 @@ export default {
     id: function () {
       return this.$route.params.id;
     },
-    dataloaded: function () {
-      return this.description != {};
-    },
-    ...mapGetters(["getBookingByID"]),
-    description: function () {
-      var id = this.$route.params.id;
-      return this.getBookingByID(id);
-    },
   },
   watch: {
     $route(to, from) {

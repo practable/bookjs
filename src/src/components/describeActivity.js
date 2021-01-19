@@ -2,25 +2,25 @@ import dayjs from "dayjs";
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["description", "id"],
+  props: ["booking", "id"],
   computed: {
     title: function () {
-      return this.description.name;
+      return this.booking.description.name;
     },
     image: function () {
-      return this.description.image;
+      return this.booking.description.image;
     },
     what: function () {
-      return this.description.short;
+      return this.booking.description.short;
     },
     about: function () {
-      return this.description.long;
+      return this.booking.description.long;
     },
     status: function () {
-      return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
+      return "Now until " + dayjs.unix(this.booking.exp).format("h:mm A");
     },
     dataloaded: function () {
-      return this.description != {};
+      return this.booking != {};
     },
     ...mapGetters(["getBookingByID"]),
   },
