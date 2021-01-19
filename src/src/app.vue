@@ -2,6 +2,7 @@
   <div id="nav">
 	<router-link to="/">Home</router-link> |
 	<router-link to="/login">Login</router-link> |
+	<router-link to="/modal">Modal</router-link> |	
 	<router-link to="/about">About</router-link>
 	
   </div>
@@ -9,20 +10,22 @@
 
   </template>
 <script>
-import displayBearer from "./components/displayBearer.vue";
-import enterToken from "./components/enterToken.vue";
-import displayPools from "./components/displayPools.vue";
-import poolDescription from "./components/poolDescription.vue";
-import displayBookings from "./components/displayBookings.vue";
+
 
 export default {
   name: "App",
-  components: {
-    displayBearer,
-      enterToken,
-	  displayPools,
-	  poolDescription,
-	  displayBookings,
-  },
+  components: { },
 };
 </script>
+
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

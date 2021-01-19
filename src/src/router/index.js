@@ -3,7 +3,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import NotFound from "../views/NotFound.vue";
 import Login from "../views/Login.vue";
-
+import Modal from "../views/Modal.vue";
 const routes = [
   {
     path: "/",
@@ -19,6 +19,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/modal",
+    name: "Modal",
+    component: Modal,
   },
   {
     path: "/:catchAll(.*)",
