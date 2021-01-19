@@ -1,11 +1,11 @@
 import axios from "axios";
 import dayjs from "dayjs";
-import poolDescription from "./poolDescription.vue";
+import describePool from "./describePool.vue";
 
 import { mapState } from "vuex";
 export default {
   components: {
-    "pool-description": poolDescription,
+    "describe-pool": describePool,
   },
 
   methods: {

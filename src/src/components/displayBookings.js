@@ -1,11 +1,11 @@
 import axios from "axios";
 import dayjs from "dayjs";
-import bookingDescription from "./bookingDescription.vue";
+import describeBooking from "./describeBooking.vue";
 
 import { mapState } from "vuex";
 export default {
   components: {
-    "booking-description": bookingDescription,
+    "describe-booking": describeBooking,
   },
 
   methods: {

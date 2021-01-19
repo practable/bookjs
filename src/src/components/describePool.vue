@@ -61,4 +61,4 @@
 
 </template>
 
-<script src="./poolDescription.js"></script>
+<script src="./describePool.js"></script>

@@ -6,12 +6,12 @@
   </div>
   <div class="container-fluid">
   <div class="row">
-  <pool-description
+  <describe-pool
   v-for="(item, index) in details"
   :description="item"
   :index="index"
   :key="item.id"
-	></pool-description>
+	></describe-pool>
   </div>
   </div>
 </div>

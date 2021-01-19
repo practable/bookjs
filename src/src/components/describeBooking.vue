@@ -31,4 +31,4 @@
 
 </template>
 
-<script src="./bookingDescription.js"></script>
+<script src="./describeBooking.js"></script>

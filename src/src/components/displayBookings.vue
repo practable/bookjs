@@ -6,12 +6,12 @@
   </div>
   <div class="container-fluid">
   <div class="row">
-<booking-description
+<describe-booking
   v-for="(item, index) in details"
   :description="item"
   :index="index"
   :key="item.id"
-  ></booking-description>
+  ></describe-booking>
   </div>
   </div>
 </div>

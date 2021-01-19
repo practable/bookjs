@@ -1,11 +1,14 @@
 import dayjs from "dayjs";
 import describeActivity from "./describeActivity.vue";
+import describeUI from "./describeUI.vue";
+
 import { mapGetters } from "vuex";
 
 export default {
   props: ["id"],
   components: {
     "describe-activity": describeActivity,
+    "describe-ui": describeUI,
   },
   computed: {
     title: function () {

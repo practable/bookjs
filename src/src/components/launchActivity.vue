@@ -13,6 +13,15 @@
         <h3 class="text-white text-left" > Choose your activity: </h3>
       </div>
 	</div>
+	<div class="row" v-if="dataloaded">
+<describe-ui
+  v-for="(item, index) in userinterfaces"
+  :description="item"
+  :index="index"
+  :key="item.id"
+  ></describe-ui>
+
+	</div>
   </div>
 </template>
 
