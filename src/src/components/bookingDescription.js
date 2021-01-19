@@ -20,10 +20,9 @@ export default {
       return this.description.long;
     },
     status: function () {
-      var delay = 1000 * (this.description.exp - dayjs().unix());
-      var remove = this.remove;
+      var _this = this;
       setTimeout(function () {
-        remove();
+        _this.$store.commit("deleteBooking", _this.description);
       }, 1000 * (this.description.exp - dayjs().unix()));
       return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
     },
@@ -38,9 +37,6 @@ export default {
   methods: {
     open() {
       console.log("opening ui page for  ", this.description.id);
-    },
-    remove() {
-      this.$store.commit("deleteBooking", this.description);
     },
   },
 };
