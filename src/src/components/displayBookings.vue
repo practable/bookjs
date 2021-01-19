@@ -1,16 +1,20 @@
 <template>
-<div class="container">
-  <div class="bg-primary" style="max-width: 540px;">
+<div class="container-fluid">
+  <div class="bg-primary text-left">
 <h3 class="text-white">Your Bookings</h3>
 <h6 class="text-white">{{ status }}</h6>
-</div>
+  </div>
+  <div class="container-fluid">
+  <div class="row">
 <booking-description
   v-for="(item, index) in details"
   :description="item"
   :index="index"
   :key="item.id"
   ></booking-description>
- </div>
+  </div>
+  </div>
+</div>
 </template>
 
 <script src="./displayBookings.js"></script>

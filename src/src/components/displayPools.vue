@@ -1,16 +1,20 @@
 <template>
-<div class="container">
-  <div class="bg-secondary" style="max-width: 540px;">
-<h3 class="text-white">Your Catalogue</h3>
-<h6 class="text-white">{{ status }}</h6>
-</div>
-<pool-description
+<div class="container-fluid">
+  <div class="bg-secondary">
+<h3 class="text-white text-left">Your Catalogue</h3>
+<h6 class="text-white text-left">{{ status }}</h6>
+  </div>
+  <div class="container-fluid">
+  <div class="row">
+  <pool-description
   v-for="(item, index) in details"
   :description="item"
   :index="index"
   :key="item.id"
-  ></pool-description>
- </div>
+	></pool-description>
+  </div>
+  </div>
+</div>
 </template>
 
 <script src="./displayPools.js"></script>
