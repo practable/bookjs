@@ -13,6 +13,9 @@ export default {
     image: function () {
       return this.description.image;
     },
+    id: function () {
+      return this.description.id;
+    },
     what: function () {
       return this.description.short;
     },
@@ -36,7 +39,8 @@ export default {
   },
   methods: {
     open() {
-      console.log("opening ui page for  ", this.description.id);
+      var path = "/activity/" + this.id;
+      this.$router.push({ path: path });
     },
   },
 };

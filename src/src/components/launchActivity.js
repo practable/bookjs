@@ -1,11 +1,12 @@
-import { mapActions, mapState } from "vuex";
-import axios from "axios";
 import dayjs from "dayjs";
-import $ from "jquery";
+import describeActivity from "./describeActivity.vue";
+import { mapGetters } from "vuex";
 
 export default {
-  props: ["description", "key", "index"],
-  components: {},
+  props: ["id"],
+  components: {
+    "describe-activity": describeActivity,
+  },
   computed: {
     title: function () {
       return this.description.name;
@@ -20,19 +21,19 @@ export default {
       return this.description.long;
     },
     status: function () {
-      var _this = this;
-      setTimeout(function () {
-        _this.$store.commit("deleteBooking", _this.description);
-      }, 1000 * (this.description.exp - dayjs().unix()));
       return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
     },
-    ...mapState({
-      bookingTokenValid: (state) => state.bookingTokenValid,
-      bookingToken: (state) => state.bookingToken,
-      poolStatus: (state) => state.poolStatus,
-      details: (state) => state.poolDescriptions,
-      ids: (state) => state.poolIDs,
-    }),
+    dataloaded: function () {
+      console.log("launchActivity:dataloaded", this.description);
+      return this.description != {};
+    },
+    description: function () {
+      console.log("launchActivity:description:id", this.id);
+      var id = this.id;
+      console.log("launchActivity:description", this.getBookingByID(id));
+      return this.getBookingByID(id);
+    },
+    ...mapGetters(["getBookingByID"]),
   },
   methods: {
     open() {

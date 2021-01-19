@@ -1,11 +1,8 @@
 <template>
    <div class="container-fluid">
-  <div class="row">
-<launch-activity
-  v-for="(item, index) in details"
-  :description="item"
-  :index="index"
-  :key="item.id"
+	 <div class="row">
+	   {{ description }}
+<launch-activity :id="id"
   ></launch-activity>
   </div>
   </div>

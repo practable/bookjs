@@ -5,3 +5,16 @@ export const bookingTokenValid = (state) => state.bookingTokenValid;
 export const loginResult = (state) => state.loginResult;
 export const bookingTokenStatus = (state) => state.bookingTokenStatus;
 export const bookingTokenExpiresAt = (state) => state.bookingTokenExpiresAt;
+
+export const getBookingByID = (state, id) => {
+  return (id) => {
+    var results = state.activityBookings.filter((obj) => {
+      return obj.id === id;
+    });
+    if (results.length < 1) {
+      return {};
+    } else {
+      return results[0].status.description;
+    }
+  };
+};

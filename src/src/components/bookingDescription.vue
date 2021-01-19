@@ -16,7 +16,7 @@
 			</div>
 		  <div class="col"> 
 		      <div class="dropup"> 
-				<button type="button" class="btn btn-success" id="open">
+				<button type="button" @click="open"  class="btn btn-success" id="open">
 				  Open <span class="caret"></span>
 				</button>
 			  </div>
