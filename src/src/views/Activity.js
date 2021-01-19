@@ -8,7 +8,6 @@ export default {
   },
   computed: {
     id: function () {
-      console.log("activity:id:", this.$route.params.id);
       return this.$route.params.id;
     },
     dataloaded: function () {
@@ -16,7 +15,6 @@ export default {
     },
     ...mapGetters(["getBookingByID"]),
     description: function () {
-      console.log("Activity:description:id:", this.$route.params.id);
       var id = this.$route.params.id;
       return this.getBookingByID(id);
     },

@@ -20,7 +20,6 @@ export default {
       return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
     },
     dataloaded: function () {
-      console.log("dataLoaded");
       return this.description != {};
     },
     ...mapGetters(["getBookingByID"]),

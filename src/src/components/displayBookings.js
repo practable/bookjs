@@ -50,12 +50,10 @@ export default {
       var i;
       descriptions = [];
       for (i = 0; i < this.fulldetails.length; i++) {
-        console.log("activity", this.fulldetails[i]);
         var d;
         d = this.fulldetails[i].status.description;
         d["exp"] = this.fulldetails[i].status.exp;
-        descriptions.push(d); //this.fulldetails[i].status.description);
-        console.log(d);
+        descriptions.push(d);
       }
       return descriptions;
     },
