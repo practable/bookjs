@@ -1,4 +1,5 @@
 import { mapState } from "vuex";
+import mustache from "mustache";
 import axios from "axios";
 import dayjs from "dayjs";
 import $ from "jquery";
@@ -50,21 +51,17 @@ export default {
       }
 
       axios.all(requests).then((results) => {
-        console.log(results);
-        console.log(keys);
+        targets = {};
         for (i = 0; i < results.length; i++) {
-          console.log("individual result for", keys[i], results[i]);
+          targets[keys[i]] = results[i].data.uri;
         }
+        console.log(targets);
+        var template = this.ui.url;
+        console.log("template", template);
+        var rendered = mustache.render(template, targets);
+        console.log("rendered", rendered);
+        window.open(rendered, "_blank");
       });
-
-      // make api calls ....
-      //console.log(this.ui);
-      //this.getCode(this.streams[0].url, this.streams[0].token);
-      // do template
-      //console.log("streams", this.streams);
-      var template = this.ui.url;
-
-      console.log("open", template);
     },
     getCode(url, token) {
       this.targets = {};
