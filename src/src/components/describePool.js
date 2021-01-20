@@ -67,7 +67,7 @@ export default {
         .then(
           (response) => {
             this.$store.commit("addActivityBooking", {
-              id: id,
+              id: response.data.description.id,
               status: response.data,
               ok: true,
             });
