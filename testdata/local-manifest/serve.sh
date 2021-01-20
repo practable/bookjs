@@ -115,14 +115,25 @@ book upload manifest.yaml
 # start asset server
 http-server -p $ASSET_PORT ./assets > asset.log 2>&1 &
 
+# start relay server
+export RELAY_ACCESSPORT=3000
+export RELAY_ACCESSFQDN=http://[::]
+export RELAY_RELAYPORT=3001
+export RELAY_RELAYFQDN=ws://[::]
+export RELAY_SECRET=somesecret
+export RELAY_DEVELOPMENT=true
+session relay > relay.log 2>&1 &
+
 export ASSET_PID=$!
 
 echo "book server on port ${BOOK_PORT} logs to ./book.log"
 echo "asset server on port ${ASSET_PORT} logs to ./asset.log"
+echo "relay-access and relay on ports ${RELAY_ACCESSPORT}, ${RELAY_RELAYPORT} log to ./relay.log"
 
 echo "commands:"
 echo "  a: tail of the assert server log"
 echo "  b: tail of book server log [default]"
+echo "  c: tail of relay server log"
 echo "  g: start insecure chrome"
 echo "  l: Lock bookings"
 echo "  n: uNlock bookings"
@@ -146,7 +157,10 @@ then
 	tail book.log
 elif [ "$command" = "a" ];
 then
-	tail asset.log	
+	tail asset.log
+elif [ "$command" = "c" ];
+then
+	tail relay.log	
 elif [ "$command" = "g" ];
 then
 	mkdir -p ../tmp/chrome-user

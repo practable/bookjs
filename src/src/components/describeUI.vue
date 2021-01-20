@@ -11,7 +11,6 @@
 		<div class="container">
           <div class="row">
             <div class="col">
-	          <p class="card-text"><small class="text-muted"> {{ status }} </small></p>
 			</div>
 		  <div class="col"> 
 		      <div class="dropup"> 
@@ -25,6 +24,7 @@
       </div>
   </div>	  
   </div>
+  {{ streams }}
 </div>
 
 

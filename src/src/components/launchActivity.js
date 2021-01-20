@@ -15,6 +15,10 @@ export default {
       console.log(this.booking.uis);
       return this.booking.uis;
     },
+    streams: function () {
+      console.log(this.booking.uis);
+      return this.booking.streams;
+    },
     dataloaded: function () {
       return this.booking != {};
     },

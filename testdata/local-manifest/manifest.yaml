@@ -57,17 +57,17 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-00-data
-        audience: https://relay-access.practable.io
+        url: http://localhost:3000/session/penduino-activity-00-data
+        audience: http://[::]:3000
         ct: session
         topic: penduino-activity-00-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-00-video
-        audience: https://relay-access.practable.io
+        for: video
+        url: http://localhost:3000/session/penduino-activity-00-video
+        audience: http://[::]:3000
         ct: session
         topic: penduino-activity-00-video
         verb: POST
@@ -81,17 +81,17 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-01-data
-        audience: https://relay-access.practable.io
+        url: http://localhost:3000/session/penduino-activity-01-data
+        audience: http://[::]:3000
         ct: session
         topic: penduino-activity-01-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-01-video
-        audience: https://relay-access.practable.io
+        for: video
+        url: http://localhost:3000/session/penduino-activity-01-video
+        audience: http://[::]:3000
         ct: session
         topic: penduino-activity-01-video
         verb: POST
@@ -105,17 +105,17 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-02-data
-        audience: https://relay-access.practable.io
+        url: http://localhost:3000/session/penduino-activity-02-data
+        audience: http://[::]:3000
         ct: session
         topic: penduino-activity-02-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-02-video
-        audience: https://relay-access.practable.io
+        for: video
+        url: http://localhost:3000/session/penduino-activity-02-video
+        audience: http://[::]:3000
         ct: session
         topic: penduino-activity-02-video
         verb: POST
@@ -129,17 +129,17 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/spinner-activity-00-data
-        audience: https://relay-access.practable.io
+        url: http://localhost:3000/session/spinner-activity-00-data
+        audience: http://[::]:3000
         ct: session
         topic: spinner-activity-00-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/spinner-activity-00-video
-        audience: https://relay-access.practable.io
+        for: video
+        url: http://localhost:3000/session/spinner-activity-00-video
+        audience: http://[::]:3000
         ct: session
         topic: spinner-activity-00-video
         verb: POST
@@ -153,17 +153,17 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/spinner-activity-01-data
-        audience: https://relay-access.practable.io
+        url: http://localhost:3000/session/spinner-activity-01-data
+        audience: http://[::]:3000
         ct: session
         topic: spinner-activity-01-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/spinner-activity-01-video
-        audience: https://relay-access.practable.io
+        for: video
+        url: http://localhost:3000/session/spinner-activity-01-video
+        audience: http://[::]:3000
         ct: session
         topic: spinner-activity-01-video
         verb: POST
@@ -177,8 +177,8 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/spinner-activity-02-data
-        audience: https://relay-access.practable.io
+        url: http://localhost:3000/session/spinner-activity-02-data
+        audience: http://[::]:3000
         ct: session
         topic: spinner-activity-02-data
         verb: POST
@@ -186,8 +186,8 @@ activities:
         - read
       video:
         for: data
-        url: https://relay-access.practable.io/session/spinner-activity-02-video
-        audience: https://relay-access.practable.io
+        url: http://localhost:3000/session/spinner-activity-02-video
+        audience: http://[::]:3000
         ct: session
         topic: spinner-activity-02-video
         verb: POST
