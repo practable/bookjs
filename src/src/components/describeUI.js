@@ -28,42 +28,49 @@ export default {
   },
   methods: {
     open() {
+      var targets = {};
+      var streams = this.streams;
+      var i;
+      var testvariable = "helawelwlerlwelr";
+      console.log(streams.length);
+      var requests = [];
+      var keys = [];
+
+      for (i = 0; i < streams.length; i++) {
+        keys.push(this.streams[i].for);
+        var req = () =>
+          axios
+            .post(
+              streams[i].url,
+              {},
+              { headers: { Authorization: streams[i].token } }
+            )
+            .catch((err) => null);
+        requests.push(req());
+      }
+
+      axios.all(requests).then((results) => {
+        console.log(results);
+        console.log(keys);
+        for (i = 0; i < results.length; i++) {
+          console.log("individual result for", keys[i], results[i]);
+        }
+      });
+
       // make api calls ....
-      console.log(this.ui);
-      this.getCode(this.streams[0].url, this.streams[0].token);
+      //console.log(this.ui);
+      //this.getCode(this.streams[0].url, this.streams[0].token);
       // do template
-      console.log("streams", this.streams);
+      //console.log("streams", this.streams);
       var template = this.ui.url;
 
       console.log("open", template);
     },
     getCode(url, token) {
-      axios
-        .post(
-          url,
-          {},
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        )
-        .then(
-          (response) => {
-            console.log(response.data);
-            return {
-              ok: true,
-              code: response.data,
-            };
-          },
-          (error) => {
-            console.log(error.response.data);
-            return {
-              ok: false,
-              code: error.response.data,
-            };
-          }
-        );
+      this.targets = {};
+
+      console.log("result", result);
+      return result;
     },
   },
 };
