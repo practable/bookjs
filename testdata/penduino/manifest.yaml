@@ -1,0 +1,556 @@
+groups:
+  everyone:
+    pools:
+    - penduino-everyone
+pools:
+  penduino-everyone:
+    description:
+      name: Penduino (Everyone)
+      type: penduino-pool-v1.0
+      short: A pendulum driven by an electromagnet, producing simple harmonic motion.
+      long: A single pendulum with electromagnetic drive system producing simple harmonic
+        motion. The drive and braking are variable, with the coil energised over a specified
+        angular range which can be increased or decreased to control the effect. The pendulum can
+        also be slowed down by short-circuiting the coil, without applying any power,
+        or left to swing freely with no drive or braking.
+      further: https://static.practable.io/info/penduino-v1.0
+      thumb: https://assets.practable.io/images/penduino-v1.0/thumb.png
+      image: https://assets.practable.io/images/penduino-v1.0/image.png
+    minsession: 600
+    maxsession: 3600
+    activities:
+    - penduino-activity-00
+    - penduino-activity-01
+    - penduino-activity-02
+    - penduino-activity-03
+    - penduino-activity-04
+    - penduino-activity-05
+    - penduino-activity-06
+    - penduino-activity-07
+    - penduino-activity-08
+    - penduino-activity-09
+    - penduino-activity-10    
+    - penduino-activity-11
+    - penduino-activity-12
+    - penduino-activity-13
+    - penduino-activity-14
+    - penduino-activity-15
+    - penduino-activity-16
+    - penduino-activity-17
+    - penduino-activity-18
+    - penduino-activity-19
+activities:
+  penduino-activity-00:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-00-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-00-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-00-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-00-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-01:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-01-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-01-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-01-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-01-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-02:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-02-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-02-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-02-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-02-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-03:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-03-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-03-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-03-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-03-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-04:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-04-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-04-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-04-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-04-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-05:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-05-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-05-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-05-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-05-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-06:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-06-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-06-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-06-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-06-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-07:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-07-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-07-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-07-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-07-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-08:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-08-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-08-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-08-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-08-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-09:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-09-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-09-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-09-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-09-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-10:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-10-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-10-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-10-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-10-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-11:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-11-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-11-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-11-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-11-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-12:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-12-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-12-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-12-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-12-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-13:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-13-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-13-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-13-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-13-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-14:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-14-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-14-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-14-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-14-video
+        verb: POST
+        scopes:
+        - read
+        - write
+           
+  penduino-activity-15:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-15-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-15-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-15-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-15-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-16:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-16-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-16-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-16-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-16-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-17:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-17-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-17-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-17-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-17-video
+        verb: POST
+        scopes:
+        - read
+        - write
+
+  penduino-activity-18:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-18-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-18-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-18-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-18-video
+        verb: POST
+        scopes:
+        - read
+        - write
+  penduino-activity-19:
+    description: penduino-activity-v1.0
+    UISet: penduino
+    exp: 1619096210
+    streams:
+      data:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-19-data
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-19-data
+        verb: POST
+        scopes:
+        - read
+      video:
+        for: data
+        url: https://relay-access.practable.io/session/penduino-activity-19-video
+        audience: https://relay-access.practable.io
+        ct: session
+        topic: penduino-activity-19-video
+        verb: POST
+        scopes:
+        - read
+        - write
+uis:
+  penduino-basic-ui-v1.0:
+    description:
+      name: Penduino (Basic)
+      type: penduino-basic-ui-v1.0
+      short: Control an Electromagnetic Pendulum
+      long: Start the pendulum swinging, and observe the difference in decay time
+        for three different types of braking - no braking, short circuit load, and
+        energised coil.
+      further: https://static.practable.io/info/penduino-basic-ui-v1.0
+      thumb: https://assets.practable.io/images/penduino-basic-ui-v1.0/thumb.png
+      image: https://assets.practable.io/images/penduino-basic-ui-v1.0/image.png
+    url: http://localhost:8005/penduino?da={{data.access}}&dt={{data.token}}&va={{video.access}}&vt={{video.token}}
+    streamsrequired:
+    - data
+    - video
+UISets:
+  penduino:
+  - penduino-basic-ui-v1.0
+descriptions:
+  penduino-activity-v1.0:
+    name: Penduino
+    type: penduino-activity-v1.0
+    short: A pendulum driven by an electromagnet, producing simple harmonic motion.
+    long:  A single pendulum with electromagnetic drive system producing simple harmonic
+      motion. The drive and braking are variable, with the coil energised over a specified
+      angular range which can be increased or decreased to control the effect. The pendulum can
+      also be slowed down by short-circuiting the coil, without applying any power,
+      or left to swing freely with no drive or braking.
+    further: https://static.practable.io/info/penduino-v1.0
+    thumb: https://assets.practable.io/images/penduino-v1.0/thumb.png
+    image: https://assets.practable.io/images/penduino-v1.0/image.png
