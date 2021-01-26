@@ -56,9 +56,14 @@ export default {
           targets[keys[i]] = results[i].data.uri;
         }
         console.log(targets);
+        var values = {
+          dw: encodeURIComponent(targets.data),
+          vw: encodeURIComponent(targets.video),
+        };
+        console.log(values);
         var template = this.ui.url;
         console.log("template", template);
-        var rendered = mustache.render(template, targets);
+        var rendered = mustache.render(template, values);
         console.log("rendered", rendered);
         window.open(rendered, "_blank");
       });

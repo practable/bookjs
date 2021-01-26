@@ -47,19 +47,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-00-data
+        url: https://relay-access.practable.io/session/pend00-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-00-data
+        topic: pend00-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-00-video
+        for: video
+        url: https://relay-access.practable.io/session/pend00-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-00-video
+        topic: pend00-video
         verb: POST
         scopes:
         - read
@@ -71,19 +71,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-01-data
+        url: https://relay-access.practable.io/session/pend01-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-01-data
+        topic: pend01-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-01-video
+        for: video
+        url: https://relay-access.practable.io/session/pend01-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-01-video
+        topic: pend01-video
         verb: POST
         scopes:
         - read
@@ -95,19 +95,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-02-data
+        url: https://relay-access.practable.io/session/pend02-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-02-data
+        topic: pend02-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-02-video
+        for: video
+        url: https://relay-access.practable.io/session/pend02-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-02-video
+        topic: pend02-video
         verb: POST
         scopes:
         - read
@@ -119,19 +119,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-03-data
+        url: https://relay-access.practable.io/session/pend03-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-03-data
+        topic: pend03-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-03-video
+        for: video
+        url: https://relay-access.practable.io/session/pend03-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-03-video
+        topic: pend03-video
         verb: POST
         scopes:
         - read
@@ -143,19 +143,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-04-data
+        url: https://relay-access.practable.io/session/pend04-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-04-data
+        topic: pend04-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-04-video
+        for: video
+        url: https://relay-access.practable.io/session/pend04-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-04-video
+        topic: pend04-video
         verb: POST
         scopes:
         - read
@@ -167,19 +167,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-05-data
+        url: https://relay-access.practable.io/session/pend05-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-05-data
+        topic: pend05-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-05-video
+        for: video
+        url: https://relay-access.practable.io/session/pend05-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-05-video
+        topic: pend05-video
         verb: POST
         scopes:
         - read
@@ -191,19 +191,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-06-data
+        url: https://relay-access.practable.io/session/pend06-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-06-data
+        topic: pend06-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-06-video
+        for: video
+        url: https://relay-access.practable.io/session/pend06-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-06-video
+        topic: pend06-video
         verb: POST
         scopes:
         - read
@@ -215,19 +215,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-07-data
+        url: https://relay-access.practable.io/session/pend07-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-07-data
+        topic: pend07-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-07-video
+        for: video
+        url: https://relay-access.practable.io/session/pend07-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-07-video
+        topic: pend07-video
         verb: POST
         scopes:
         - read
@@ -239,19 +239,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-08-data
+        url: https://relay-access.practable.io/session/pend08-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-08-data
+        topic: pend08-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-08-video
+        for: video
+        url: https://relay-access.practable.io/session/pend08-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-08-video
+        topic: pend08-video
         verb: POST
         scopes:
         - read
@@ -263,19 +263,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-09-data
+        url: https://relay-access.practable.io/session/pend09-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-09-data
+        topic: pend09-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-09-video
+        for: video
+        url: https://relay-access.practable.io/session/pend09-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-09-video
+        topic: pend09-video
         verb: POST
         scopes:
         - read
@@ -287,19 +287,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-10-data
+        url: https://relay-access.practable.io/session/pend10-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-10-data
+        topic: pend10-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-10-video
+        for: video
+        url: https://relay-access.practable.io/session/pend10-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-10-video
+        topic: pend10-video
         verb: POST
         scopes:
         - read
@@ -311,19 +311,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-11-data
+        url: https://relay-access.practable.io/session/pend11-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-11-data
+        topic: pend11-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-11-video
+        for: video
+        url: https://relay-access.practable.io/session/pend11-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-11-video
+        topic: pend11-video
         verb: POST
         scopes:
         - read
@@ -335,19 +335,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-12-data
+        url: https://relay-access.practable.io/session/pend12-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-12-data
+        topic: pend12-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-12-video
+        for: video
+        url: https://relay-access.practable.io/session/pend12-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-12-video
+        topic: pend12-video
         verb: POST
         scopes:
         - read
@@ -359,19 +359,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-13-data
+        url: https://relay-access.practable.io/session/pend13-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-13-data
+        topic: pend13-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-13-video
+        for: video
+        url: https://relay-access.practable.io/session/pend13-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-13-video
+        topic: pend13-video
         verb: POST
         scopes:
         - read
@@ -383,19 +383,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-14-data
+        url: https://relay-access.practable.io/session/pend14-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-14-data
+        topic: pend14-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-14-video
+        for: video
+        url: https://relay-access.practable.io/session/pend14-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-14-video
+        topic: pend14-video
         verb: POST
         scopes:
         - read
@@ -408,19 +408,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-15-data
+        url: https://relay-access.practable.io/session/pend15-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-15-data
+        topic: pend15-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-15-video
+        for: video
+        url: https://relay-access.practable.io/session/pend15-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-15-video
+        topic: pend15-video
         verb: POST
         scopes:
         - read
@@ -432,19 +432,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-16-data
+        url: https://relay-access.practable.io/session/pend16-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-16-data
+        topic: pend16-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-16-video
+        for: video
+        url: https://relay-access.practable.io/session/pend16-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-16-video
+        topic: pend16-video
         verb: POST
         scopes:
         - read
@@ -456,19 +456,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-17-data
+        url: https://relay-access.practable.io/session/pend17-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-17-data
+        topic: pend17-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-17-video
+        for: video
+        url: https://relay-access.practable.io/session/pend17-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-17-video
+        topic: pend17-video
         verb: POST
         scopes:
         - read
@@ -481,19 +481,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-18-data
+        url: https://relay-access.practable.io/session/pend18-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-18-data
+        topic: pend18-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-18-video
+        for: video
+        url: https://relay-access.practable.io/session/pend18-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-18-video
+        topic: pend18-video
         verb: POST
         scopes:
         - read
@@ -505,19 +505,19 @@ activities:
     streams:
       data:
         for: data
-        url: https://relay-access.practable.io/session/penduino-activity-19-data
+        url: https://relay-access.practable.io/session/pend19-data
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-19-data
+        topic: pend19-data
         verb: POST
         scopes:
         - read
       video:
-        for: data
-        url: https://relay-access.practable.io/session/penduino-activity-19-video
+        for: video
+        url: https://relay-access.practable.io/session/pend19-video
         audience: https://relay-access.practable.io
         ct: session
-        topic: penduino-activity-19-video
+        topic: pend19-video
         verb: POST
         scopes:
         - read
@@ -534,7 +534,7 @@ uis:
       further: https://static.practable.io/info/penduino-basic-ui-v1.0
       thumb: https://assets.practable.io/images/penduino-basic-ui-v1.0/thumb.png
       image: https://assets.practable.io/images/penduino-basic-ui-v1.0/image.png
-    url: http://localhost:8005/penduino?da={{data.access}}&dt={{data.token}}&va={{video.access}}&vt={{video.token}}
+    url: http://localhost:8005/penduino?da={{da}}&dt={{dt}}&va={{va}}&vt={{vt}}&dw={{dw}}&vw={{vw}}
     streamsrequired:
     - data
     - video
