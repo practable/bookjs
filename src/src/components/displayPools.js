@@ -14,8 +14,9 @@ export default {
       var i;
       console.log("displayPools:state.poolsIDs:len", this.ids.length);
       for (i = 0; i < this.ids.length; i++) {
+        //.get("http://[::]:4000/api/v1/pools/" + this.ids[i], {
         axios
-          .get("http://[::]:4000/api/v1/pools/" + this.ids[i], {
+          .get("https://book.practable.io/api/v1/pools/" + this.ids[i], {
             headers: {
               Authorization: this.bookingToken,
             },

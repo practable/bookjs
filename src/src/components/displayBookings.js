@@ -11,8 +11,9 @@ export default {
   methods: {
     getStatus() {
       this.$store.commit("clearBookings");
+      //.get("http://[::]:4000/api/v1/login", {
       axios
-        .get("http://[::]:4000/api/v1/login", {
+        .get("https://book.practable.io/api/v1/login", {
           headers: {
             Authorization: this.bookingToken,
           },

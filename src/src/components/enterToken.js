@@ -34,9 +34,9 @@ export default {
       } else {
         body = {};
       }
-
+      //.post("http://[::]:4000/api/v1/login", body, {
       axios
-        .post("http://[::]:4000/api/v1/login", body, {
+        .post("https://book.practable.io/api/v1/login", body, {
           headers: { Authorization: this.token },
         })
         .then(

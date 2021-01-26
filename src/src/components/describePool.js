@@ -53,7 +53,8 @@ export default {
       console.log(this.bookingToken);
       axios
         .post(
-          "http://[::]:4000/api/v1/pools/" +
+          //"http://[::]:4000/api/v1/pools/" +
+          "https://book.practable.io/api/v1/pools/" +
             id +
             "/sessions?duration=" +
             duration,
@@ -80,9 +81,9 @@ export default {
     },
     getStatus() {
       var id = this.description.id;
-
+      //.get("http://[::]:4000/api/v1/pools/" + id + "/status", {
       axios
-        .get("http://[::]:4000/api/v1/pools/" + id + "/status", {
+        .get("https://book.practable.io/api/v1/pools/" + id + "/status", {
           headers: {
             Authorization: this.bookingToken,
           },
