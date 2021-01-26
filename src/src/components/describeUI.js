@@ -1,8 +1,5 @@
 import { mapState } from "vuex";
 import mustache from "mustache";
-import axios from "axios";
-import dayjs from "dayjs";
-import $ from "jquery";
 export default {
   props: ["ui", "streams"],
   components: {},
@@ -29,50 +26,37 @@ export default {
   },
   methods: {
     open() {
-      var targets = {};
-      var streams = this.streams;
-      var i;
-      var testvariable = "helawelwlerlwelr";
-      console.log(streams.length);
-      var requests = [];
-      var keys = [];
+      var template = this.ui.url;
+      var streams, encodedStreams;
+      var rendered;
 
-      for (i = 0; i < streams.length; i++) {
-        keys.push(this.streams[i].for);
-        var req = () =>
-          axios
-            .post(
-              streams[i].url,
-              {},
-              { headers: { Authorization: streams[i].token } }
-            )
-            .catch((err) => null);
-        requests.push(req());
+      try {
+        streams = JSON.stringify(this.streams);
+      } catch (e) {
+        console.log(e, "could not stringify streams - try without!");
+        rendered = mustache.render(template, { streams: "" });
+        window.open(rendered, "_blank");
+        return;
       }
 
-      axios.all(requests).then((results) => {
-        targets = {};
-        for (i = 0; i < results.length; i++) {
-          targets[keys[i]] = results[i].data.uri;
-        }
-        console.log(targets);
-        var values = {
-          dw: encodeURIComponent(targets.data),
-          vw: encodeURIComponent(targets.video),
-        };
-        console.log(values);
-        var template = this.ui.url;
-        console.log("template", template);
-        var rendered = mustache.render(template, values);
-        console.log("rendered", rendered);
+      try {
+        encodedStreams = encodeURIComponent(streams);
+      } catch (e) {
+        console.log(e, "could not uriEncode streams - try without!");
+        rendered = mustache.render(template, { streams: streams });
         window.open(rendered, "_blank");
-      });
-    },
-    getCode(url, token) {
-      this.targets = {};
+        return;
+      }
 
-      console.log("result", result);
-      return result;
+      try {
+        rendered = mustache.render(template, { streams: encodedStreams });
+      } catch (e) {
+        console.log("error rendering uri, try unrendered version", e);
+        window.open(template, "_blank");
+        return;
+      }
+
+      window.open(rendered, "_blank");
     },
   },
 };

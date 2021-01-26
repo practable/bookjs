@@ -1,6 +1,5 @@
 import { mapState } from "vuex";
 import axios from "axios";
-import dayjs from "dayjs";
 import $ from "jquery";
 export default {
   props: ["description", "key", "index"],
@@ -99,7 +98,7 @@ export default {
           (error) => {
             this.$store.commit("setPoolStatus", {
               id: id,
-              status: {},
+              status: error,
               ok: false,
             });
           }
