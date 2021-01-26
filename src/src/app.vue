@@ -3,7 +3,7 @@
   <img width="300" src="http://localhost:8008/images/booking/practable-logo-1980x660.png">
 
   <div id="nav">
-	<router-link to="/login">Catalogue</router-link> |
+	<router-link to="/">Catalogue</router-link> |
 	<router-link to="/about">About</router-link>
 	
   </div>
