@@ -19,6 +19,7 @@
 		v-for="(item, index) in userinterfaces"
 		:ui="item"
 		:streams="streams"
+		:exp="exp"
 		:index="index"
 		:key="item.id"
 		></describe-ui>

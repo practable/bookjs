@@ -1,7 +1,7 @@
 import { mapState } from "vuex";
 import mustache from "mustache";
 export default {
-  props: ["ui", "streams"],
+  props: ["exp", "streams", "ui"],
   components: {},
   computed: {
     title: function () {
@@ -29,12 +29,13 @@ export default {
       var template = this.ui.url;
       var streams, encodedStreams;
       var rendered;
+      var expiry = this.exp;
 
       try {
         streams = JSON.stringify(this.streams);
       } catch (e) {
         console.log(e, "could not stringify streams - try without!");
-        rendered = mustache.render(template, { streams: "" });
+        rendered = mustache.render(template, { streams: "", exp: expiry });
         window.open(rendered, "_blank");
         return;
       }
@@ -43,13 +44,16 @@ export default {
         encodedStreams = encodeURIComponent(streams);
       } catch (e) {
         console.log(e, "could not uriEncode streams - try without!");
-        rendered = mustache.render(template, { streams: streams });
+        rendered = mustache.render(template, { streams: streams, exp: expiry });
         window.open(rendered, "_blank");
         return;
       }
 
       try {
-        rendered = mustache.render(template, { streams: encodedStreams });
+        rendered = mustache.render(template, {
+          streams: encodedStreams,
+          exp: expiry,
+        });
       } catch (e) {
         console.log("error rendering uri, try unrendered version", e);
         window.open(template, "_blank");

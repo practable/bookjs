@@ -12,12 +12,13 @@ export default {
   },
   computed: {
     userinterfaces: function () {
-      console.log(this.booking.uis);
       return this.booking.uis;
     },
     streams: function () {
-      console.log(this.booking.uis);
       return this.booking.streams;
+    },
+    exp: function () {
+      return this.booking.exp;
     },
     dataloaded: function () {
       return this.booking != {};
