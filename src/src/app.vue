@@ -1,6 +1,6 @@
 <template>
 
-  <img width="300" src="http://localhost:8008/images/booking/practable-logo-1980x660.png">
+  <img width="300" src="https://assets.practable.io/images/common/practable-logo-3-1980x660.png">
 
   <div id="nav">
 	<router-link to="/">Catalogue</router-link> |
