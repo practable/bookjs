@@ -29,22 +29,5 @@ This is the booking interface for the <a href="https://practable.io">practable.i
 	<div class="col"></div>
   </div>
 </div>
-<b-container class="bv-example-row">
-  <b-row>
-    <b-col> </b-col>
-    <b-col>
-<b-container>
-	
-</b-container>
-	  </b-col>
-    <b-col> </b-col>
-  </b-row>
-</b-container>
-
- 
-
-
-<!---div class="container-fluid" style="max-width: 540px;">
-	<div class="row align-center"--->
 
 </template> 
