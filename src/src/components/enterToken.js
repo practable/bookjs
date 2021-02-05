@@ -1,6 +1,8 @@
 import { mapActions, mapState } from "vuex";
 import axios from "axios";
 import moment from "moment";
+import jwt_decode from "jwt-decode";
+
 export default {
   data() {
     return {
@@ -21,7 +23,7 @@ export default {
     updateToken(e) {
       this.$store.commit("setToken", e.target.value);
     },
-    bookingLogin() {
+    bookingLogin(token) {
       //get expired token from webstorage
 
       var oldToken;
@@ -37,7 +39,7 @@ export default {
       //.post("http://[::]:4000/api/v1/login", body, {
       axios
         .post("https://book.practable.io/api/v1/login", body, {
-          headers: { Authorization: this.token },
+          headers: { Authorization: token },
         })
         .then(
           (response) => {
@@ -69,5 +71,38 @@ export default {
         );
     },
     ...mapActions(["login", "deleteToken"]),
+  },
+  mounted() {
+    var code = "";
+
+    try {
+      code = String(this.$route.query.c);
+    } catch (e) {
+      console.log(
+        "using default code because error obtaining code from query param c",
+        e
+      );
+    }
+
+    if (code == "undefined" || code == "") {
+      code = "everyone";
+    }
+
+    axios.get("https://assets.practable.io/tokens/" + code, {}).then(
+      (response) => {
+        console.log("response", response.data);
+
+        try {
+          var decoded = jwt_decode(response.data);
+          console.log(decoded);
+          this.bookingLogin(response.data);
+        } catch (e) {
+          console.log("could not decode token", e);
+        }
+      },
+      (error) => {
+        console.log("error getting login token", error);
+      }
+    );
   },
 };

@@ -25,7 +25,7 @@ export default {
               "You can have up to " + response.data.max + " bookings at a time"
             );
 
-            console.log("getbookings getstatus", response.data.activities);
+            console.log("getbookings getstatus", response.data);
             var i;
             for (i = 0; i < response.data.activities.length; i++) {
               this.$store.commit("addActivityBooking", {
