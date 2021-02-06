@@ -46,6 +46,9 @@ export default {
     },
   },
   computed: {
+    canBook() {
+      return this.bookingsEnabled && !this.atMaxBookings;
+    },
     filteredDetails() {
       var poolFilter = this.poolFilter.toLowerCase();
       var details = this.details;
@@ -66,7 +69,7 @@ export default {
       details: (state) => state.poolDescriptions,
       ids: (state) => state.poolIDs,
     }),
-    ...mapGetters(["bookingsEnabled"]),
+    ...mapGetters(["bookingsEnabled", "atMaxBookings"]),
   },
   watch: {
     bookingToken(is, was) {

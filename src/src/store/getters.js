@@ -7,6 +7,10 @@ export const bookingTokenStatus = (state) => state.bookingTokenStatus;
 export const bookingTokenExpiresAt = (state) => state.bookingTokenExpiresAt;
 export const bookingsEnabled = (state) => state.bookingsEnabled;
 
+export const atMaxBookings = (state) => {
+  return state.activityBookings.length >= state.maxBookings;
+};
+
 export const getBookingByID = (state, id) => {
   return (id) => {
     var results = state.activityBookings.filter((obj) => {

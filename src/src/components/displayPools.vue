@@ -19,7 +19,7 @@
   :description="item"
   :index="index"
 	:key="item.id"
-	:enabled="bookingsEnabled"
+	:enabled="canBook"
 	></describe-pool>
   </div>
 </div>

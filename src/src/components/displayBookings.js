@@ -2,7 +2,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import describeBooking from "./describeBooking.vue";
 
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
   components: {
     "describe-booking": describeBooking,
@@ -33,6 +33,7 @@ export default {
                   " bookings at a time. " +
                   response.data.msg;
                 this.$store.commit("setBookingsEnabled", true);
+                this.$store.commit("setMaxBookings", response.data.max);
               }
             } catch (e) {
               console.log("error setting status message", e);
@@ -81,6 +82,7 @@ export default {
       fulldetails: (state) => state.activityBookings,
       ids: (state) => state.poolIDs,
     }),
+    ...mapGetters(["atMaxBookings"]),
   },
   watch: {
     bookingToken(is, was) {

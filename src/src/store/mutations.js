@@ -32,6 +32,10 @@ export const clearBookingToken = (state, reason) => {
   state.loginResult = reason;
 };
 
+export const setMaxBookings = (state, max) => {
+  state.maxBookings = max;
+};
+
 export const setStoreDetails = (state, details) => {
   state.storeStatusDetails = details;
 };

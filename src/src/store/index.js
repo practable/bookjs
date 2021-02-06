@@ -12,6 +12,7 @@ const state = {
   bookingsEnabled: false,
   bookingTokenStatus: "empty",
   bookingTokenExpiresAt: 0,
+  maxBookings: 0,
   storeStatus: "unknown",
   storeStatusDetails: null,
   poolIDsStatus: "unknown",
