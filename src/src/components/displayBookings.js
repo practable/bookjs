@@ -9,7 +9,6 @@ export default {
   },
   methods: {
     getStatus() {
-      this.$store.commit("clearBookings");
       axios
         .get("https://book.practable.io/api/v1/login", {
           headers: {

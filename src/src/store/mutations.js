@@ -76,6 +76,7 @@ export const addActivityBooking = (state, booking) => {
 
 export const replaceBookings = (state, bookings) => {
   var tempBookings = [];
+  var tempIDs = [];
   var i;
   for (i = 0; i < bookings.length; i++) {
     tempBookings.push({
@@ -83,7 +84,9 @@ export const replaceBookings = (state, bookings) => {
       status: bookings[i],
       ok: true,
     });
+    tempIDs.push(bookings[i].description.id);
   }
+
   state.activityBookings = tempBookings;
 };
 
