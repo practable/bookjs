@@ -8,7 +8,8 @@
       <div class="card-body">
         <h5 class="card-title"> {{ title }}</h5>
         <p class="card-text text-secondary"> {{ what }}</p>
-		<div class="container">
+		
+		<div v-if="!bookingAttempted" class="container">
           <div class="row">
             <div class="col">
 	          <p class="card-text"><small class="text-muted"> {{ status }} </small></p>
@@ -28,37 +29,45 @@
 			  </div>
 		    </div>
 	      </div>
-    </div>		  
-      </div>
+        </div>
+		<div v-if="bookingAttempted" class="container">
+          <div v-if="bookingOK" class="row bg-success"> 
+			<div class="col text-white text-center align-middle"> {{ result }}	</div>
+			  <span @click="closeResult()"  class="close-button topright">&times;</span>
+			 </div>
+		  <div v-if="!bookingOK" class="row bg-danger">
+			<div class="col text-white text-center align-middle">{{ result }}</div>
+			  <span @click="closeResult()"  class="close-button topright">&times;</span>
+			</div>
+	    </div>
+	</div>
   </div>	  
   </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
-
-
-  
-</div>
-
 
 </template>
 
 <script src="./describePool.js"></script>
+
+<style>
+.close-button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap
+}
+
+.topright {
+  position: relative;
+  right: 0;
+  top: 0;
+}
+</style>

@@ -3,6 +3,13 @@ import axios from "axios";
 import $ from "jquery";
 export default {
   props: ["description", "key", "index", "enabled"],
+  data() {
+    return {
+      bookingAttempted: false,
+      bookingOK: false,
+      result: "No booking attempted",
+    };
+  },
   components: {},
   computed: {
     title: function () {
@@ -59,6 +66,9 @@ export default {
     }),
   },
   methods: {
+    closeResult() {
+      this.bookingAttempted = false;
+    },
     request(val) {
       var id = this.description.id;
       var duration = val * 60; //seconds
@@ -77,9 +87,14 @@ export default {
         )
         .then(
           (response) => {
-            console.log("activity booked ok", response.data);
+            this.bookingAttempted = true;
+            this.bookingOK = true;
+            this.result = 'OK - click on activity in "Your Bookings" to start';
           },
           (error) => {
+            this.bookingAttempted = true;
+            this.bookingOK = false;
+            this.result = error.response.data;
             console.log(error.response.data);
           }
         );
