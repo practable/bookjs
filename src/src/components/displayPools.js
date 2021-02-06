@@ -10,11 +10,17 @@ export default {
   data() {
     return {
       poolFilter: "",
+      disableRefresh: true,
     };
   },
 
   methods: {
+    enableRefresh() {
+      this.disableRefresh = false;
+    },
     getStatus() {
+      this.disableRefresh = true;
+      setTimeout(this.enableRefresh, 60000);
       this.$store.commit("clearPoolDescriptions");
       var i;
       for (i = 0; i < this.ids.length; i++) {
