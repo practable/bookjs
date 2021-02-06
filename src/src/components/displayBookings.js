@@ -40,14 +40,6 @@ export default {
             this.$store.commit("setBookingsStatus", statusMessage);
 
             this.$store.commit("replaceBookings", response.data.activities);
-            /*var i;
-            for (i = 0; i < response.data.activities.length; i++) {
-              this.$store.commit("addActivityBooking", {
-                id: response.data.activities[i].description.id,
-                status: response.data.activities[i],
-                ok: true,
-              });
-            }*/
           },
           (error) => {
             this.$store.commit(
