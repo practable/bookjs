@@ -12,7 +12,16 @@ export default {
     },
     finished: function () {
       var id = this.id;
-      return this.getFinishedByID(id);
+      if (!id) {
+        return false;
+      }
+
+      var isFinished = this.getFinishedByID(id);
+
+      if (isFinished) {
+        this.$router.back();
+      }
+      return isFinished;
     },
     ...mapGetters(["getFinishedByID"]),
   },

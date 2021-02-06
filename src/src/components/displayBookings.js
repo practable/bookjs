@@ -40,14 +40,15 @@ export default {
 
             this.$store.commit("setBookingsStatus", statusMessage);
 
-            var i;
+            this.$store.commit("replaceBookings", response.data.activities);
+            /*var i;
             for (i = 0; i < response.data.activities.length; i++) {
               this.$store.commit("addActivityBooking", {
                 id: response.data.activities[i].description.id,
                 status: response.data.activities[i],
                 ok: true,
               });
-            }
+            }*/
           },
           (error) => {
             this.$store.commit(
@@ -78,7 +79,7 @@ export default {
       fulldetails: (state) => state.activityBookings,
       ids: (state) => state.poolIDs,
     }),
-    ...mapGetters(["atMaxBookings", "requestsMade"]),
+    ...mapGetters(["atMaxBookings", "requestsMade", "finishedCount"]),
   },
   watch: {
     bookingToken(is, was) {
@@ -87,7 +88,12 @@ export default {
       }
     },
     requestsMade(is, was) {
+      console.log("requestsMade incremented");
       this.getStatus();
+      setTimeout(this.getStatus, 2000);
+    },
+    finishedCount(is, was) {
+      setTimeout(this.getStatus, 1500);
     },
   },
 };

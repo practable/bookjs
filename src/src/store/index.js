@@ -22,6 +22,7 @@ const state = {
   activityBookings: [],
   finishedBookings: [],
   requestsMade: 0,
+  finishedCount: 0,
 };
 
 const store = createStore({

@@ -6,6 +6,7 @@ export const loginResult = (state) => state.loginResult;
 export const bookingTokenStatus = (state) => state.bookingTokenStatus;
 export const bookingTokenExpiresAt = (state) => state.bookingTokenExpiresAt;
 export const bookingsEnabled = (state) => state.bookingsEnabled;
+export const finishedCount = (state) => state.finishedCount;
 export const requestsMade = (state) => state.requestsMade;
 
 export const finishedBookings = (state) => state.finishedBookings.length;

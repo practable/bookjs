@@ -25,7 +25,7 @@ export default {
     status: function () {
       var _this = this;
       setTimeout(function () {
-        _this.$store.commit("deleteBooking", _this.description);
+        _this.$store.commit("incrementFinishedCount");
       }, 1000 * (this.description.exp - dayjs().unix()));
       return "Now until " + dayjs.unix(this.description.exp).format("h:mm A");
     },

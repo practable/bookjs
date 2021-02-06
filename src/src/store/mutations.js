@@ -5,6 +5,10 @@ export const deleteToken = (state) => {
   state.token = "";
 };
 
+export const incrementFinishedCount = (state) => {
+  state.finishedCount += 1;
+};
+
 export const login = (state) => {
   state.bearer =
     "eykljdflkajsdfjlas.lkasjdfklasjdlkfjalskdf.ksdflkjaskldjflkasdjf";
@@ -69,6 +73,20 @@ export const setPoolStatus = (state, status) => {
 export const addActivityBooking = (state, booking) => {
   state.activityBookings.push(booking);
 };
+
+export const replaceBookings = (state, bookings) => {
+  var tempBookings = [];
+  var i;
+  for (i = 0; i < bookings.length; i++) {
+    tempBookings.push({
+      id: bookings[i].description.id,
+      status: bookings[i],
+      ok: true,
+    });
+  }
+  state.activityBookings = tempBookings;
+};
+
 export const clearBookings = (state, booking) => {
   state.activityBookings = [];
 };
@@ -82,11 +100,15 @@ export const setBookingsEnabled = (state, enabled) => {
 };
 
 export const deleteBooking = (state, booking) => {
+  console.log("want to remove activity id", booking.id);
   var removeIndex = state.activityBookings
     .map(function (item) {
       return item.id;
     })
     .indexOf(booking.id);
+
+  console.log("removing booking with id", state.activityBookings[removeIndex]);
+
   state.finishedBookings.push(state.activityBookings[removeIndex]);
   state.activityBookings.splice(removeIndex, 1);
 };
