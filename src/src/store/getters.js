@@ -18,3 +18,16 @@ export const getBookingByID = (state, id) => {
     }
   };
 };
+
+export const getFinishedByID = (state, id) => {
+  return (id) => {
+    var results = state.finishedBookings.filter((obj) => {
+      return obj.id === id;
+    });
+    if (results.length < 1) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+};

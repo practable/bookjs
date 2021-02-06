@@ -10,10 +10,21 @@ export default {
     id: function () {
       return this.$route.params.id;
     },
+    finished: function () {
+      var id = this.id;
+      return this.getFinishedByID(id);
+    },
+    ...mapGetters(["getFinishedByID"]),
   },
   watch: {
     $route(to, from) {
       console.log("Activity:", to, from);
+    },
+    finished(now, before) {
+      console.log("watching finish, now=", now, "before=", before);
+      if (now) {
+        this.$router.back();
+      }
     },
   },
 };

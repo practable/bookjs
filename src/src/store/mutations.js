@@ -77,5 +77,6 @@ export const deleteBooking = (state, booking) => {
       return item.id;
     })
     .indexOf(booking.id);
+  state.finishedBookings.push(state.activityBookings[removeIndex]);
   state.activityBookings.splice(removeIndex, 1);
 };
