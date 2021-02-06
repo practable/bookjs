@@ -7,6 +7,11 @@ export default {
   components: {
     "describe-pool": describePool,
   },
+  data() {
+    return {
+      poolFilter: "",
+    };
+  },
 
   methods: {
     getStatus() {
@@ -41,6 +46,19 @@ export default {
     },
   },
   computed: {
+    filteredDetails() {
+      var poolFilter = this.poolFilter.toLowerCase();
+      var details = this.details;
+
+      if (poolFilter == "") {
+        return details;
+      }
+      var results = details.filter((obj) => {
+        return obj.name.toLowerCase().includes(poolFilter);
+      });
+
+      return results;
+    },
     ...mapState({
       bookingTokenValid: (state) => state.bookingTokenValid,
       bookingToken: (state) => state.bookingToken,
