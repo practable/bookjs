@@ -71,6 +71,10 @@ export const setBookingsStatus = (state, status) => {
   state.bookingsStatus = status;
 };
 
+export const setBookingsEnabled = (state, enabled) => {
+  state.bookingsEnabled = enabled;
+};
+
 export const deleteBooking = (state, booking) => {
   var removeIndex = state.activityBookings
     .map(function (item) {

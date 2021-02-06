@@ -2,7 +2,7 @@ import { mapState } from "vuex";
 import axios from "axios";
 import $ from "jquery";
 export default {
-  props: ["description", "key", "index"],
+  props: ["description", "key", "index", "enabled"],
   components: {},
   computed: {
     title: function () {

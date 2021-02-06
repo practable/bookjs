@@ -18,7 +18,8 @@
   v-for="(item, index) in filteredDetails"
   :description="item"
   :index="index"
-  :key="item.id"
+	:key="item.id"
+	:enabled="bookingsEnabled"
 	></describe-pool>
   </div>
 </div>

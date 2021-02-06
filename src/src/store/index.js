@@ -9,6 +9,7 @@ const state = {
   bookingToken: "",
   bookingTokenValid: false,
   loginResult: "login not attempted",
+  bookingsEnabled: false,
   bookingTokenStatus: "empty",
   bookingTokenExpiresAt: 0,
   storeStatus: "unknown",

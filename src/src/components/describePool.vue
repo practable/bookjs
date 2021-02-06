@@ -15,7 +15,7 @@
 			</div>
 		  <div class="col"> 
 		      <div class="dropup"> 
-				<button type="button" class="btn btn-primary dropdown-toggle" id="requestmenu" data-toggle="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" id="requestmenu" data-toggle="dropdown" :disabled="!enabled">
 				  Request <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">

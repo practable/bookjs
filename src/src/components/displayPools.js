@@ -2,7 +2,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import describePool from "./describePool.vue";
 
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
   components: {
     "describe-pool": describePool,
@@ -66,6 +66,7 @@ export default {
       details: (state) => state.poolDescriptions,
       ids: (state) => state.poolIDs,
     }),
+    ...mapGetters(["bookingsEnabled"]),
   },
   watch: {
     bookingToken(is, was) {

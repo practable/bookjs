@@ -7,7 +7,6 @@ export default {
   components: {
     "describe-booking": describeBooking,
   },
-
   methods: {
     getStatus() {
       this.$store.commit("clearBookings");
@@ -20,10 +19,27 @@ export default {
         })
         .then(
           (response) => {
-            this.$store.commit(
-              "setBookingsStatus",
-              "You can have up to " + response.data.max + " bookings at a time"
-            );
+            var statusMessage = "";
+
+            try {
+              if (response.data.locked) {
+                statusMessage =
+                  "Bookings are currently suspended. " + response.data.msg;
+                this.$store.commit("setBookingsEnabled", false);
+              } else {
+                statusMessage =
+                  " You can have up to " +
+                  response.data.max +
+                  " bookings at a time. " +
+                  response.data.msg;
+                this.$store.commit("setBookingsEnabled", true);
+              }
+            } catch (e) {
+              console.log("error setting status message", e);
+              statusMessage = "Booking system status unknown";
+            }
+
+            this.$store.commit("setBookingsStatus", statusMessage);
 
             console.log("getbookings getstatus", response.data);
             var i;
