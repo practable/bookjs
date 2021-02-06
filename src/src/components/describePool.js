@@ -94,8 +94,9 @@ export default {
           (error) => {
             this.bookingAttempted = true;
             this.bookingOK = false;
-            this.result = error.response.data;
-            console.log(error.response.data);
+            var reason = "Sorry: " + error.response.data;
+            this.result = reason;
+            console.log(reason);
           }
         );
       this.$store.commit("incrementRequestsMade"); //trigger new booking to display
