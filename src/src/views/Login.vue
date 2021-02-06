@@ -5,7 +5,7 @@
   <enterToken />
 	<p style="margin-bottom:1cm;"></p>
 	<displayBookings />
-	<p style="margin-bottom:1cm;"></p>
+	<p style="margin-bottom:0.3cm;"></p>
 	<displayPools />
   </div>
 </template>
