@@ -53,6 +53,8 @@ export default {
       var poolFilter = this.poolFilter.toLowerCase();
       var details = this.details;
 
+      details.sort((a, b) => (a.name > b.name ? 1 : -1));
+
       if (poolFilter == "") {
         return details;
       }

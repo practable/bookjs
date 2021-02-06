@@ -19,6 +19,7 @@ export default {
     },
     status: function () {
       var s = this.poolStatus[this.description.id];
+      console.log("status", s);
       if ($.isEmptyObject(s)) {
         return "Status unavailable";
       }
@@ -26,13 +27,30 @@ export default {
         return "Status unavailable";
       }
       if (s.status.available == 0) {
+        var unavailable = "Unavailable";
+
         if (s.status.later) {
-          return "Available again soon";
-        } else {
-          return "Unavailable";
+          unavailable = "Available again soon";
         }
+        if (!!s.status.used) {
+          unavailable =
+            unavailable +
+            " (" +
+            s.status.used +
+            "/" +
+            s.status.used +
+            " in use)";
+        }
+        return unavailable;
       } else {
-        return "Available now: " + s.status.available;
+        console.log(s.status.used);
+        var used = 0;
+        if (!!s.status.used) {
+          used = s.status.used;
+        }
+        var total = used + s.status.available;
+        return "Available now: " + s.status.available + "/" + total;
+        //return "Available now: " + s.status.available;
       }
     },
     ...mapState({
@@ -89,6 +107,7 @@ export default {
         })
         .then(
           (response) => {
+            console.log("status response", response);
             this.$store.commit("setPoolStatus", {
               id: id,
               status: response.data,
