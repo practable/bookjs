@@ -17,7 +17,6 @@ export default {
     getStatus() {
       this.$store.commit("clearPoolDescriptions");
       var i;
-      console.log("displayPools:state.poolsIDs:len", this.ids.length);
       for (i = 0; i < this.ids.length; i++) {
         //.get("http://[::]:4000/api/v1/pools/" + this.ids[i], {
         axios
@@ -33,7 +32,6 @@ export default {
                 "Checked at " + dayjs().format("h:mm A")
               );
               this.$store.commit("addPoolDescription", response.data);
-              console.log("displayPools:addPoolDescription:count", i);
             },
             (error) => {
               this.$store.commit(
@@ -71,14 +69,16 @@ export default {
       details: (state) => state.poolDescriptions,
       ids: (state) => state.poolIDs,
     }),
-    ...mapGetters(["bookingsEnabled", "atMaxBookings"]),
+    ...mapGetters(["bookingsEnabled", "atMaxBookings", "finishedBookings"]),
   },
   watch: {
     bookingToken(is, was) {
       if (this.bookingTokenValid) {
-        console.log("displayPools:watch:bookingToken");
         this.getStatus();
       }
+    },
+    finishedBookings(is, was) {
+      this.getStatus();
     },
   },
 };

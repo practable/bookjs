@@ -19,7 +19,6 @@ export default {
     },
     status: function () {
       var s = this.poolStatus[this.description.id];
-      console.log("status", s);
       if ($.isEmptyObject(s)) {
         return "Status unavailable";
       }
@@ -43,14 +42,12 @@ export default {
         }
         return unavailable;
       } else {
-        console.log(s.status.used);
         var used = 0;
         if (!!s.status.used) {
           used = s.status.used;
         }
         var total = used + s.status.available;
         return "Available now: " + s.status.available + "/" + total;
-        //return "Available now: " + s.status.available;
       }
     },
     ...mapState({
@@ -63,14 +60,10 @@ export default {
   },
   methods: {
     request(val) {
-      console.log("requested booking of ", val);
-
       var id = this.description.id;
       var duration = val * 60; //seconds
-      console.log(this.bookingToken);
       axios
         .post(
-          //"http://[::]:4000/api/v1/pools/" +
           "https://book.practable.io/api/v1/pools/" +
             id +
             "/sessions?duration=" +
@@ -84,21 +77,17 @@ export default {
         )
         .then(
           (response) => {
-            this.$store.commit("addActivityBooking", {
-              id: response.data.description.id,
-              status: response.data,
-              ok: true,
-            });
+            console.log("activity booked ok", response.data);
           },
           (error) => {
             console.log(error.response.data);
           }
         );
+      this.$store.commit("incrementRequestsMade"); //trigger new booking to display
       this.getStatus();
     },
     getStatus() {
       var id = this.description.id;
-      //.get("http://[::]:4000/api/v1/pools/" + id + "/status", {
       axios
         .get("https://book.practable.io/api/v1/pools/" + id + "/status", {
           headers: {
@@ -107,7 +96,6 @@ export default {
         })
         .then(
           (response) => {
-            console.log("status response", response);
             this.$store.commit("setPoolStatus", {
               id: id,
               status: response.data,

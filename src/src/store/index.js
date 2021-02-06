@@ -21,6 +21,7 @@ const state = {
   poolStatus: {},
   activityBookings: [],
   finishedBookings: [],
+  requestsMade: 0,
 };
 
 const store = createStore({

@@ -32,6 +32,10 @@ export const clearBookingToken = (state, reason) => {
   state.loginResult = reason;
 };
 
+export const incrementRequestsMade = (state) => {
+  state.requestsMade += 1;
+};
+
 export const setMaxBookings = (state, max) => {
   state.maxBookings = max;
 };
@@ -45,7 +49,6 @@ export const setStoreStatus = (state, status) => {
 };
 
 export const setPoolIDs = (state, ids) => {
-  console.log("store:setPoolIDs:len", ids.length);
   state.poolIDs = ids;
 };
 
@@ -57,7 +60,6 @@ export const addPoolDescription = (state, description) => {
   state.poolDescriptions.push(description);
 };
 export const clearPoolDescriptions = (state) => {
-  console.log("clearing poolDescriptions");
   state.poolDescriptions = [];
 };
 export const setPoolStatus = (state, status) => {

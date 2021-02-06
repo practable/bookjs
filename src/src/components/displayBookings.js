@@ -10,7 +10,6 @@ export default {
   methods: {
     getStatus() {
       this.$store.commit("clearBookings");
-      //.get("http://[::]:4000/api/v1/login", {
       axios
         .get("https://book.practable.io/api/v1/login", {
           headers: {
@@ -36,13 +35,11 @@ export default {
                 this.$store.commit("setMaxBookings", response.data.max);
               }
             } catch (e) {
-              console.log("error setting status message", e);
               statusMessage = "Booking system status unknown";
             }
 
             this.$store.commit("setBookingsStatus", statusMessage);
 
-            console.log("getbookings getstatus", response.data);
             var i;
             for (i = 0; i < response.data.activities.length; i++) {
               this.$store.commit("addActivityBooking", {
@@ -50,7 +47,6 @@ export default {
                 status: response.data.activities[i],
                 ok: true,
               });
-              console.log("activity from login:", response.data.activities[i]);
             }
           },
           (error) => {
@@ -82,13 +78,16 @@ export default {
       fulldetails: (state) => state.activityBookings,
       ids: (state) => state.poolIDs,
     }),
-    ...mapGetters(["atMaxBookings"]),
+    ...mapGetters(["atMaxBookings", "requestsMade"]),
   },
   watch: {
     bookingToken(is, was) {
       if (this.bookingTokenValid) {
         this.getStatus();
       }
+    },
+    requestsMade(is, was) {
+      this.getStatus();
     },
   },
 };

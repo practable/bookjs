@@ -48,8 +48,6 @@ export default {
             this.loginToken = response.data.token;
 
             this.$localStorage.set("token", this.loginToken);
-            console.log("enterToken:token:", this.loginToken);
-            console.log("enterToken:poolsInToken:", response.data.pools);
             this.result = response.statusText;
             this.$store.commit("setBookingToken", response.data.token);
             this.$store.commit("setBookingTokenExpiresAt", response.data.exp);
@@ -90,11 +88,8 @@ export default {
 
     axios.get("https://assets.practable.io/tokens/" + code, {}).then(
       (response) => {
-        console.log("response", response.data);
-
         try {
           var decoded = jwt_decode(response.data);
-          console.log(decoded);
           this.bookingLogin(response.data);
         } catch (e) {
           console.log("could not decode token", e);
