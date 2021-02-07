@@ -9,6 +9,19 @@ export const bookingsEnabled = (state) => state.bookingsEnabled;
 export const finishedCount = (state) => state.finishedCount;
 export const requestsMade = (state) => state.requestsMade;
 
+export const details = (state) => {
+  var details = [];
+  var cutoff = state.lastPoolRefresh;
+
+  for (const [id, description] of Object.entries(state.poolDescriptions)) {
+    if (description.checked >= cutoff) {
+      details.push(description.data);
+    }
+  }
+
+  return details;
+};
+
 export const finishedBookings = (state) => state.finishedBookings.length;
 
 export const atMaxBookings = (state) => {

@@ -17,12 +17,13 @@ const state = {
   storeStatusDetails: null,
   poolIDsStatus: "unknown",
   poolIDs: [],
-  poolDescriptions: [],
+  poolDescriptions: {},
   poolStatus: {},
   activityBookings: [],
   finishedBookings: [],
   requestsMade: 0,
   finishedCount: 0,
+  lastPoolRefresh: 0,
 };
 
 const store = createStore({

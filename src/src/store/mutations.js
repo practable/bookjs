@@ -9,6 +9,10 @@ export const incrementFinishedCount = (state) => {
   state.finishedCount += 1;
 };
 
+export const lastPoolRefresh = (state, time) => {
+  state.lastPoolRefresh = time;
+};
+
 export const login = (state) => {
   state.bearer =
     "eykljdflkajsdfjlas.lkasjdfklasjdlkfjalskdf.ksdflkjaskldjflkasdjf";
@@ -61,11 +65,20 @@ export const setPoolIDsStatus = (state, status) => {
 };
 
 export const addPoolDescription = (state, description) => {
-  state.poolDescriptions.push(description);
+  try {
+    var id = description.data.id;
+
+    state.poolDescriptions[id] = description;
+  } catch (e) {
+    console.log("error adding pool description", e);
+  }
 };
+
 export const clearPoolDescriptions = (state) => {
+  console.log("DEPRECATED clearPoolDescriptions");
   state.poolDescriptions = [];
 };
+
 export const setPoolStatus = (state, status) => {
   state.poolStatus[status.id] = status;
 };

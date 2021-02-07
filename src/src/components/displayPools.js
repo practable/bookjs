@@ -20,11 +20,11 @@ export default {
     },
     getStatus() {
       this.disableRefresh = true;
-      setTimeout(this.enableRefresh, 60000);
-      this.$store.commit("clearPoolDescriptions");
+      setTimeout(this.enableRefresh, 5000);
+      this.$store.commit("lastPoolRefresh", dayjs().unix());
+
       var i;
       for (i = 0; i < this.ids.length; i++) {
-        //.get("http://[::]:4000/api/v1/pools/" + this.ids[i], {
         axios
           .get("https://book.practable.io/api/v1/pools/" + this.ids[i], {
             headers: {
@@ -37,7 +37,10 @@ export default {
                 "setPoolIDsStatus",
                 "Checked at " + dayjs().format("h:mm A")
               );
-              this.$store.commit("addPoolDescription", response.data);
+              this.$store.commit("addPoolDescription", {
+                checked: dayjs().unix(),
+                data: response.data,
+              });
             },
             (error) => {
               this.$store.commit(
@@ -72,10 +75,14 @@ export default {
       bookingTokenValid: (state) => state.bookingTokenValid,
       bookingToken: (state) => state.bookingToken,
       status: (state) => state.poolIDsStatus,
-      details: (state) => state.poolDescriptions,
       ids: (state) => state.poolIDs,
     }),
-    ...mapGetters(["bookingsEnabled", "atMaxBookings", "finishedBookings"]),
+    ...mapGetters([
+      "bookingsEnabled",
+      "atMaxBookings",
+      "finishedCount",
+      "details",
+    ]),
   },
   watch: {
     bookingToken(is, was) {
@@ -83,7 +90,8 @@ export default {
         this.getStatus();
       }
     },
-    finishedBookings(is, was) {
+    finishedCount(is, was) {
+      console.log("Finished Booking");
       this.getStatus();
     },
   },

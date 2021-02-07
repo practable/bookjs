@@ -79,7 +79,6 @@ export default {
       }
     },
     requestsMade(is, was) {
-      console.log("requestsMade incremented");
       this.getStatus();
       setTimeout(this.getStatus, 2000);
     },

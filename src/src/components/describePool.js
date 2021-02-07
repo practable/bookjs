@@ -94,7 +94,12 @@ export default {
           (error) => {
             this.bookingAttempted = true;
             this.bookingOK = false;
-            var reason = "Sorry: " + error.response.data;
+            var reason = "Sorry: ";
+            if (!!error.response) {
+              reason += error.response.data;
+            } else {
+              reason += "this pool is not currently available";
+            }
             this.result = reason;
             console.log(reason);
           }
