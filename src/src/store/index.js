@@ -31,7 +31,7 @@ const store = createStore({
   getters,
   actions,
   mutations,
-  plugins: [createLogger()],
+  //plugins: [createLogger()],
 });
 
 export default store;
