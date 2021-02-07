@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export const bearer = (state) => state.bearer;
 
 export const bookingToken = (state) => state.bookingToken;
@@ -43,13 +45,21 @@ export const getBookingByID = (state, id) => {
 
 export const getFinishedByID = (state, id) => {
   return (id) => {
-    var results = state.finishedBookings.filter((obj) => {
-      return obj.id === id;
-    });
-    if (results.length < 1) {
-      return false;
-    } else {
-      return true;
+    try {
+      return state.finishedBookings[id].exp <= dayjs().unix();
+    } catch (e) {
+      console.log("error checking if finished", id, e);
+      return false; // avoid prematurely clearing new bookings
+    }
+  };
+};
+export const getTimeLeftByID = (state, id) => {
+  return (id) => {
+    try {
+      return state.finishedBookings[id].exp - dayjs().unix();
+    } catch (e) {
+      console.log("error checking if finished", id, e);
+      return -1;
     }
   };
 };

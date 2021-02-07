@@ -6,34 +6,43 @@ export default {
   components: {
     "launch-activity": launchActivity,
   },
+  data() {
+    return {
+      timerSet: false,
+    };
+  },
   computed: {
     id: function () {
       return this.$route.params.id;
     },
-    finished: function () {
+    setTimer: function () {
       var id = this.id;
       if (!id) {
         return false;
       }
 
-      var isFinished = this.getFinishedByID(id);
+      var timeLeft = this.getTimeLeftByID(id);
 
-      if (isFinished) {
-        this.$router.back();
+      if (timeLeft > 0 && !this.timerSet) {
+        console.log("setting Timer for ", timeLeft);
+        setTimeout(this.goBack, timeLeft * 1000);
+        this.timerSet = true;
+        return true;
       }
-      return isFinished;
+
+      return this.timerSet;
     },
-    ...mapGetters(["getFinishedByID"]),
+    ...mapGetters(["getTimeLeftByID"]),
+  },
+  methods: {
+    goBack() {
+      console.log("going back");
+      this.$router.back();
+    },
   },
   watch: {
     $route(to, from) {
       console.log("Activity:", to, from);
-    },
-    finished(now, before) {
-      console.log("watching finish, now=", now, "before=", before);
-      if (now) {
-        this.$router.back();
-      }
     },
   },
 };

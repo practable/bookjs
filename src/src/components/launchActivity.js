@@ -5,7 +5,7 @@ import describeUI from "./describeUI.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["id"],
+  props: ["id", "setTimer"],
   components: {
     "describe-activity": describeActivity,
     "describe-ui": describeUI,

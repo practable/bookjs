@@ -83,21 +83,24 @@ export const setPoolStatus = (state, status) => {
   state.poolStatus[status.id] = status;
 };
 
-export const addActivityBooking = (state, booking) => {
+/*export const addActivityBooking = (state, booking) => {
   state.activityBookings.push(booking);
-};
+};*/
 
 export const replaceBookings = (state, bookings) => {
   var tempBookings = [];
   var tempIDs = [];
   var i;
   for (i = 0; i < bookings.length; i++) {
+    var id = bookings[i].description.id;
     tempBookings.push({
-      id: bookings[i].description.id,
+      id: id,
       status: bookings[i],
       ok: true,
     });
-    tempIDs.push(bookings[i].description.id);
+    tempIDs.push(id);
+
+    state.finishedBookings[id] = bookings[i];
   }
 
   state.activityBookings = tempBookings;

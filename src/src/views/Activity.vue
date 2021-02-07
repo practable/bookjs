@@ -1,7 +1,7 @@
 <template>
    <div class="container-fluid">
 	 <div class="row">
-<launch-activity :id="id"
+<launch-activity :id="id" :setTimer="setTimer"
   ></launch-activity>
   </div>
   </div>

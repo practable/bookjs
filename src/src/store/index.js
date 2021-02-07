@@ -20,7 +20,7 @@ const state = {
   poolDescriptions: {},
   poolStatus: {},
   activityBookings: [],
-  finishedBookings: [],
+  finishedBookings: {},
   requestsMade: 0,
   finishedCount: 0,
   lastPoolRefresh: 0,

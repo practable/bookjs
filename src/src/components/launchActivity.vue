@@ -2,7 +2,7 @@
   <div class="container-fluid">
 	<div class="row">
       <div class="col bg-secondary">
-	    <h3 class="text-white text-left" > Your hardware</h3>
+	    <h3 class="text-white text-left" > Your hardware </h3>
       </div>
     </div>
 	<div class="row">
