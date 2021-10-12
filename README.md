@@ -2,7 +2,7 @@
 
 Webclient for booking experiments hosted using [timdrysdale/relay](https://github.com/timdrysdale/relay)
 
-![screenshot](./img/screenshot-controls.jpg)
+![screenshot](./img/screenshot-controls3-booked.jpg)
 
 # Releases
 
