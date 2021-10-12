@@ -2,7 +2,49 @@
 
 Webclient for booking experiments hosted using [timdrysdale/relay](https://github.com/timdrysdale/relay)
 
-In early stages of development ... 
+![screenshot](./img/screenshot-controls.jpg)
+
+# Releases
+
+The MVP release was used for Semester Two of Academic Year 2020-2021.
+
+## Deployment / Local testing
+
+We use the Vue CLI, and treat the app as static because it can access the API of the backend via normal HTTP verbs. This means we can install it by copying the `dist` directory directly onto the server). 
+
+### Deployment
+
+We use `npm` to build for production:
+
+```
+npm run build
+```
+
+### Testing
+
+However, with we can't just run it locally for testing, because the public path setting would be wrong if we access it from `file://<your-path>` so we can [serve it locally by installing serve](https://cli.vuejs.org/guide/deployment.html) 
+
+```
+npm install -g serve
+serve -s dist
+```
+
+You'll see a terminal message something like this, and the app will be able to access the production booking server for which it is configured.
+
+```
+   ┌──────────────────────────────────────────────────┐
+   │                                                  │
+   │   Serving!                                       │
+   │                                                  │
+   │   - Local:            http://localhost:5000      │
+   │   - On Your Network:  http://192.168.0.46:5000   │
+   │                                                  │
+   │   Copied local address to clipboard!             │
+   │                                                  │
+   └──────────────────────────────────────────────────┘
+```
+
+Note you have to be in `src` or else you get path not found error in the browser.
 
 ## Dev notes
 
