@@ -20,7 +20,7 @@ export default {
     },
     getStatus() {
       this.disableRefresh = true;
-      setTimeout(this.enableRefresh, 5000);
+      setTimeout(this.enableRefresh, 60000);
       this.$store.commit("lastPoolRefresh", dayjs().unix());
 
       var i;
