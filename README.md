@@ -17,6 +17,7 @@ We use the Vue CLI, and treat the app as static because it can access the API of
 We use `npm` to build for production:
 
 ```
+cd <repo-path>/src
 npm run build
 ```
 
@@ -26,6 +27,9 @@ However, with we can't just run it locally for testing, because the public path 
 
 ```
 npm install -g serve
+```
+Then to serve locally, just run
+```
 serve -s dist
 ```
 

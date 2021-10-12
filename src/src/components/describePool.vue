@@ -23,6 +23,7 @@
 				  <li @click="request(90)"  role="presentation"><a role="menuitem" href="#" id="btn1">Now for 90 min</a></li>
 				  <li @click="request(60)"  role="presentation"><a role="menuitem" href="#" id="btn2">Now for 60 min</a></li>
 				  <li @click="request(30)"  role="presentation"><a role="menuitem" href="#" id="btn3">Now for 30 min</a></li>
+				  <li @click="request(10)"  role="presentation"><a role="menuitem" href="#" id="btn3">Now for 10 min</a></li>				  
 				  <li @click="request(5)"  role="presentation"><a role="menuitem" href="#" id="btn3">Now for 5 min</a></li>
 				</ul>
 			  </div>
