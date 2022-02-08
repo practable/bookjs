@@ -23,6 +23,12 @@ npm run build
 
 ### Testing
 
+Script added to package.json to run build with development mode
+
+```
+npm run build-dev
+```
+
 However, with we can't just run it locally for testing, because the public path setting would be wrong if we access it from `file://<your-path>` so we can [serve it locally by installing serve](https://cli.vuejs.org/guide/deployment.html) 
 
 ```
@@ -49,6 +55,14 @@ You'll see a terminal message something like this, and the app will be able to a
 ```
 
 Note you have to be in `src` or else you get path not found error in the browser.
+
+You will want a book server running on localhost:4000 
+You will want to try insecure chrome
+
+```
+mkdir -p ~/tmp/chrome-user
+google-chrome --disable-web-security --user-data-dir="~/tmp/chrome-user" > chrome.log 2>&1 &	
+```
 
 ## Dev notes
 
