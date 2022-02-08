@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import describeActivity from "./describeActivity.vue";
 import describeUI from "./describeUI.vue";
 
@@ -13,6 +12,9 @@ export default {
   computed: {
     userinterfaces: function () {
       return this.booking.uis;
+    },
+    config: function () {
+      return this.booking.config;
     },
     streams: function () {
       return this.booking.streams;

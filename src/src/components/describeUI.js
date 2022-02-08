@@ -1,7 +1,7 @@
 import { mapState } from "vuex";
 import mustache from "mustache";
 export default {
-  props: ["exp", "streams", "ui"],
+  props: ["config", "exp", "streams", "ui"],
   components: {},
   computed: {
     title: function () {
@@ -29,6 +29,8 @@ export default {
       var template = this.ui.url;
       var streams, encodedStreams;
       var rendered;
+      var config = this.config;
+      var encodedConfig;
       var expiry = this.exp;
 
       try {
@@ -42,8 +44,12 @@ export default {
 
       try {
         encodedStreams = encodeURIComponent(streams);
+        encodedConfig = encodeURIComponent(config);
       } catch (e) {
-        console.log(e, "could not uriEncode streams - try without!");
+        console.log(
+          e,
+          "could not uriEncode streams or config - try without encoding!"
+        );
         rendered = mustache.render(template, { streams: streams, exp: expiry });
         window.open(rendered, "_blank");
         return;
@@ -51,6 +57,7 @@ export default {
 
       try {
         rendered = mustache.render(template, {
+          config: encodedConfig,
           streams: encodedStreams,
           exp: expiry,
         });
