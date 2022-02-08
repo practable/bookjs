@@ -74,7 +74,7 @@ export default {
       var duration = val * 60; //seconds
       axios
         .post(
-          process.env.BOOK_SERVER +
+          process.env.VUE_APP_BOOK_SERVER +
             "/api/v1/pools/" +
             id +
             "/sessions?duration=" +
@@ -112,11 +112,14 @@ export default {
     getStatus() {
       var id = this.description.id;
       axios
-        .get("https://book.practable.io/api/v1/pools/" + id + "/status", {
-          headers: {
-            Authorization: this.bookingToken,
-          },
-        })
+        .get(
+          process.env.VUE_APP_BOOK_SERVER + "/api/v1/pools/" + id + "/status",
+          {
+            headers: {
+              Authorization: this.bookingToken,
+            },
+          }
+        )
         .then(
           (response) => {
             this.$store.commit("setPoolStatus", {

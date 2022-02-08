@@ -10,7 +10,7 @@ export default {
   methods: {
     getStatus() {
       axios
-        .get(process.env.BOOK_SERVER + "/api/v1/login", {
+        .get(process.env.VUE_APP_BOOK_SERVER + "/api/v1/login", {
           headers: {
             Authorization: this.bookingToken,
           },
