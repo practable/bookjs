@@ -10,7 +10,7 @@ export default {
   methods: {
     getStatus() {
       axios
-        .get("https://book.practable.io/api/v1/login", {
+        .get(process.env.VUE_APP_BOOK_SERVER + "/api/v1/login", {
           headers: {
             Authorization: this.bookingToken,
           },
@@ -41,7 +41,8 @@ export default {
 
             this.$store.commit("replaceBookings", response.data.activities);
           },
-          (error) => {
+          () => {
+            //error
             this.$store.commit(
               "setBookingsStatus",
               "No bookings found when checked at " + dayjs().format("h:mm A")
@@ -73,16 +74,16 @@ export default {
     ...mapGetters(["atMaxBookings", "requestsMade", "finishedCount"]),
   },
   watch: {
-    bookingToken(is, was) {
+    bookingToken() {
       if (this.bookingTokenValid) {
         this.getStatus();
       }
     },
-    requestsMade(is, was) {
+    requestsMade() {
       this.getStatus();
       setTimeout(this.getStatus, 2000);
     },
-    finishedCount(is, was) {
+    finishedCount() {
       setTimeout(this.getStatus, 1500);
     },
   },

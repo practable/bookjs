@@ -26,11 +26,14 @@ export default {
       var i;
       for (i = 0; i < this.ids.length; i++) {
         axios
-          .get("https://book.practable.io/api/v1/pools/" + this.ids[i], {
-            headers: {
-              Authorization: this.bookingToken,
-            },
-          })
+          .get(
+            process.env.VUE_APP_BOOK_SERVER + "/api/v1/pools/" + this.ids[i],
+            {
+              headers: {
+                Authorization: this.bookingToken,
+              },
+            }
+          )
           .then(
             (response) => {
               this.$store.commit(

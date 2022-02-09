@@ -38,7 +38,7 @@ export default {
         if (s.status.later) {
           unavailable = "Available again soon";
         }
-        if (!!s.status.used) {
+        if (s.status.used) {
           unavailable =
             unavailable +
             " (" +
@@ -50,7 +50,7 @@ export default {
         return unavailable;
       } else {
         var used = 0;
-        if (!!s.status.used) {
+        if (s.status.used) {
           used = s.status.used;
         }
         var total = used + s.status.available;
@@ -74,7 +74,8 @@ export default {
       var duration = val * 60; //seconds
       axios
         .post(
-          "https://book.practable.io/api/v1/pools/" +
+          process.env.VUE_APP_BOOK_SERVER +
+            "/api/v1/pools/" +
             id +
             "/sessions?duration=" +
             duration,
@@ -86,7 +87,8 @@ export default {
           }
         )
         .then(
-          (response) => {
+          () => {
+            //response
             this.bookingAttempted = true;
             this.bookingOK = true;
             this.result = 'OK - click on activity in "Your Bookings" to start';
@@ -95,7 +97,7 @@ export default {
             this.bookingAttempted = true;
             this.bookingOK = false;
             var reason = "Sorry: ";
-            if (!!error.response) {
+            if (error.response) {
               reason += error.response.data;
             } else {
               reason += "this pool is not currently available";
@@ -110,11 +112,14 @@ export default {
     getStatus() {
       var id = this.description.id;
       axios
-        .get("https://book.practable.io/api/v1/pools/" + id + "/status", {
-          headers: {
-            Authorization: this.bookingToken,
-          },
-        })
+        .get(
+          process.env.VUE_APP_BOOK_SERVER + "/api/v1/pools/" + id + "/status",
+          {
+            headers: {
+              Authorization: this.bookingToken,
+            },
+          }
+        )
         .then(
           (response) => {
             this.$store.commit("setPoolStatus", {

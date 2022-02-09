@@ -36,9 +36,8 @@ export default {
       } else {
         body = {};
       }
-      //.post("http://[::]:4000/api/v1/login", body, {
       axios
-        .post("https://book.practable.io/api/v1/login", body, {
+        .post(process.env.VUE_APP_BOOK_SERVER + "/api/v1/login", body, {
           headers: { Authorization: token },
         })
         .then(
@@ -86,7 +85,7 @@ export default {
       code = "everyone";
     }
 
-    axios.get("https://assets.practable.io/tokens/" + code, {}).then(
+    axios.get(process.env.VUE_APP_ASSET_SERVER + "/tokens/" + code, {}).then(
       (response) => {
         try {
           var decoded = jwt_decode(response.data);

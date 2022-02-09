@@ -23,6 +23,12 @@ npm run build
 
 ### Testing
 
+Script added to package.json to run build with development mode
+
+```
+npm run build-dev
+```
+
 However, with we can't just run it locally for testing, because the public path setting would be wrong if we access it from `file://<your-path>` so we can [serve it locally by installing serve](https://cli.vuejs.org/guide/deployment.html) 
 
 ```
@@ -50,7 +56,217 @@ You'll see a terminal message something like this, and the app will be able to a
 
 Note you have to be in `src` or else you get path not found error in the browser.
 
+You will want a book server running on localhost:4000 
+You will want to try insecure chrome
+
+```
+mkdir -p ~/tmp/chrome-user
+google-chrome --disable-web-security --user-data-dir="~/tmp/chrome-user" > chrome.log 2>&1 &	
+```
+
 ## Dev notes
+
+### Book update to config
+`sessions?duration=300`:
+```
+{
+   "description":{
+      "further":"https://static.practable.io/info/pvna-real-1.0/index.html",
+      "id":"0dbd1ba8-82cd-4d24-a304-2fcc935d058e",
+      "image":"https://assets.practable.io/images/booking/activities/pvna-real-1.0/image.png",
+      "long":"A pocketVNA Vector Network Analyser that can read two-port S-parameters",
+      "name":"PocketVNA",
+      "short":"A pocketVNA Vector Network Analyser",
+      "thumb":"https://assets.practable.io/images/booking/activities/pvna-real-1.0/thumb.png",
+      "type":"pvna-activity-v1.0"
+   },
+   "exp":1644359390,
+   "streams":[
+      {
+         "for":"data",
+         "permission":{
+            "audience":"https://relay-access.practable.io",
+            "connection_type":"session",
+            "scopes":[
+               "read",
+               "write"
+            ],
+            "topic":"pvna01-data"
+         },
+         "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b3BpYyI6InB2bmEwMS1kYXRhIiwicHJlZml4Ijoic2Vzc2lvbiIsInNjb3BlcyI6WyJyZWFkIiwid3JpdGUiXSwiYXVkIjoiaHR0cHM6Ly9yZWxheS1hY2Nlc3MucHJhY3RhYmxlLmlvIiwiZXhwIjoxNjQ0MzU5MzkwLCJpYXQiOjE2NDQzNTkwODksIm5iZiI6MTY0NDM1OTA4OX0.zuopsXnmkjn777KR3kLt0C2cwo2sNJdVZb0kR5A0ot0",
+         "url":"https://relay-access.practable.io/session/pvna01-data",
+         "verb":"POST"
+      }
+   ],
+   "uis":[
+      {
+         "description":{
+            "further":"https://static.practable.io/info/pvna-basic-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/image.png",
+            "long":"Read S-parameters from pocketVNA, and plot them as a function of frequency",
+            "name":"PocketVNA (Default)",
+            "short":"Read S-parameters from pocketVNA",
+            "thumb":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/thumb.png",
+            "type":"pvna-default-ui-1.0"
+         },
+         "streamsRequired":[
+            "data"
+         ],
+         "url":"https://static.practable.io/ui/pvna-1.0/?config={{config}}&streams={{streams}}&exp={{exp}}"
+      },
+      {
+         "description":{
+            "further":"https://static.practable.io/info/debug-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/debug-1.0/image.png",
+            "long":"See the video, data, and type commands.",
+            "name":"Debug",
+            "short":"See the video, data, and type commands.",
+            "thumb":"https://assets.practable.io/images/booking/ui/debug-1.0/thumb.png",
+            "type":"debug-ui-1.0"
+         },
+         "streamsRequired":[
+            "data",
+            "video"
+         ],
+         "url":"https://static.practable.io/ui/debug-1.0/?streams={{streams}}&exp={{exp}}"
+      },
+      {
+         "description":{
+            "further":"https://static.practable.io/info/debug-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/debug-1.0/image.png",
+            "long":"See the video, data, and type commands.",
+            "name":"Debug (Develop)",
+            "short":"See the video, data, and type commands.",
+            "thumb":"https://assets.practable.io/images/booking/ui/debug-1.0/thumb.png",
+            "type":"dev-debug-ui-1.0"
+         },
+         "streamsRequired":[
+            "data",
+            "video"
+         ],
+         "url":"https://dev-static.practable.io/ui/debug-1.0/?streams={{streams}}&exp={{exp}}"
+      },
+      {
+         "description":{
+            "further":"https://static.practable.io/info/pvna-basic-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/image.png",
+            "long":"Read S-parameters from pocketVNA, and plot them as a function of frequency",
+            "name":"PocketVNA (Develop)",
+            "short":"Read S-parameters from pocketVNA",
+            "thumb":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/thumb.png",
+            "type":"dev-pvna-ui-1.0"
+         },
+         "streamsRequired":[
+            "data"
+         ],
+         "url":"https://dev-static.practable.io/ui/pvna-1.0/?config={{config}}&streams={{streams}}&exp={{exp}}"
+      }
+   ]
+}
+```
+
+After the update to include config:
+
+```
+{
+   "config":{
+      "url":""
+   },
+   "description":{
+      "further":"https://static.practable.io/info/pvna-real-1.0/index.html",
+      "id":"8276d7aa-4916-4676-80f0-6fa3c7e48e65",
+      "image":"https://assets.practable.io/images/booking/activities/pvna-real-1.0/image.png",
+      "long":"A pocketVNA Vector Network Analyser that can read two-port S-parameters",
+      "name":"PocketVNA",
+      "short":"A pocketVNA Vector Network Analyser",
+      "thumb":"https://assets.practable.io/images/booking/activities/pvna-real-1.0/thumb.png",
+      "type":"pvna-activity-v1.0"
+   },
+   "exp":1644359606,
+   "streams":[
+      {
+         "for":"data",
+         "permission":{
+            "audience":"https://relay-access.practable.io",
+            "connection_type":"session",
+            "scopes":[
+               "read",
+               "write"
+            ],
+            "topic":"pvna01-data"
+         },
+         "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b3BpYyI6InB2bmEwMS1kYXRhIiwicHJlZml4Ijoic2Vzc2lvbiIsInNjb3BlcyI6WyJyZWFkIiwid3JpdGUiXSwiYXVkIjoiaHR0cHM6Ly9yZWxheS1hY2Nlc3MucHJhY3RhYmxlLmlvIiwiZXhwIjoxNjQ0MzU5NjA2LCJpYXQiOjE2NDQzNTkzMDUsIm5iZiI6MTY0NDM1OTMwNX0.diXof26QFBWSUQuyG-vtnGCgTAmN8DzSwzBijuU2PR0",
+         "url":"https://relay-access.practable.io/session/pvna01-data",
+         "verb":"POST"
+      }
+   ],
+   "uis":[
+      {
+         "description":{
+            "further":"https://static.practable.io/info/pvna-basic-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/image.png",
+            "long":"Read S-parameters from pocketVNA, and plot them as a function of frequency",
+            "name":"PocketVNA (Default)",
+            "short":"Read S-parameters from pocketVNA",
+            "thumb":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/thumb.png",
+            "type":"pvna-default-ui-1.0"
+         },
+         "streamsRequired":[
+            "data"
+         ],
+         "url":"https://static.practable.io/ui/pvna-1.0/?config={{config}}&streams={{streams}}&exp={{exp}}"
+      },
+      {
+         "description":{
+            "further":"https://static.practable.io/info/debug-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/debug-1.0/image.png",
+            "long":"See the video, data, and type commands.",
+            "name":"Debug",
+            "short":"See the video, data, and type commands.",
+            "thumb":"https://assets.practable.io/images/booking/ui/debug-1.0/thumb.png",
+            "type":"debug-ui-1.0"
+         },
+         "streamsRequired":[
+            "data",
+            "video"
+         ],
+         "url":"https://static.practable.io/ui/debug-1.0/?streams={{streams}}&exp={{exp}}"
+      },
+      {
+         "description":{
+            "further":"https://static.practable.io/info/debug-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/debug-1.0/image.png",
+            "long":"See the video, data, and type commands.",
+            "name":"Debug (Develop)",
+            "short":"See the video, data, and type commands.",
+            "thumb":"https://assets.practable.io/images/booking/ui/debug-1.0/thumb.png",
+            "type":"dev-debug-ui-1.0"
+         },
+         "streamsRequired":[
+            "data",
+            "video"
+         ],
+         "url":"https://dev-static.practable.io/ui/debug-1.0/?streams={{streams}}&exp={{exp}}"
+      },
+      {
+         "description":{
+            "further":"https://static.practable.io/info/pvna-basic-ui-1.0/index.html",
+            "image":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/image.png",
+            "long":"Read S-parameters from pocketVNA, and plot them as a function of frequency",
+            "name":"PocketVNA (Develop)",
+            "short":"Read S-parameters from pocketVNA",
+            "thumb":"https://assets.practable.io/images/booking/ui/pvna-default-1.0/thumb.png",
+            "type":"dev-pvna-ui-1.0"
+         },
+         "streamsRequired":[
+            "data"
+         ],
+         "url":"https://dev-static.practable.io/ui/pvna-1.0/?config={{config}}&streams={{streams}}&exp={{exp}}"
+      }
+   ]
+}
+
+```
 
 ### modal promise pattern
 

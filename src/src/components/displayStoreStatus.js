@@ -4,9 +4,8 @@ import { mapState } from "vuex";
 export default {
   methods: {
     getStatus() {
-      //.get("http://[::]:4000/api/v1/admin/status", {
       axios
-        .get("https://book.practable.io/api/v1/admin/status", {
+        .get(process.env.VUE_APP_BOOK_SERVER + "/api/v1/admin/status", {
           headers: {
             Authorization: this.bookingToken,
           },
