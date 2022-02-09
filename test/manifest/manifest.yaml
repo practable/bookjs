@@ -2468,6 +2468,8 @@ activities:
 
   pvna-activity-00:
     description: pvna-activity-v1.0
+    config:
+      url: https://assets.practable.io/config/experiments/pvna/pvna00-0.0.json
     UISet: pvna-dev
     exp: 	1654045200
     streams:
@@ -2485,6 +2487,8 @@ activities:
   pvna-activity-01:
     description: pvna-activity-v1.0
     UISet: pvna-dev
+    config:
+      url: https://assets.practable.io/config/experiments/pvna/pvna01-0.0.json
     exp: 	1654045200
     streams:
       data:
@@ -4060,7 +4064,7 @@ uis:
       further: https://static.practable.io/info/pvna-basic-ui-1.0/index.html
       thumb: https://assets.practable.io/images/booking/ui/pvna-default-1.0/thumb.png
       image: https://assets.practable.io/images/booking/ui/pvna-default-1.0/image.png
-    url: https://static.practable.io/ui/pvna-1.0/?streams={{streams}}&exp={{exp}}
+    url: https://static.practable.io/ui/pvna-1.0/?config={{config}}&streams={{streams}}&exp={{exp}}
     streamsrequired:
     - data
  
@@ -4073,7 +4077,7 @@ uis:
       further: https://static.practable.io/info/pvna-basic-ui-1.0/index.html
       thumb: https://assets.practable.io/images/booking/ui/pvna-default-1.0/thumb.png
       image: https://assets.practable.io/images/booking/ui/pvna-default-1.0/image.png
-    url: https://dev-static.practable.io/ui/pvna-1.0/?streams={{streams}}&exp={{exp}}
+    url: https://dev-static.practable.io/ui/pvna-1.0/?config={{config}}&streams={{streams}}&exp={{exp}}
     streamsrequired:
     - data
     

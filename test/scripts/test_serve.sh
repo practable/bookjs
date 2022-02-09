@@ -33,7 +33,7 @@ fi
 export BOOKTOKEN_SECRET=$BOOK_SECRET
 export BOOKTOKEN_AUDIENCE=localhost
 export BOOKTOKEN_LIFETIME=86400
-export BOOKTOKEN_GROUPS="everyone develop"
+export BOOKTOKEN_GROUPS="everyone emag3"
 export BOOKTOKEN_ADMIN=true
 export BOOKUPLOAD_TOKEN=$(book token)
 echo "Admin token:"

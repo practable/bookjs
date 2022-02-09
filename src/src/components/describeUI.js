@@ -44,13 +44,17 @@ export default {
 
       try {
         encodedStreams = encodeURIComponent(streams);
-        encodedConfig = encodeURIComponent(config);
+        encodedConfig = encodeURIComponent(config.url);
       } catch (e) {
         console.log(
           e,
           "could not uriEncode streams or config - try without encoding!"
         );
-        rendered = mustache.render(template, { streams: streams, exp: expiry });
+        rendered = mustache.render(template, {
+          config: config.url,
+          streams: streams,
+          exp: expiry,
+        });
         window.open(rendered, "_blank");
         return;
       }
