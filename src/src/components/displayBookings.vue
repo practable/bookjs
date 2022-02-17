@@ -3,8 +3,8 @@
   <div class="bg-primary text-left row">
 	<div class="col">
 <h3 class="text-white">Your Bookings</h3>
-<h6 v-if="!atMaxBookings" class="text-white">{{ status }}</h6>
-<h6 v-if="atMaxBookings" class="text-white">You can book further activities when one or more of your current bookings has finished</h6>
+<h6 class="text-white">{{ status }}</h6>
+
 	</div>
   </div>
   <div class="container-fluid">
