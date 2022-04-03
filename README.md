@@ -57,7 +57,18 @@ You'll see a terminal message something like this, and the app will be able to a
 Note you have to be in `src` or else you get path not found error in the browser.
 
 You will want a book server running on localhost:4000 
+You will want to serve tokens on a localhost:4001
 You will want to try insecure chrome
+
+These options are all supported in `test/scripts/test_serve.sh`
+
+Note - the suggested order of commands when using the `test_serve` script is
+
+  - `g` - start insecure chrome
+  - `u` - upload manifest
+  - `t` - start serving the token
+
+If you are using an alternative means of providing the booking server and token, then you can start insecure chrome like this:
 
 ```
 mkdir -p ~/tmp/chrome-user

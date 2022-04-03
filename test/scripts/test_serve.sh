@@ -33,7 +33,7 @@ fi
 export BOOKTOKEN_SECRET=$BOOK_SECRET
 export BOOKTOKEN_AUDIENCE=localhost
 export BOOKTOKEN_LIFETIME=86400
-export BOOKTOKEN_GROUPS="everyone emag3"
+export BOOKTOKEN_GROUPS="everyone controls3 develop"
 export BOOKTOKEN_ADMIN=true
 export BOOKUPLOAD_TOKEN=$(book token)
 echo "Admin token:"
@@ -54,12 +54,6 @@ export USERTOKEN=$(book token)
 export BOOKJS_USERTOKEN=$(book token)
 echo "User token:"
 echo ${BOOKJS_USERTOKEN}
-
-mkdir -p ../assets/tokens
-echo ${BOOKJS_USERTOKEN} > ../assets/tokens/everyone
-export  ASSET_PORT=4001
-http-server ../assets -p ${ASSET_PORT} &
-asset_pid=$!
 
 # read and split the token and do some base64URL translation
 read h p s <<< $(echo $BOOKJS_USERTOKEN | tr [-_] [+/] | sed 's/\./ /g')
@@ -94,11 +88,12 @@ echo "  l: Lock bookings"
 echo "  n: uNlock bookings"
 echo "  r: reset the poolstore (has confirm)"
 echo "  s: get the status of the poolstore)"
+echo "  t: serve the everyone token on port 4001"
 echo "  u: re-upload manifest"
 
 for (( ; ; ))
 do
-	read -p 'What next? [l/n/r/s/u]:' command
+	read -p 'What next? [l/n/r/s/t/u]:' command
 if [ "$command" = "g" ];
 then
 	mkdir -p ~/tmp/chrome-user
@@ -125,6 +120,14 @@ then
 	export BOOKTOKEN_ADMIN=true
     export BOOKSTATUS_TOKEN=$(book token)
 	book getstatus
+elif [ "$command" = "t" ];
+then
+	mkdir -p ./tmp/tokens
+	echo ${BOOKJS_USERTOKEN} > ./tmp/tokens/everyone
+	cd ./tmp
+	http-server -p 4001
+	cd ..
+	echo "You won't be able to upload tokens now - ctrl-c to quit and start over"
 elif [ "$command" = "u" ];
 then
 	read -p "Definitely upload [y/N]?" confirm
@@ -142,6 +145,4 @@ fi
 done
 
 kill book_pid
-kill asset_pid
-
 
