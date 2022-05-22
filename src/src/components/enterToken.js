@@ -85,7 +85,7 @@ export default {
       code = "everyone";
     }
 
-    axios.get(process.env.VUE_APP_ASSET_SERVER + "/tokens/" + code, {}).then(
+    axios.get(process.env.VUE_APP_TOKEN_SERVER + "/" + code, {}).then(
       (response) => {
         try {
           var decoded = jwt_decode(response.data);
