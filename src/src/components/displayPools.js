@@ -27,7 +27,7 @@ export default {
       for (i = 0; i < this.ids.length; i++) {
         axios
           .get(
-            process.env.VUE_APP_BOOK_SERVER + "/api/v1/pools/" + this.ids[i],
+            import.meta.env.VITE_APP_BOOK_SERVER + "/api/v1/pools/" + this.ids[i],
             {
               headers: {
                 Authorization: this.bookingToken,

@@ -74,7 +74,7 @@ export default {
       var duration = val * 60; //seconds
       axios
         .post(
-          process.env.VUE_APP_BOOK_SERVER +
+          import.meta.env.VITE_APP_BOOK_SERVER +
             "/api/v1/pools/" +
             id +
             "/sessions?duration=" +
@@ -113,7 +113,7 @@ export default {
       var id = this.description.id;
       axios
         .get(
-          process.env.VUE_APP_BOOK_SERVER + "/api/v1/pools/" + id + "/status",
+          import.meta.env.VITE_APP_BOOK_SERVER + "/api/v1/pools/" + id + "/status",
           {
             headers: {
               Authorization: this.bookingToken,

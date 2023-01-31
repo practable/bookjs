@@ -412,3 +412,87 @@ export default {
 
 Makes it write only so you can assign somethign else to the property and break thigns
 
+## moving to vite
+
+[migration guide](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
+
+then 
+
+```
+npm install -g vite
+```
+
+then `npm run dev`
+
+```
+<snip>
+import { performance } from 'node:perf_hooks'
+       ^
+
+SyntaxError: Unexpected token {
+<snip>
+```
+Looks like this [perf hooks issue]( https://stackoverflow.com/questions/63383304/unable-to-resolve-module-perf-hooks), solution proposed is
+```
+ npm i --save-dev @types/node
+
+```
+and that fixed it.
+
+Except that could not find global css or main.js￼
+
+```
+localhost/:8 
+ GET http://localhost:3000/global.css net::ERR_ABORTED 404 (Not Found)
+localhost/:10 
+ GET http://localhost:3000/src/main.js net::ERR_ABORTED 404 (Not Found)
+client.ts:16 [vite] connecting...
+client.ts:53 [vite] connected.
+```
+
+oops ... `main.js` is now `main.ts`!
+
+fix ... but then repeated reloads with errors, similar to [this bad gateway for deps](https://github.com/vitejs/vite/discussions/8749)
+
+```
+<snip>
+[vite] error while updating dependencies:
+Error: ENOTEMPTY: directory not empty, rmdir '/home/tim/sources/bookjs/src/node_modules/.vite/deps'
+<snip>
+```
+
+asdfasdf
+
+
+```
+rm -r 
+```
+
+Also, env vars need changing to prefix `VITE` []()
+
+> To prevent accidentally leaking env variables to the client, only variables prefixed with VITE_ are exposed to your Vite-processed code. e.g. for the following env variables:
+
+```
+VITE_SOME_KEY=123
+DB_PASSWORD=foobar 
+
+```
+> Only `VITE_SOME_KEY` will be exposed as `import.meta.env.VITE_SOME_KEY` to your client source code, but `DB_PASSWORD` will not.
+
+changed all `VUE_APP` to `VITE_APP`, and now running fine locally on `npm run dev` with development env.vars pointing to the existing AWS server instantiation (for convenience in avoiding setting up local services).
+
+
+Now try production build with base path and host on `dev.practable.io/book` ...
+
+```
+npm run build
+```
+
+Still got the base_path problem with css and js assets, being looked for at `https://dev.practable.io/css/<name>` and  `https://dev.practable.io/js/<name>` so page is not loading, and can't check whether the routing etc is working yet.
+
+
+[base path for local dev](https://github.com/vitejs/vite/issues/3107) server origin, base href
+
+added base href, did not fix issue...
+
+[not sure about this router config as seems different, but apparently works](https://github.com/antfu/vitesse/discussions/226)

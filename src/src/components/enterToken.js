@@ -37,7 +37,7 @@ export default {
         body = {};
       }
       axios
-        .post(process.env.VUE_APP_BOOK_SERVER + "/api/v1/login", body, {
+        .post(import.meta.env.VITE_APP_BOOK_SERVER + "/api/v1/login", body, {
           headers: { Authorization: token },
         })
         .then(
@@ -85,18 +85,20 @@ export default {
       code = "everyone";
     }
 
-    axios.get(process.env.VUE_APP_ASSET_SERVER + "/tokens/" + code, {}).then(
-      (response) => {
-        try {
-          var decoded = jwt_decode(response.data);
-          this.bookingLogin(response.data);
-        } catch (e) {
-          console.log("could not decode token", e);
+    axios
+      .get(import.meta.env.VITE_APP_ASSET_SERVER + "/tokens/" + code, {})
+      .then(
+        (response) => {
+          try {
+            var decoded = jwt_decode(response.data);
+            this.bookingLogin(response.data);
+          } catch (e) {
+            console.log("could not decode token", e);
+          }
+        },
+        (error) => {
+          console.log("error getting login token", error);
         }
-      },
-      (error) => {
-        console.log("error getting login token", error);
-      }
-    );
+      );
   },
 };
