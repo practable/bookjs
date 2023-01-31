@@ -46,7 +46,7 @@ const routes = [
 
 // note that base goes in as arg to createWebHistory - if serving from subdir
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
 });
 
