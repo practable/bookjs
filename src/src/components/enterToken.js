@@ -85,18 +85,20 @@ export default {
       code = "everyone";
     }
 
-    axios.get(import.meta.env.VITE_APP_ASSET_SERVER + "/tokens/" + code, {}).then(
-      (response) => {
-        try {
-          var decoded = jwt_decode(response.data);
-          this.bookingLogin(response.data);
-        } catch (e) {
-          console.log("could not decode token", e);
+    axios
+      .get(import.meta.env.VITE_APP_ASSET_SERVER + "/tokens/" + code, {})
+      .then(
+        (response) => {
+          try {
+            var decoded = jwt_decode(response.data);
+            this.bookingLogin(response.data);
+          } catch (e) {
+            console.log("could not decode token", e);
+          }
+        },
+        (error) => {
+          console.log("error getting login token", error);
         }
-      },
-      (error) => {
-        console.log("error getting login token", error);
-      }
-    );
+      );
   },
 };
