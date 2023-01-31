@@ -412,3 +412,40 @@ export default {
 
 Makes it write only so you can assign somethign else to the property and break thigns
 
+## moving to vite
+
+[migration guide](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
+
+then 
+
+```
+npm install -g vite
+```
+
+then `npm run dev`
+
+```
+<snip>
+import { performance } from 'node:perf_hooks'
+       ^
+
+SyntaxError: Unexpected token {
+<snip>
+```
+Looks like this [perf hooks issue]( https://stackoverflow.com/questions/63383304/unable-to-resolve-module-perf-hooks), solution proposed is
+```
+ npm i --save-dev @types/node
+
+```
+and that fixed it.
+
+Except that could not find global css or main.js￼
+
+﻿```
+localhost/:8 
+ GET http://localhost:3000/global.css net::ERR_ABORTED 404 (Not Found)
+localhost/:10 
+ GET http://localhost:3000/src/main.js net::ERR_ABORTED 404 (Not Found)
+client.ts:16 [vite] connecting...
+client.ts:53 [vite] connected.
+```

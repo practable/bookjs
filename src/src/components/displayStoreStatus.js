@@ -5,7 +5,7 @@ export default {
   methods: {
     getStatus() {
       axios
-        .get(process.env.VUE_APP_BOOK_SERVER + "/api/v1/admin/status", {
+        .get(import.meta.env.VITE_APP_BOOK_SERVER + "/api/v1/admin/status", {
           headers: {
             Authorization: this.bookingToken,
           },
