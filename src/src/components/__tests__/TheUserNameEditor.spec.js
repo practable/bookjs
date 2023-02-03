@@ -97,7 +97,9 @@ describe("TheUserNameEditor.vue test successfully get name", () => {
 
     await flushPromises(); //wait til DOM updates
 
-    expect(axios.post).toHaveBeenCalledWith("undefined/api/v1/users/unique");
+    expect(axios.post).toHaveBeenCalledWith(
+      "https://dev.practable.io/book/api/v1/users/unique"
+    );
     expect(wrapper.vm.userName).toMatch("cfejfguot5un1fu2era0");
     expect(wrapper.text()).toContain("cfejfguot5un1fu2era0");
   });
