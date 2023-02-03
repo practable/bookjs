@@ -16,5 +16,10 @@ export default ({ mode }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    test: {
+      globals: true,
+      setupFiles: ["vitest-localstorage-mock"],
+      mockReset: false,
+    },
   });
 };

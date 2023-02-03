@@ -12,14 +12,14 @@
 
 <script>
   import enterToken from "../components/enterToken.vue";
-  import displayBookings from "../components/displayBookings.vue";
-  import displayPools from "../components/displayPools.vue";
+  //import displayBookings from "../components/displayBookings.vue";
+  //import displayPools from "../components/displayPools.vue";
 export default {
   name: "Login",
   components: {
       enterToken,
-	  displayPools,
-	  displayBookings,
+	  //displayPools,
+	  //displayBookings,
   },
 };
 </script>

@@ -3,27 +3,18 @@ import * as getters from "./getters";
 import * as actions from "./actions";
 import * as mutations from "./mutations";
 
+
+
 const state = {
-  bearer: "",
-  token: "",
-  bookingToken: "",
-  bookingTokenValid: false,
-  loginResult: "login not attempted",
-  bookingsEnabled: false,
-  bookingTokenStatus: "empty",
-  bookingTokenExpiresAt: 0,
-  maxBookings: 0,
-  storeStatus: "unknown",
-  storeStatusDetails: null,
-  poolIDsStatus: "unknown",
-  poolIDs: [],
-  poolDescriptions: {},
-  poolStatus: {},
-  activityBookings: [],
-  finishedBookings: {},
-  requestsMade: 0,
-  finishedCount: 0,
-  lastPoolRefresh: 0,
+
+	userID = ""; // primary userID used for tracking analytics and making/getting user-made bookings
+	sessionIDs = []; //additional one-time-use userIDs created by staff for pre-booked sessions, don't make new bookings against these, and don't allow cancellation of these (so one student can't cancel another??) How and when do we clean this out? When there are no bookings returned, clear the sessionID as being stale (or keep to show old bookings?!)
+	logins = new Map(); //map of login tokens for each of the userID, and sessionIDs in our store.
+	policies = new Map(); //map of all policies associated with the userID, but not sessionIDs
+	slots = new Map(); //map of all slots associated with the userID (use the list of slots in the policy to select which slots to show in policy cards)
+	bookings = new Map(); //map of all the bookings for all the userID and sessionIDs
+	oldBookings = new Map(); //map of all the bookings for all the userID and sessionIDs (will only show sessionIDs on the machine they were used on)
+	storeStatus = {}; //includes the current time when the status was updated, so can use that to check when to refresh
 };
 
 const store = createStore({
