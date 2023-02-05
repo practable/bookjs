@@ -1,5 +1,10 @@
 import dayjs from "dayjs";
 
+export const getUserName = (state) => state.userName;
+export const getUserNameValid = (state) => state.userNameValid;
+
+// Old getters
+
 export const bearer = (state) => state.bearer;
 
 export const bookingToken = (state) => state.bookingToken;

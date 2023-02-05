@@ -1,3 +1,14 @@
+export const setUserName = (state, userName) => {
+  state.userName = userName;
+};
+
+export const setUserNameValid = (state, valid) => {
+  console.log("mutating userNameValid to", valid);
+  state.userNameValid = valid;
+};
+
+// old mutations
+
 export const deleteBearer = (state) => {
   state.bearer = "";
 };

@@ -3,7 +3,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Cookies from "../views/Cookies.vue";
 import NotFound from "../views/NotFound.vue";
-import Login from "../views/Login.vue";
+import User from "../views/User.vue";
 import Modal from "../views/Modal.vue";
 import Activity from "../views/Activity.vue";
 
@@ -11,7 +11,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Login,
+    component: User,
   },
   {
     path: "/about",
@@ -24,9 +24,9 @@ const routes = [
     component: Cookies,
   },
   {
-    path: "/login",
-    name: "Login",
-    component: Login,
+    path: "/user",
+    name: "User",
+    component: User,
   },
   {
     path: "/modal",
