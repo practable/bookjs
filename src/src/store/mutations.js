@@ -7,6 +7,19 @@ export const setUserNameValid = (state, valid) => {
   state.userNameValid = valid;
 };
 
+export const setLoginToken = (state, token) => {
+  state.loginToken = token;
+};
+
+export const setLoginResponse = (state, data) => {
+  state.loginResponse = data;
+};
+
+export const setLoginValid = (state, valid) => {
+  console.log("mutating loginValid to", valid);
+  state.loginValid = valid;
+};
+
 // old mutations
 
 export const deleteBearer = (state) => {

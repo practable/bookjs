@@ -7,10 +7,11 @@ export default {
   data() {
     return {
       userNameValidString: "",
+      loginStatusString: "",
     };
   },
   computed: {
-    ...mapGetters(["getUserName", "getUserNameValid"]),
+    ...mapGetters(["getUserName", "getUserNameValid", "getLoginValid"]),
   },
   methods: {
     getNewUserName() {
@@ -41,6 +42,38 @@ export default {
           (error) => {
             if (error.response) {
               console.log("userName.js: /users/unique", error.response);
+            }
+          }
+        );
+    },
+    getLoginToken() {
+      var $this = this;
+      axios
+        .post(
+          import.meta.env.VITE_APP_BOOK_SERVER +
+            "/api/v1/login/" +
+            $this.getUserName
+        )
+        .then(
+          (response) => {
+            if (response.data) {
+              console.log(
+                "userName.js: /login/",
+                $this.getUserName,
+                response.data
+              );
+              $this.handleLoginResponse(response.data);
+            } else {
+              console.log("userName.js: /login/", $this.getUserName, response);
+            }
+          },
+          (error) => {
+            if (error.response) {
+              console.log(
+                "userName.js: /login/",
+                $this.getUserName,
+                error.response
+              );
             }
           }
         );
@@ -87,6 +120,43 @@ export default {
       this.$store.commit("setUserName", userName);
       this.$store.commit("setUserNameValid", valid);
     },
+    invalidateLogin() {
+      this.$store.commit("setLoginValid", false);
+      this.$store.commit("setLoginToken", "");
+    },
+    handleLoginResponse(data) {
+      if (!data) {
+        return;
+      }
+      console.log("login response", data);
+      this.$store.commit("setLoginResponse", data);
+      if (!data.token) {
+        this.$store.commit("setLoginValid", false);
+      } else {
+        this.$store.commit("setLoginToken", data.token);
+        this.$store.commit("setLoginValid", true);
+        if (data.exp) {
+          var now = new Date().getTime();
+          var waitForMilliseconds = data.exp * 1000 - now; //convert exp to milliseconds
+          if (waitForMilliseconds > 0) {
+            console.log("login expires in", waitForMilliseconds);
+            const redoLogin = setTimeout(
+              this.invalidateLogin,
+              waitForMilliseconds
+            );
+          } else {
+            console.log(
+              "token exp in past?",
+              data.exp,
+              "now",
+              now,
+              "wait",
+              waitForMilliseconds
+            );
+          }
+        }
+      }
+    },
   },
   mounted() {
     this.obtainUserName();
@@ -95,8 +165,16 @@ export default {
     getUserNameValid(newValue, oldValue) {
       if (newValue) {
         this.userNameValidString = "valid";
+        this.getLoginToken();
       } else {
         this.userNameValidString = "invalid";
+      }
+    },
+    getLoginValid(newValue, oldValue) {
+      if (newValue) {
+        this.loginStatusString = "logged in";
+      } else {
+        this.loginStatusString = "not logged in";
       }
     },
   },

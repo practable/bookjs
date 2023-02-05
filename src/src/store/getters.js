@@ -2,6 +2,9 @@ import dayjs from "dayjs";
 
 export const getUserName = (state) => state.userName;
 export const getUserNameValid = (state) => state.userNameValid;
+export const getLoginToken = (state) => state.loginToken;
+export const getLoginResponse = (state) => state.loginResponse;
+export const getLoginValid = (state) => state.loginValid;
 
 // Old getters
 
