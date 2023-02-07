@@ -31,7 +31,9 @@ const fetchMachine = createMachine({
     },
     success: {
       entry: "notifySuccess",
-      type: "final",
+      on: {
+        RETRY: "loading",
+      },
     },
     failure: {
       on: {
@@ -56,7 +58,8 @@ export default {
       services: {
         fetchData: (_context, event) =>
           fetch(
-            import.meta.env.VITE_APP_BOOK_SERVER + `/api/v1/${event.query}`
+            import.meta.env.VITE_APP_BOOK_SERVER + `/api/v1/${event.query}`,
+            { method: `${event.method}` } //must use these `ticks` to get substitution
           ).then((res) => res.json()),
       },
     });
