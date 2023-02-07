@@ -10,8 +10,7 @@
   </template>
 
   <template v-else-if="state.value === 'success'">
-    <div>Success! {{ state.context.data }}</div>
-	<button @click="send({ type: 'RETRY', query: 'users/unique', method: 'POST' })">Retry</button>
+    <div>Success! {{ state.context.results }}</div>
   </template>
 
   <template v-else-if="state.value === 'failure'">
@@ -19,4 +18,4 @@
     <button @click="send({ type: 'RETRY', query: 'users/unique', method: 'POST' })">Retry</button>
   </template>
 </template>
-<script src="../machines/fetchMachine.js"></script>
+<script src="../machines/fetchBackoffMachine.js"></script>
