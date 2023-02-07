@@ -611,3 +611,145 @@ for all icons in project put this in css
   color : red;
 }
 ```
+
+
+### XState
+
+#### Logging in
+
+```
+stateDiagram-v2
+    [*] --> UserNameFromStorage 
+    UserNameFromStorage --> LoginTokenFetch : OK
+    UserNameFromStorage --> UserNameFetch : Error
+    UserNameFetch --> UserNameAwaitResponse
+    UserNameAwaitResponse --> UserNameStore : OK
+    UserNameStore --> LoginTokenFetch
+    UserNameAwaitResponse --> UserNameWaitBackOff : Error
+    UserNameWaitBackOff --> UserNameFetch
+    LoginTokenFetch --> LoginTokenAwaitResponse
+    LoginTokenAwaitResponse --> StoreLoginToken : OK
+    LoginTokenAwaitResponse --> LoginTokenWaitBackOff : Error
+    LoginTokenWaitBackOff --> LoginTokenFetch
+    StoreLoginToken --> RefreshAwait 
+    RefreshAwait --> LoginTokenFetch : RefreshRequested
+    RefreshAwait --> UserNameFromStorage : UserNameChanged
+```
+
+#### Showing kit and taking bookings
+
+```
+stateDiagram-v2
+    [*] --> RefreshLoginToken
+    GetGroups --> GetBookings
+    RefreshLoginToken --> GetGroups 
+    GetBookings --> Wait
+    Wait --> RefreshLoginToken : RefreshRequested
+    Wait --> GetGroupDetails : GroupSelected
+    GetGroupDetails --> GetPolicies
+    GetPolicies -->  Wait
+    Wait --> GetSlots : PolicySelected
+    GetSlots --> DisplaySuggestedBookingTimes
+    DisplaySuggestedBookingTimes --> Wait
+    Wait --> MakeBooking : TimeSelected
+    MakeBooking --> GetBookings : OK
+    Wait --> StartBooking : ClickOpen
+    StartBooking --> Wait
+    Wait --> CancelBooking : ClickCancel
+    CancelBooking --> GetBookings
+```
+
+```
+stateDiagram-v2
+    [*] --> RefreshLoginToken
+    GetGroups --> Wait
+    RefreshLoginToken --> GetGroupsAndBookings
+    GetGroupsAndBookings --> Wait
+    GetBookings --> Wait
+    Wait --> RefreshLoginToken : RefreshRequested
+    Wait --> CheckGroupDetails : GroupSelected
+    CheckGroupDetails --> GetGroupDetails : Stale
+    CheckGroupDetails --> CheckSlotAvailabilities: Fresh
+    CheckSlotAvailabilities --> GetSlotAvailabilities : Stale
+    CheckSlotAvailabilities  --> DisplaySuggestedBookingTimes : Fresh
+    GetGroupDetails --> GetPolicies
+    GetPolicies -->  GetSlotAvailabilities
+    GetSlotAvailabilities--> CalculateSuggestedBookingTimes
+    CalculateSuggestedBookingTimes --> DisplaySuggestedBookingTimes
+    DisplaySuggestedBookingTimes --> Wait
+    Wait --> MakeBooking : TimeSelected
+    MakeBooking --> GetBookings : OK
+    Wait --> StartBooking : ClickOpen
+    StartBooking --> Wait
+    Wait --> CancelBooking : ClickCancel
+    CancelBooking --> GetBookings
+    Wait --> AddGroup
+    AddGroup --> GetGroups  
+    Wait --> GetSlotAvailabilities : UserRequestedRefresh
+
+```
+
+```
+ stateDiagram-v2
+    [*] --> RefreshLoginToken
+    GetGroups --> Wait
+    RefreshLoginToken --> GetGroupsAndBookings
+    GetGroupsAndBookings --> Wait
+    GetBookings --> Wait
+    Wait --> RefreshLoginToken : ForceRefreshLogin
+    Wait --> GetBookings : ForceRefreshBookings
+    Wait --> CheckGroupDetails : GroupSelected
+    CheckGroupDetails --> GetGroupDetails : Stale
+    CheckGroupDetails --> CheckSlotAvailabilities: Fresh
+    CheckSlotAvailabilities --> GetSlotAvailabilities : Stale
+    CheckSlotAvailabilities  --> Wait: Fresh
+    GetGroupDetails --> GetPolicies
+    GetPolicies -->  GetSlotAvailabilities
+    GetSlotAvailabilities--> GetIndividualSlotAvailability
+    GetIndividualSlotAvailability --> CalculateSuggestedBookingTimes
+    CalculateSuggestedBookingTimes --> GetIndividualSlotAvailability : NextSlot
+    CalculateSuggestedBookingTimes --> Wait : Done
+    Wait --> MakeBooking : TimeSelected
+    MakeBooking --> GetBookings : OK
+    Wait --> StartBooking : ClickOpen
+    StartBooking --> Wait
+    Wait --> CancelBooking : ClickCancel
+    CancelBooking --> GetBookings
+    Wait --> AddGroup
+    AddGroup --> GetGroups  
+    Wait --> GetGroupDetails : ForceRefreshGroupDetails
+    Wait --> GetIndividualSlotAvailability : ForceRefreshOneSlot
+    Wait --> GetSlotAvailabilities : ForceRefreshAll
+```
+
+
+RefreshMachine
+
+```
+stateDiagram-v2
+    [*] --> AwaitToken
+    AwaitToken --> Fetch : TokenRefreshed
+    Fetch --> Fresh : OK
+    Fetch --> AwaitToken : Unauthorised
+    Fetch --> Backoff : Error
+    Backoff --> Fetch : Timeout
+    Fresh --> Stale : Timeout
+    Fresh --> Fresh : Refresh (NOOP)
+    Stale --> Fetch : Refresh
+
+```
+
+KindRefreshMachine
+```
+stateDiagram-v2
+    [*] --> AwaitToken
+    AwaitToken --> Fetch : TokenRefreshed
+    Fetch --> Fresh : OK
+    Fetch --> AwaitToken : Unauthorised
+    Fetch --> Backoff : Error
+    Backoff --> Fetch : Timeout
+    Fresh --> Stale : Timeout
+    Fresh --> Fresh : KindRefresh (NOOP)
+    Stale --> Fetch : KindRefresh, ForceRefresh
+    Fresh --> Fetch : ForceRefresh
+	```

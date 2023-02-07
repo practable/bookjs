@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^1.6.1",
+    "@xstate/vue": "^2.0.0",
     "axios": "^1.2.6",
     "bootstrap": "^4.6.0",
     "dayjs": "^1.10.3",
@@ -26,7 +27,8 @@
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.3",
     "vue-web-storage": "^6.1.0",
-    "vuex": "^4.0.0-rc.2"
+    "vuex": "^4.0.0-rc.2",
+    "xstate": "^4.35.4"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
