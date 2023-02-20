@@ -247,9 +247,6 @@ const bookingMachine = createMachine({
           target: "idle",
           actions: assign({
             bookings: (context, event) => {
-              console.log("getSessionBookings returned", event.data);
-              console.log("TODO add session bookings to context.bookings");
-
               let bk = context.bookings;
               for (const session in event.data.bookings) {
                 event.data.bookings[session].bookings.forEach(function (
@@ -442,7 +439,6 @@ const bookingMachine = createMachine({
           target: "refreshBookings", //nb this catches 404 so not booking success yet!
           actions: assign({
             cancelResponse: (context, event) => {
-              console.log(event.data);
               return event.data;
             },
           }),
@@ -451,7 +447,6 @@ const bookingMachine = createMachine({
           target: "idle",
           actions: assign({
             cancelResponse: (context, event) => {
-              console.log(event.data);
               return event.data;
             },
           }),
@@ -476,7 +471,6 @@ const bookingMachine = createMachine({
           actions: assign({
             activityResponse: (context, event) => {
               //context.activities[context.getActivity.name] = event.data; //TODO put map entry in own assign function?
-              console.log(event.data);
               return event.data;
             },
             activities: (context, event) => {
@@ -517,7 +511,6 @@ const bookingMachine = createMachine({
           target: "refreshBookings", //nb this catches 404 so not booking success yet!
           actions: assign({
             bookingResponse: (context, event) => {
-              console.log("requestBooking success response", event.data);
               return event.data;
             },
           }),
@@ -526,7 +519,6 @@ const bookingMachine = createMachine({
           target: "idle",
           actions: assign({
             bookingResponse: (context, event) => {
-              console.log(event.data);
               return event.data;
             },
           }),
@@ -544,89 +536,6 @@ const bookingMachine = createMachine({
     },
   },
 });
-/*
- slotsComplete() {
-      if (!context) {
-        return {};
-      }
-      let items = context.slots;
-      let results = {};
-
-      for (const name in items) {
-        results[name] = context.slots[name];
-        results[name].available = context.available[name];
-      }
-
-      return slotsComplete;
-    },
-
-*/
-
-/*
-export default {
-  name: "Booking",
-  components: {
-    BookingSlots,
-    YourBookings,
-    ChooseTime,
-    DisplayBookingResponse,
-    LaunchActivity,
-  },
-  computed: {
-    filteredSlots() {
-      var filter = this.slotFilter.toLowerCase();
-      var items = context.slots;
-
-      items.sort((a, b) => (a.name > b.name ? 1 : -1));
-
-      if (filter == "") {
-        return items;
-      }
-      var results = items.filter((obj) => {
-        return obj.name.toLowerCase().includes(filter);
-      });
-
-      return results;
-    },
-    slotsComplete() {
-      console.log(context);
-      return { not: "implemented" };
-    },
-  },
-  created() {
-    // Start service on component creation
-    this.BookingService.onTransition((state) => {
-      // Update the current state component data property with the next state
-      this.current = state;
-      // Update the context component data property with the updated context
-      this.context = state.context;
-    }).start();
-  },
-  data() {
-    return {
-      // Interpret the machine and store it in data
-      BookingService: interpret(bookingMachine, {
-        devTools: true,
-      }).onTransition((state) => console.log(state.value)),
-
-      // Start with the machine's initial state
-      current: bookingMachine.initialState,
-
-      // Start with the machine's initial context
-      context: bookingMachine.context,
-      //try to store the results somewhere where component can get them?
-      results: {},
-    };
-  },
-  methods: {
-    // Send events to the service
-    send(event) {
-      this.BookingService.send(event);
-    },
-  },
-};
-*/
-// https://codesandbox.io/s/vg7qh?file=/src/SomeComponent.vue
 
 export function provideBookingService() {
   const service = useInterpret(bookingMachine, { devTools: true });

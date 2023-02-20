@@ -42,7 +42,6 @@ export default {
     makeBooking() {
       let id = this.id;
       this.send({ type: "BOOKING", value: id });
-      console.log("go to booking for", this.id);
 
       var path = "/slot/" + id;
       this.$router.push({ path: path });

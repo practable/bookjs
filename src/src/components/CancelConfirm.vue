@@ -65,29 +65,5 @@
 </template>
 <script src="./CancelConfirm.js"></script>
 
-<!--
 
-    <div class="row">
-    <div class="col"/>
-	<div class="col">
-	  Deleting this booking cannot be undone. 
-	</div>
-	<div class="col">
-		<div class="dropup"> 
-				<button type="button" @click='delete()' class="btn btn-warning" id="delete">
-				        Delete
-				</button>
-
-        </div>
-		<div class="dropup"> 
-				<button type="button" @click='keep()' class="btn btn-warning" id="keep">
-				        Keep
-				</button>
-
-        </div>		
- 	</div>
-	
-	<div class="col" />
-	
--->
   

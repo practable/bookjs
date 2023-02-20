@@ -77,13 +77,12 @@ export default {
 
       for (const name in this.slot.policyDetails.display_guides) {
         // convert into ISO8601 format
-        console.log("suggested for display_guide", name, this.slot.available);
 
         const guide = this.slot.policyDetails.display_guides[name];
 
         const ds = "PT" + guide.duration.toUpperCase();
         const duration = dayjs.duration(ds);
-        console.log(ds, duration);
+
         let list = [];
         let firstSlot = true;
 
@@ -140,7 +139,6 @@ export default {
   methods: {
     goBack() {
       this.send("BACK");
-      console.log("go back to catalogue");
     },
     makeBooking() {
       let booking = {
@@ -149,7 +147,6 @@ export default {
         end: this.end,
       };
       this.send({ type: "REQUESTBOOKING", value: booking });
-      console.log("request booking for", booking);
     },
   },
   mounted() {

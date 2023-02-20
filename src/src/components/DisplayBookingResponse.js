@@ -40,7 +40,6 @@ export default {
     },
 
     message: function () {
-      console.log("status", this.status);
       if (this.status === 204) {
         return "Booking successful";
       } else {
