@@ -37,8 +37,9 @@ export default defineComponent({
 	 </div>
 
 	 
-<div class="col-8">
-     <h4 class="text-white text-left"> {{ now }}  {{ state.context.status.message }} </h4>
+	 <div class="col-md-auto">
+	   <p style="margin-bottom:0.25cm;"></p>
+     <h5 class="text-white text-left">{{ now }}  {{ state.context.status.message }} </h5>
 	 </div>
  
 </div>
@@ -61,8 +62,9 @@ export default defineComponent({
 	 </div>
 
 	 
-<div class="col-8">
-     <h4 class="text-white text-left"> {{ now }}  {{ state.context.status.message }} </h4>
+	 <div class="col-md-auto">
+	    <p style="margin-bottom:0.25cm;"></p>
+     <h5 class="text-white text-left"> {{ now }}  {{ state.context.status.message }} </h5>
 	 </div>
  
 </div>
@@ -82,8 +84,9 @@ export default defineComponent({
 	 </div>
 
 	 
-<div class="col-8">
-     <h4 class="text-white text-left"> {{ now }}  {{ state.context.status.message }} </h4>
+	 <div class="col-md-auto">
+	    <p style="margin-bottom:0.25cm;"></p>
+     <h5 class="text-white text-left"> {{ now }}  {{ state.context.status.message }} </h5>
 	 </div>
  
 </div>
