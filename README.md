@@ -6,6 +6,27 @@ Javascript client for booking experiments from [practable/book](https://github.c
 
 In development.
 
+##
+
+API services
+
+## Design ideas
+
+
+Could use [v-model binding to componen](https://vuejs.org/guide/components/v-model.html) with getter setter funcs, to allow the sub-components to update the main state??
+
+
+Using xstate to manage global state with [useSelector](https://stately.ai/blog/how-to-manage-global-state-with-xstate-and-react)
+
+We can assess global state and send by using useActor, e.g. [here](https://garden.bradwoods.io/notes/javascript/state-management/xstate/global-state()
+
+
+Rather than routing, we could use hidden [tabs and KeepAlive](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components)
+
+Async components could replace some of the state?! [example](https://vuejs.org/guide/components/async.html#loading-and-error-states)
+
+
+
 ## Testing
 
 

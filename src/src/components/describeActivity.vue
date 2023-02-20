@@ -7,7 +7,8 @@
       <div class="col-md-8">
         <div class="card-body">
     	  <h5 class="card-title"> {{ title }}</h5>
-            <p class="card-text"> {{ about }}</p>
+          <p class="card-text"> {{ what }}</p>
+		  <p class="card-text"> {{ about }}</p>
     		<div class="container">
               <div class="row">
     			<div class="col"> 

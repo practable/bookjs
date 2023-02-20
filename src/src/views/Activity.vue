@@ -1,10 +1,7 @@
-<template>
-   <div class="container-fluid">
-	 <div class="row">
-<launch-activity :id="id" :setTimer="setTimer"
-  ></launch-activity>
-  </div>
-  </div>
-</template>
+<script setup>
+  import Activity from '../components/Activity.vue'
+</script>
 
-<script src='./Activity.js'></script>
+<template>
+<Activity />
+</template>

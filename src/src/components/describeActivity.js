@@ -1,43 +1,45 @@
 import dayjs from "dayjs";
-import { mapGetters } from "vuex";
 
 export default {
-  props: ["booking", "id"],
+  props: ["activity"],
   computed: {
     title: function () {
-      if (this.booking.hasOwnProperty("description")) {
-        return this.booking.description.name;
+      if (this.activity.hasOwnProperty("description")) {
+        return this.activity.description.name;
       } else {
         return "";
       }
     },
     image: function () {
-      if (this.booking.hasOwnProperty("description")) {
-        return this.booking.description.image;
+      if (this.activity.hasOwnProperty("description")) {
+        return this.activity.description.image;
       } else {
         return "";
       }
     },
     what: function () {
-      if (this.booking.hasOwnProperty("description")) {
-        return this.booking.description.short;
+      if (this.activity.hasOwnProperty("description")) {
+        return this.activity.description.short;
       } else {
         return "";
       }
     },
     about: function () {
-      if (this.booking.hasOwnProperty("description")) {
-        return this.booking.description.long;
+      if (this.activity.hasOwnProperty("description")) {
+        return this.activity.description.long;
       } else {
         return "";
       }
     },
     status: function () {
-      return "Now until " + dayjs.unix(this.booking.exp).format("h:mm A");
+      return (
+        dayjs.unix(this.activity.nbf).format("ddd D MMM HH:mm") +
+        " - " +
+        dayjs.unix(this.activity.exp).format("HH:mm")
+      );
     },
     dataloaded: function () {
-      return this.booking != {};
+      return this.activity != {};
     },
-    ...mapGetters(["getBookingByID"]),
   },
 };

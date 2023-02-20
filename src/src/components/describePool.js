@@ -113,7 +113,10 @@ export default {
       var id = this.description.id;
       axios
         .get(
-          import.meta.env.VITE_APP_BOOK_SERVER + "/api/v1/pools/" + id + "/status",
+          import.meta.env.VITE_APP_BOOK_SERVER +
+            "/api/v1/pools/" +
+            id +
+            "/status",
           {
             headers: {
               Authorization: this.bookingToken,

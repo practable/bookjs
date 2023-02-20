@@ -1,67 +1,27 @@
 {
-  "name": "bookjs",
-  "version": "0.2.0",
+  "name": "xstate-vue-demo",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "build": "vite build",
-    "serve": "vite preview",
-    "test:unit": "vitest run --environment jsdom"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^1.6.1",
+    "@popperjs/core": "^2.11.6",
+    "@xstate/inspect": "^0.7.1",
     "@xstate/vue": "^2.0.0",
-    "axios": "^1.2.6",
-    "bootstrap": "^4.6.0",
-    "dayjs": "^1.10.3",
-    "jquery": "^3.5.1",
-    "jwt-decode": "^3.1.2",
-    "moment": "^2.29.1",
-    "mustache": "^4.1.0",
-    "node-fetch": "^2.6.9",
-    "popper.js": "^1.16.1",
-    "vite": "^2.5.2",
-    "vue": "^3.0.0",
-    "vue-axios": "^3.5.2",
-    "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.3",
-    "vue-web-storage": "^6.1.0",
-    "vuex": "^4.0.0-rc.2",
+    "bootstrap": "^5.2.3",
+    "dayjs": "^1.11.7",
+    "mustache": "^4.2.0",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6",
     "xstate": "^4.35.4"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^2.2.10",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
-    "jsdom": "^21.1.0",
-    "typescript": "^4.9.5",
-    "vitest": "^0.28.4",
-    "vitest-localstorage-mock": "^0.0.1"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/typescript"
-    ],
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@vitejs/plugin-vue": "^4.0.0",
+    "sass": "^1.58.3",
+    "vite": "^4.1.1"
+  }
 }

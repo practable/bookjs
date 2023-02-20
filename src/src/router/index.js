@@ -1,17 +1,19 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Home from "../views/Home.vue";
+
 import About from "../views/About.vue";
-import Cookies from "../views/Cookies.vue";
-import NotFound from "../views/NotFound.vue";
-import User from "../views/User.vue";
-import Modal from "../views/Modal.vue";
 import Activity from "../views/Activity.vue";
+import BookingResponse from "../views/BookingResponse.vue";
+import CancelConfirm from "../views/CancelConfirm.vue";
+import Home from "../views/Home.vue";
+import NotFound from "../views/NotFound.vue";
+import Slot from "../views/Slot.vue";
+import User from "../views/User.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: User,
+    component: Home,
   },
   {
     path: "/about",
@@ -19,24 +21,29 @@ const routes = [
     component: About,
   },
   {
-    path: "/cookies",
-    name: "Cookies",
-    component: Cookies,
+    path: "/activity/:id",
+    name: "Activity",
+    component: Activity,
+  },
+  {
+    path: "/bookingResponse",
+    name: "BookingResponse",
+    component: BookingResponse,
+  },
+  {
+    path: "/cancelConfirm/:id",
+    name: "CancelConfirm",
+    component: CancelConfirm,
+  },
+  {
+    path: "/slot/:id",
+    name: "Slot",
+    component: Slot,
   },
   {
     path: "/user",
     name: "User",
     component: User,
-  },
-  {
-    path: "/modal",
-    name: "Modal",
-    component: Modal,
-  },
-  {
-    path: "/activity/:id",
-    name: "Activity",
-    component: Activity,
   },
   {
     path: "/:catchAll(.*)",

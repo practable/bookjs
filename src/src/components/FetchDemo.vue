@@ -18,4 +18,4 @@
     <button @click="send({ type: 'RETRY', query: 'users/unique', method: 'POST' })">Retry</button>
   </template>
 </template>
-<script src="../machines/fetchBackoffMachine.js"></script>
+<script src="./FetchMachine.js"></script>

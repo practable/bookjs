@@ -1,3 +1,7 @@
+<script setup>
+  import Booking from '../components/Booking.vue'
+</script>
+
 <template>
-  <h1>Home Page</h1>
+<Booking />
 </template>

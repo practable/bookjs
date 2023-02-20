@@ -1,25 +1,12 @@
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-
+import path from "path";
 // https://vitejs.dev/config/
-const path = require("path");
-export default ({ mode }) => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-
-  // import.meta.env.VITE_BASE available here with: process.env.VITE_BASE
-
-  return defineConfig({
-    base: process.env.VITE_BASE,
-    plugins: [vue()],
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./src"),
-      },
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),
     },
-    test: {
-      globals: true,
-      setupFiles: ["vitest-localstorage-mock"],
-      mockReset: false,
-    },
-  });
-};
+  },
+});
