@@ -18,7 +18,10 @@ export default {
       //each item is an array with two elements [0] key and [1] object
       items.sort((a, b) => (a[0] > b[0] ? 1 : -1));
 
-      let results = items;
+      // only show bookable slots
+      let results = items.filter((obj) => {
+        return !obj[1].notBookable;
+      });
 
       if (filter != "") {
         results = items.filter((obj) => {
