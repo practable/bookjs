@@ -22,11 +22,11 @@ Pre-release for user testing
 
 ## Usage
 
-A unique anonymous userName is assigned to each user, and kept in local storage.
+A unique anonymous `userName` is assigned to each user, and kept in local storage.
 
 A user must belong to one or more groups to access equipment, OR be given a session with pre-booked times on one or more pieces of equipment.
 
-Any groups and sessions can be added to a user account by using query parameters. Groups and sessions are persisted in local storage.
+Any groups and sessions can be added to a user account by using query parameters. Groups and sessions are persisted in local storage (in `sessionNames` and `groupNames`).
 
 
 The following query parameters are available
