@@ -21,15 +21,8 @@ components: {
 
 <template>
 
-  <template v-if="state.value === 'idle'">
-     <launch-activity
+      <launch-activity
 	  :activity="state.context.activityResponse.results">
 	  </launch-activity>
-	</template>
-
-  <template v-else>
-	  Loading ...
-  </template>
-	
 
 </template>

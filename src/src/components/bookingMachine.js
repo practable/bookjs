@@ -20,6 +20,7 @@ import getSlotAvailable from "./getSlotAvailable.js";
 import loginMachine from "./loginMachine.js";
 import startUpMachine from "./startUpMachine.js";
 import getSessionBookings from "./getSessionBookings.js";
+import getSessionPolicies from "./getSessionPolicies.js";
 /*
 import BookingSlots from "./BookingSlots.vue";
 import YourBookings from "./YourBookings.vue";
@@ -48,6 +49,8 @@ const bookingMachine = createMachine({
 
     policies: {},
     sessionNames: {}, //usernames that we will access bookings for, but not cancel bookings or do new bookings with
+    sessionPolicies: {}, //map of policies used by sessions - we may not have these in our groups, so add to our list of policies to get, but taint slots as notBookable (unless also in a bookable policy)
+    sessionPolicyNames: {}, //map of policy Names used by sessions
     sessionsQuery: [],
     slots: [],
     status: {
@@ -191,7 +194,7 @@ const bookingMachine = createMachine({
       invoke: {
         src: getSessionBookings,
         onDone: {
-          target: "groups",
+          target: "sessionPolicies",
           actions: assign({
             bookings: (context, event) => {
               let bk = context.bookings;
@@ -206,6 +209,17 @@ const bookingMachine = createMachine({
               }
 
               return bk;
+            },
+            sessionPolicyNames: (context, event) => {
+              let sp = {};
+              for (const session in event.data.bookings) {
+                event.data.bookings[session].bookings.forEach(function (
+                  booking
+                ) {
+                  sp[booking.policy] = true;
+                });
+              }
+              return sp;
             },
           }),
         },
@@ -244,7 +258,7 @@ const bookingMachine = createMachine({
       invoke: {
         src: getSessionBookings,
         onDone: {
-          target: "idle",
+          target: "sessionPolicies",
           actions: assign({
             bookings: (context, event) => {
               let bk = context.bookings;
@@ -260,10 +274,37 @@ const bookingMachine = createMachine({
 
               return bk;
             },
+            sessionPolicyNames: (context, event) => {
+              let sp = {};
+              for (const session in event.data.bookings) {
+                event.data.bookings[session].bookings.forEach(function (
+                  booking
+                ) {
+                  sp[booking.policy] = true;
+                });
+              }
+              return sp;
+            },
           }),
         },
         onError: {
           target: "terminated",
+        },
+      },
+    },
+    sessionPolicies: {
+      invoke: {
+        src: getSessionPolicies,
+        onDone: {
+          target: "groups",
+          actions: assign({
+            sessionPolicies: (context, event) => {
+              return event.data.sessionPolicies;
+            },
+          }),
+        },
+        onError: {
+          target: "idle", //TODO figure out what to do here if error
         },
       },
     },
