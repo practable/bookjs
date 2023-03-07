@@ -5,7 +5,7 @@ export default function (context, event) {
   let promises = [];
   let names = [];
 
-  context.sessionNames.forEach(function (session) {
+  context.sessionsQuery.forEach(function (session) {
     names.push(session);
     promises.push(
       new Promise((resolve, reject) => {
