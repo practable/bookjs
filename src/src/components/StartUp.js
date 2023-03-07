@@ -40,7 +40,7 @@ export default defineComponent({
     if (this.route.query.g) {
       gn.push(this.route.query.g);
     }
-    if (this.route.query.session) {
+    if (this.route.query.s) {
       sn.push(this.route.query.s);
     }
 
