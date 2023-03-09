@@ -38,7 +38,7 @@ const bookingMachine = createMachine({
     bookingResponse: {},
     bookingToCancel: {},
     cancelResponse: {},
-    bookings: "",
+    bookings: [],
     userName: "",
     token: "",
     groups: {}, //groups we can choose from (includes description)
@@ -181,7 +181,14 @@ const bookingMachine = createMachine({
           target: "sessions",
           actions: assign({
             bookings: (context, event) => {
-              return event.data.results;
+              // get a 404 for a new user with only a session the query
+              // {code: '404', message: 'error retrieving bookings for user cg4stbmot5uu9t4dolg0: user not found'}
+              // so check if we have an array or not
+              if (Array.isArray(event.data.results)) {
+                return event.data.results;
+              } else {
+                return [];
+              }
             },
           }),
         },
