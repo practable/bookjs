@@ -205,26 +205,34 @@ const bookingMachine = createMachine({
           actions: assign({
             bookings: (context, event) => {
               let bk = context.bookings;
-              for (const session in event.data.bookings) {
-                event.data.bookings[session].bookings.forEach(function (
-                  booking
-                ) {
-                  booking.isSession = true;
-                  booking.session = session;
-                  bk.push(booking);
-                });
+
+              // get a 404 for an incorrect session with no bookings
+              // {code: '404', message: 'error retrieving bookings for user not-a-session: user not found'}
+              // so check if we have an array or not
+              if (!Array.isArray(event.data.bookings)) {
+                for (const session in event.data.bookings) {
+                  event.data.bookings[session].bookings.forEach(function (
+                    booking
+                  ) {
+                    booking.isSession = true;
+                    booking.session = session;
+                    bk.push(booking);
+                  });
+                }
               }
 
               return bk;
             },
             sessionPolicyNames: (context, event) => {
               let sp = {};
-              for (const session in event.data.bookings) {
-                event.data.bookings[session].bookings.forEach(function (
-                  booking
-                ) {
-                  sp[booking.policy] = true;
-                });
+              if (!Array.isArray(event.data.bookings)) {
+                for (const session in event.data.bookings) {
+                  event.data.bookings[session].bookings.forEach(function (
+                    booking
+                  ) {
+                    sp[booking.policy] = true;
+                  });
+                }
               }
               return sp;
             },
