@@ -6,6 +6,14 @@ Javascript client for booking experiments from [practable/book](https://github.c
 
 ## Status
 
+![](./ico/apple-touch-icon.png) 
+
+# bookjs
+
+Javascript client for booking experiments from [practable/book](https://github.com/practable/book).
+
+## Status
+
 In production (with some ongoing development)
 
 ## About
@@ -33,7 +41,7 @@ Any groups and sessions can be added to a user account by using query parameters
 The following query parameters are available
 
 | short | long | format | example | comment |
-|----------------|--------|---------|---------|
+|-----|-----------|--------|---------|---------|
 | g   | group     | string | `g-ed1` | for a single group only |
 | gg  | groups    | JSON array | `["g-ed1","g-ep1"]`  | for more than one group |
 | s   | session     | string | `s123` | for a single session only |
@@ -91,11 +99,7 @@ You can combine single and plural forms of each query parameter in the same link
 
 Do NOT use the query parameter array format where a query param is repeated (e.g. `some_bad_url/?c=thing0&c=thing1`). In testing this did not perform as expected.
 
-You can have multiple sessions and groups: 
-
-`https://dev.practable.io/book/?ss=["test00","test01"]&gg=["g-everyone","g-engdes1-lab"]`
-
-![Sessions and groups example](./img/ssgg.png)
+You can have multiple sess
 
 ## Developer notes
 
