@@ -1,7 +1,7 @@
 export default function (context, event) {
   let promises = [];
   let names = [];
-
+  console.log("context.groupsQuery", context.groupsQuery);
   context.groupsQuery.forEach(function (group, index) {
     // only get details for groups that were in the query params
     names.push(group);
