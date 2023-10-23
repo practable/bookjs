@@ -6,7 +6,7 @@ export default ({ mode }) => {
   process.env = Object.assign(process.env, loadEnv(mode, process.cwd(), ""));
   return defineConfig({
     base: process.env.VITE_BASE,
-    plugins: [vue()],
+	plugins: [vue()],
     resolve: {
       alias: {
         "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),

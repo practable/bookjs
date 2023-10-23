@@ -16,7 +16,7 @@ export default defineComponent({
 
 <template>
 <template v-if="true">
-  <img width="300" src="https://dev.practable.io/static/images/common/practable-logo-3-1980x660.png">
+  <img width="300" src="/practable-logo-3-1980x660.png">
  <p style="margin-bottom:0.4cm;"></p>
   <div id="nav">
 	<router-link to="/">
