@@ -25,7 +25,7 @@ export default {
       var encodedConfig;
       var expiry = this.exp;
       if (!config) {
-        config = { url: "" }; //it's optional, and omitted when empty
+        config = ""; //it's optional, and omitted when empty
       }
       try {
         streams = JSON.stringify(this.streams);
@@ -38,7 +38,7 @@ export default {
 
       try {
         encodedStreams = encodeURIComponent(streams);
-        encodedConfig = encodeURIComponent(config.url);
+        encodedConfig = encodeURIComponent(config);
       } catch (e) {
         console.log(
           e,
@@ -46,7 +46,7 @@ export default {
         );
 
         rendered = mustache.render(template, {
-          config: config.url,
+          config: config,
           streams: streams,
           exp: expiry,
         });
