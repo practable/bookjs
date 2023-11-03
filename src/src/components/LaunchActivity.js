@@ -39,10 +39,19 @@ export default {
       return this.activity != {};
     },
   },
-  mounted() {
-    var path = "/";
-    if (!this.activity) {
-      this.$router.push({ path: path });
+	mounted() {
+		// two edge cases need handling
+		// we arrive here from an old link and this.activity will never be valid
+		// we arrive here on our first activity after refreshing the page, and it's not propagated here yet
+		// solution - if invalid, wait, then check again, and return if still invalid, else, ignore
+		
+      if (!this.activity) {
+		  setTimeout(() => {
+			  if (!this.activity) {
+				  this.$router.push({ path: "/"});
+			  }
+		  }, "1000");
+		  
     }
   },
 };
