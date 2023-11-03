@@ -76,13 +76,7 @@ export default {
     getActivity() {
       this.send({ type: "GETACTIVITY", value: this.booking });
 
-      console.log(
-        "get activity for booking",
-        this.booking.name,
-        this.booking.slot
-      );
-
-      var path = "/activity/" + this.booking.name;
+	  var path = "/activity/" + this.booking.name;
       this.$router.push({ path: path });
     },
 
@@ -100,7 +94,6 @@ export default {
     let wait = dayjs.duration(later.diff(this.now)).add(1, "second");
     setTimeout(() => {
       this.now = dayjs();
-      console.log("updated now for booking");
     }, wait.asMilliseconds());
   },
   setup() {
