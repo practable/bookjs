@@ -22,7 +22,6 @@
         :streams="streams"
         :exp="exp"
         :index="index"
-        :key="item.id"
         ></describe-interface>
     </div>
 
