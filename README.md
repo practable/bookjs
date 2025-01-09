@@ -118,4 +118,13 @@ npm run build
 ```
 
 
+## Testing
+
+The following functionality should be (currently manually) tested before putting a new release into production
+
+Can make a booking and go through all steps needed to start using the experiment
+Can open a session link and have the bookings appear
+Can go to about page and see cookie notice
+Can go to user page and see user name and group
+Can cancel a booking
 
