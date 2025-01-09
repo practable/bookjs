@@ -1,12 +1,18 @@
 <template>
 <div class="container-fluid">
   <div class="row">
-    <div class="col"> </div>
+   <div class="col"></div>
     <div class="col text-justify">
-	  
+    
+<h1>Learning Analytics Notice</h1>
+
+<p>We collect logs of interactions (e.g. clicks and inputs) with our remote laboratory user interfaces. These logs are necessary for the provision of educational tools (e.g. automated formative feedback) and are used for educational research. Interaction logs contain a unique ‘userName’ that is stored in localStorage on your browser and is a random string of letters and numbers. This ‘userName’ is persistent so that you can close and reopen the browser and our educational tools can continue to provide appropriate services. You can clear the ‘userName’ from localStorage but this will limit the effectiveness of the educational tools provided. The processing of interaction data is performed under the lawful basis of ‘legitimate interest’ as no sensitive personal data is collected and it is unlikely that the ‘userName’ could be used to personally identify any user of the system. For more details see the <a href="https://registryservices.ed.ac.uk/academic-services/policies-regulations/learning-and-assessment/learning-analytics/policy">University of Edinburgh’s Learning Analytics policy</a>.</p>
+
+<p>Processed interaction data cannot be used as the basis for personal educational interventions unless you provide prior consent. If you volunteer to take part in research projects that use these remote laboratories, and where personal data is requested (e.g. via surveys), then your voluntary consent will be required in order to associate any interaction data with your personal data.</p>
+
 <h1>Cookie Notice</h1>
 
-This site asks your browser to store a randomly-generated code (made up of letters and numbers) in a cookie. This cookie is essential to navigating the site and securely booking out experiments. The cookie is persistant, so that you can close and reopen your browser and retain access to any experiments you have booked. You can remove the cookie at any time, by clearing your cache, however, you will lose access to any experiments you have booked. A new cookie will be generated the next time you use the site. This cookie is strictly necessary cookie, so we are exempted from asking for your consent. For more information on strictly necessary cookies please see this <a href="https://ico.org.uk/for-organisations/guide-to-pecr/guidance-on-the-use-of-cookies-and-similar-technologies/what-are-the-rules-on-cookies-and-similar-technologies/#rules9">ICO guide</a>.
+This site asks your browser to store a randomly-generated code (made up of letters and numbers) in local storage (a ‘userName’). This ‘userName’ is essential to navigating the site and securely booking out experiments. The ‘userName’ is persistant, so that you can close and reopen your browser and retain access to any experiments you have booked. You can remove the ‘userName’ at any time, by clearing your cache, however, you will lose access to any experiments you have booked. A new ‘userName’ will be generated the next time you use the site. This ‘userName’ is a strictly necessary cookie, so we are exempted from asking for your consent. For more information on strictly necessary cookies please see this <a href="https://ico.org.uk/for-organisations/guide-to-pecr/guidance-on-the-use-of-cookies-and-similar-technologies/what-are-the-rules-on-cookies-and-similar-technologies/#rules9">ICO guide</a>.
 
  <p style="margin-bottom:1cm;"></p>	  
 
@@ -32,7 +38,8 @@ This is the booking interface for the <a href="https://practable.io">practable.i
 	<p> If you want to take a quick look at the software, you can find the core <a href="https://github.com/practable/relay">here</a>. Developer and adopter documentation is on our roadmap, as are support tools and services to set you up and/or keep you going / scale up. Alternatively, we can do some or all of the work for you - get in touch to discuss the options without obligation. If you have any questions, want to discuss getting some help, or simply want to let us know you might be interested in participating in the practable ecosystem in some way, let us know by emailing <a href="mailto:timothy.drysdale@ed.ac.uk">Tim</a>.</p>
 
 	</div>
-	<div class="col"></div>
+
+<div class="col"></div>
 </div>
 </div>
 
