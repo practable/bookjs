@@ -8,20 +8,11 @@
 	<div class="col">
 	</div>
 	<div class="col">
-
 	</div>
   </div>
   <div class="row">
-  	  <input v-model="filter" placeholder="filter...">
-  </div>
-  <div class="row">
-  <!--your-booking
-	v-for="(booking,key) in filteredBookings"
-	:key="key"
-	:booking="booking">
-	</your-booking-->
-<display-booking
-  v-for="(booking,key) in filteredBookings"
+  <display-booking
+  v-for="(booking,key) in bookings"
   :key="key"
   :booking="booking">
   </display-booking>
