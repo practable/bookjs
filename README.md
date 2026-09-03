@@ -6,15 +6,14 @@ Javascript client for booking experiments from [practable/book](https://github.c
 
 ## Status
 
-![](./ico/apple-touch-icon.png) 
+Release [`v0.5.0`](https://github.com/practable/bookjs/releases/tag/v0.5.0)
+is the production booking interface for the 2025–2026 academic year. Keep that
+tag available as the reproducible ed0 baseline while the ed1 interface is
+developed on the `develop` branch.
 
-# bookjs
-
-Javascript client for booking experiments from [practable/book](https://github.com/practable/book).
-
-## Status
-
-In production (with some ongoing development)
+The production release remains supported for operational fixes. New ed1 user
+experience and API integration work belongs on `develop` until it is ready for
+a separately versioned release.
 
 ## About
 
@@ -127,4 +126,3 @@ Can open a session link and have the bookings appear
 Can go to about page and see cookie notice
 Can go to user page and see user name and group
 Can cancel a booking
-
